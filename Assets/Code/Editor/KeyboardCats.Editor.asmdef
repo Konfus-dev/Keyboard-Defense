@@ -1,0 +1,18 @@
+{
+    "name": "KeyboardCats.Editor",
+    "rootNamespace": "KeyboardCats",
+    "references": [
+        "GUID:5c3d29b285424ea18ce11d55878e25e2"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

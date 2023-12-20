@@ -1,0 +1,5 @@
+Words source: https://invokeit.wordpress.com/frequency-word-lists/
+Each word has a usage count associated the a word which I will be using as the difficulty.
+The format is like so: word 100
+Where word is the word, and 100 is the usage count.
+The more the word is used or the higher the count the lower the difficulty. The lower the count the higher the difficulty.
