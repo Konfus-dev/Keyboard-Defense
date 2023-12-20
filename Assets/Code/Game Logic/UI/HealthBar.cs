@@ -15,6 +15,7 @@ namespace KeyboardCats.UI
 
         public void OnHealthChanged(float currHealth, float maxHealth)
         {
+            if (currHealth < 0) return;
             var healthBarScale = healthBar.transform.localScale;
             healthBar.transform.localScale = new Vector3(currHealth/maxHealth, healthBarScale.y, healthBarScale.z);
         }

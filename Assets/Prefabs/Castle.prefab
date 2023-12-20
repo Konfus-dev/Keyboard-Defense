@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 263526040827395791}
   - component: {fileID: 7966661483834690835}
   - component: {fileID: 5725987528692414198}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 1152069279380789513}
   - component: {fileID: 5227429202413367655}
   - component: {fileID: 3641671622751203266}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 3147146769371342473}
   - component: {fileID: 1305063808107491928}
   - component: {fileID: 4565889058888082276}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1095819379588579779}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crossbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8607891699486715052}
   - component: {fileID: 7597110966410583368}
-  m_Layer: 0
+  - component: {fileID: 7874278121453981513}
+  - component: {fileID: 7430449269427274881}
+  m_Layer: 8
   m_Name: Castle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,12 +477,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3463930942811198217}
+        m_TargetAssemblyTypeName: KeyboardCats.UI.HealthBar, KeyboardCats
+        m_MethodName: OnHealthChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   healthZero:
     m_PersistentCalls:
       m_Calls: []
-  currHealth: 0
-  maxHealth: 0
+  currHealth: 10
+  maxHealth: 10
+--- !u!114 &7874278121453981513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615872877931896454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd26aa2c631d2f34cb7e044514311b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionFilter:
+    serializedVersion: 2
+    m_Bits: 128
+  onCollisionEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7597110966410583368}
+        m_TargetAssemblyTypeName: KeyboardCats.AI.Health, KeyboardCats
+        m_MethodName: TakeDamage
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCollisionStay:
+    m_PersistentCalls:
+      m_Calls: []
+  onCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &7430449269427274881
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615872877931896454}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6, y: 5.28876, z: 4.12331}
+  m_Center: {x: -0, y: 2.7463183, z: -2.0249085}
 --- !u!1 &5242063607299860802
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +564,7 @@ GameObject:
   - component: {fileID: 7782210188744447147}
   - component: {fileID: 4162420546628845362}
   - component: {fileID: 1388720159483235311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +671,7 @@ GameObject:
   - component: {fileID: 75867097149376707}
   - component: {fileID: 3750003818926626394}
   - component: {fileID: 3521750092916240196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,7 +774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9022195948917483340}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -739,7 +810,7 @@ GameObject:
   - component: {fileID: 2191867382522791286}
   - component: {fileID: 115702134925848134}
   - component: {fileID: 5346249088790917117}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3065384501744790578}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crossbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,7 +946,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2384965030191286261}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -911,7 +982,7 @@ GameObject:
   - component: {fileID: 4417056963590956309}
   - component: {fileID: 1270171145835363443}
   - component: {fileID: 3903780626111537558}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1018,7 +1089,7 @@ GameObject:
   - component: {fileID: 2341759437461173164}
   - component: {fileID: 3472065405099797630}
   - component: {fileID: 5694852572659131296}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1120,7 +1191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5429603494928834028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat King
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1246,7 +1317,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8444728719046859687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.46}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1256,7 +1327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 6.12}
+  m_AnchoredPosition: {x: 0, y: 7.21}
   m_SizeDelta: {x: 5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3322075947291187966
@@ -1347,7 +1418,7 @@ GameObject:
   - component: {fileID: 8447625511544993000}
   - component: {fileID: 3602648527893945140}
   - component: {fileID: 3591568138186829591}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1448,10 +1519,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5429603494928834028}
     m_Modifications:
+    - target: {fileID: 4284089282903917217, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284089282903917219, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284089282903917221, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284089282903917223, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284089282903917225, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284089282903917227, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284089282903917231, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284089282903917239, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284089282903917241, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284089282903917243, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284089282903917245, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6647131506220806907, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
         type: 3}
       propertyPath: m_Name
       value: Cat with Crown
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647131506220806907, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6647131506220806908, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
         type: 3}
@@ -1512,6 +1643,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnimateCrossFading
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647131507186470326, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647131507516179438, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647131507828160010, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647131507985846804, guid: 27e82c8a2f2dc474a8d10d84ae09e664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1622,6 +1773,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crown
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2b42d85eeee0cb4881664623c7ed759,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1691,6 +1847,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8068073526183931155, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -6076147005050682420, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -5039839260716659491, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4780548004322258628, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4723172059348256580, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -305091885687274788, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1706,10 +1892,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5092708244707826562, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991113125823017423, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7991113125823017423, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343248219658952724, guid: 730bf87bc13c8d74281ad3c8e53a1bda,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

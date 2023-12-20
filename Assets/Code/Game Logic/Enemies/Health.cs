@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace KeyboardCats.AI
+namespace KeyboardCats.Enemies
 {
     public class Health : MonoBehaviour
     {
@@ -15,15 +15,10 @@ namespace KeyboardCats.AI
         [SerializeField]
         private float maxHealth = 10;
 
-        private void Start()
-        {
-            currHealth = maxHealth;
-        }
-
         public void TakeDamage(float damage)
         {
             currHealth -= damage;
-            if (currHealth < 0) healthZero.Invoke(0, maxHealth);
+            if (currHealth <= 0) healthZero.Invoke(0, maxHealth);
             healthChanged.Invoke(currHealth, maxHealth);
         }
 
@@ -32,6 +27,11 @@ namespace KeyboardCats.AI
             currHealth += amount;
             if (currHealth > maxHealth) currHealth = maxHealth;
             healthChanged.Invoke(currHealth, maxHealth);
+        }
+        
+        private void Start()
+        {
+            currHealth = maxHealth;
         }
 
         [Button]
