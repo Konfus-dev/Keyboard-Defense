@@ -12,9 +12,9 @@ namespace KeyboardCats.Prompts
 
         public string GeneratePrompt()
         {
-            // TODO: intelligently generate prompts from words, as well as use random prompts from databases
+            // TODO: intelligently generate prompts from words, as well as use random prompts and words from databases
             string prompt;
-            var randChoice = Random.Range(0, 1);
+            var randChoice = Random.Range(0, 2);
             if (randChoice == 0) prompt = promptDatabase.GetRandom();
             else prompt = wordDatabase.GetRandom();
             return prompt;

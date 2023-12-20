@@ -1,9 +1,7 @@
 using System;
-using System.Linq;
 using Konfus.Utility.Design_Patterns;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 namespace KeyboardCats.Input
 {
@@ -13,10 +11,7 @@ namespace KeyboardCats.Input
         
         private void Update()
         {
-            if (UnityEngine.Input.anyKeyDown)
-            {
-                OnKeyPressed();
-            }
+            if (UnityEngine.Input.anyKeyDown) OnKeyPressed();
         }
         
         public void OnKeyPressed()
@@ -24,8 +19,8 @@ namespace KeyboardCats.Input
             foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
             {
                 if (!UnityEngine.Input.GetKeyDown(keyCode)) continue;
+                if (keyCode.ToString().Contains("Mouse")) continue;
                 
-                Debug.Log($"{keyCode} pressed");
                 keyPressed.Invoke(keyCode.ToString());
             }
         }

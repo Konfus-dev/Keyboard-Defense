@@ -32,7 +32,6 @@ namespace KeyboardCats.Prompts
                 if (_remainingPromptText.IsNullOrEmpty())
                 {
                     OnSuccessfullyTypedPrompt();
-                    return;
                 }
             }
             else
@@ -57,7 +56,6 @@ namespace KeyboardCats.Prompts
         
         private void OnSuccessfullyTypedPrompt()
         {
-            Debug.Log($"{name}: successfully typed prompt! Yay!");
             promptCompleted.Invoke();
         }
 
@@ -69,7 +67,6 @@ namespace KeyboardCats.Prompts
 
         private void OnTypedWrongCharacter()
         {
-            Debug.Log($"{name}: wrong character typed!");
             Reset();
         }
 

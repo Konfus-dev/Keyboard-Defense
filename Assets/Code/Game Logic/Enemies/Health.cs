@@ -33,18 +33,6 @@ namespace KeyboardCats.Enemies
         {
             currHealth = maxHealth;
         }
-
-        [Button]
-        private void TestTakeDamage()
-        {
-            TakeDamage(1);
-        }
-        
-        [Button]
-        private void TestHeal()
-        {
-            Heal(1);
-        }
     }
     
     /// <summary>

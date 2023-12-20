@@ -1,7 +1,6 @@
 using System.Collections;
 using Konfus.Utility.Extensions;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace KeyboardCats.Enemies
 {

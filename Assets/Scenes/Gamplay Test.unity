@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptDatabase: {fileID: 11400000, guid: 670c8157465d6714c90d24616ed57d39, type: 2}
-  wordDatabase: {fileID: 0}
+  wordDatabase: {fileID: 11400000, guid: 937bb353d69be354ca45598d67fe00fa, type: 2}
 --- !u!1 &1487880317
 GameObject:
   m_ObjectHideFlags: 0
