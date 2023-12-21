@@ -34,11 +34,14 @@ namespace KeyboardCats.Enemies
 
         private void SpawnRandomEnemy()
         {
+            // Spawn random enemy
             var spawnIndex = Random.Range(0, spawnPool.Length);
             var enemy = Instantiate(spawnPool[spawnIndex]);
-            enemy.GetComponent<Enemy>().SetTarget(target);
+            
+            // Configure spawned enemy
+            var randFollowPathOffset = new Vector3(Random.Range(-0.5f, 0.5f), 0, 0);
+            enemy.GetComponent<SplineMovement>().SetOffset(randFollowPathOffset);
             enemy.transform.position = spawnPosition.position;
-            enemy.SetActive(true);
         }
     }
 }

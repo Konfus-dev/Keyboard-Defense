@@ -19,6 +19,13 @@ namespace KeyboardCats.Prompts
         private string _prompt;
         private string _remainingPromptText;
 
+        public void Generate(PromptDifficulty difficulty)
+        {
+            _prompt = PromptManager.Instance.GeneratePrompt(difficulty);
+            _remainingPromptText = _prompt;
+            UpdateVisual();
+        }
+        
         protected override void OnKeyPressed(string key)
         {
             // Process input...
@@ -44,14 +51,6 @@ namespace KeyboardCats.Prompts
         private void Awake()
         {
             _tmp = GetComponent<TMP_Text>();
-        }
-
-        private new void Start()
-        {
-            _prompt = PromptManager.Instance.GeneratePrompt();
-            _remainingPromptText = _prompt;
-            UpdateVisual();
-            base.Start();
         }
         
         private void OnSuccessfullyTypedPrompt()

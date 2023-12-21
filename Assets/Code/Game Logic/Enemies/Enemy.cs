@@ -1,5 +1,5 @@
 using System.Collections;
-using Konfus.Utility.Extensions;
+using KeyboardCats.Prompts;
 using UnityEngine;
 
 namespace KeyboardCats.Enemies
@@ -8,20 +8,33 @@ namespace KeyboardCats.Enemies
     public class Enemy : MonoBehaviour
     {
         [SerializeField]
+        private PromptDifficulty difficulty;
+        [SerializeField] 
+        private MonoPrompt prompt;
+        [SerializeField]
         private float attackDamage = 1f;
         [SerializeField]
         private float attackCooldown = 1f;
         [SerializeField] 
-        private float moveSpeed = 0.1f;
+        private float moveSpeed = 1f;
         [SerializeField]
         private Health health;
         [SerializeField]
-        private Animator animator;
+        private RaycastAttack raycastAttack;
         [SerializeField]
-        private GameObject visual;
+        private SplineMovement splineMovement;
 
         private State _state = State.Moving;
-        private Transform _target;
+
+        public State GetState()
+        {
+            return _state;
+        }
+
+        public float GetMoveSpeed()
+        {
+            return moveSpeed;
+        }
 
         public void OnPromptCompleted()
         {
@@ -30,7 +43,17 @@ namespace KeyboardCats.Enemies
 
         public void OnHitCastle()
         {
+            //FindOpenSpace();
             Attack();
+        }
+
+        private void FindOpenSpace()
+        {
+            if (Physics.CheckSphere(transform.position, 0.1f, LayerMask.GetMask("Enemy")))
+            {
+                var currPos = transform.position;
+                transform.position = new Vector3(currPos.x + Random.Range(-0.5f, 0.5f), currPos.y, currPos.z);
+            }
         }
 
         public void OnTakeDamage()
@@ -43,64 +66,18 @@ namespace KeyboardCats.Enemies
             Die();
         }
 
-        public void SetTarget(Transform target)
+        private void Start()
         {
-            _target = target;
+            prompt.Generate(difficulty);
+            splineMovement.SetContainer(EnemyManager.Instance.GetPath());
+            splineMovement.SetSpeed(moveSpeed);
+            splineMovement.Move();
         }
 
-        private void Update()
-        {
-            switch (_state)
-            {
-                case State.Idle:
-                {
-                    moveSpeed = 0;
-                    animator.Play("Idle_A");
-                    animator.Play("Eyes_Blink");
-                    break;
-                }
-                case State.Moving:
-                {
-                    switch (moveSpeed)
-                    {
-                        case > 0.5f:
-                            animator.Play("Run");
-                            break;
-                        default:
-                            animator.Play("Walk");
-                            break;
-                    }
-
-                    animator.Play("Eyes_Blink");
-                    transform.MoveTo(_target.position, moveSpeed * Time.fixedDeltaTime);
-                    break;
-                }
-                case State.Attacking:
-                {
-                    moveSpeed = 0;
-                    animator.Play("Attack");
-                    animator.Play("Eyes_Annoyed");
-                    break;
-                }
-                case State.Hurt:
-                {
-                    animator.Play("Eyes_Cry");
-                    animator.Play("Hit");
-                    break;
-                }
-                case State.Dead:
-                {
-                    moveSpeed = 0;
-                    animator.Play("Death");
-                    animator.Play("Eyes_Dead");
-                    break;
-                }
-            }
-        }
-        
         private void Attack()
         {
-            moveSpeed = 0;
+            _state = State.Attacking;
+            splineMovement.Stop();
             StartCoroutine(AttackRoutine());
         }
 
@@ -108,14 +85,12 @@ namespace KeyboardCats.Enemies
         {
             while (_state == State.Attacking)
             {
+                _state = State.Attacking;
+                raycastAttack.Attack(attackDamage);
+                yield return new WaitForSeconds(0.2f);
                 _state = State.Idle;
                 yield return new WaitForSeconds(attackCooldown);
                 _state = State.Attacking;
-                if (Physics.Raycast(transform.position, transform.forward * 2, out var hit))
-                {
-                    var health = hit.transform.gameObject.GetComponent<Health>();
-                    health.TakeDamage(attackDamage);
-                }
             }
         }
 
@@ -128,25 +103,28 @@ namespace KeyboardCats.Enemies
         
         private IEnumerator HurtRoutine()
         {
-            var oldMoveSpeed = moveSpeed;
-            moveSpeed = 0;
+            var previousState = _state;
+            splineMovement.Stop();
             yield return new WaitForSeconds(0.5f);
-            moveSpeed = oldMoveSpeed;
+            _state = previousState;
+            splineMovement.Move();
         }
         
         private void Die()
         {
             _state = State.Dead;
+            splineMovement.Stop();
             StartCoroutine(DieRoutine());
         }
 
         private IEnumerator DieRoutine()
         {
             yield return new WaitForSeconds(0.5f);
+            // TODO: death FX, like a poof and ghost rising
             Destroy(gameObject);
         }
 
-        private enum State
+        public enum State
         {
             Idle,
             Moving,

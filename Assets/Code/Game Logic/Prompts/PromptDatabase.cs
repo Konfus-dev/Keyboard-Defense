@@ -14,5 +14,11 @@ namespace KeyboardCats.Prompts
             var randPromptIndex = Random.Range(0, prompts.Length - 1);
             return prompts[randPromptIndex];
         }
+        
+        public Prompt GetRandom(PromptDifficulty difficulty)
+        {
+            var randPromptIndex = Random.Range(0, prompts.Length - 1);
+            return prompts[randPromptIndex];
+        }
     }
 }

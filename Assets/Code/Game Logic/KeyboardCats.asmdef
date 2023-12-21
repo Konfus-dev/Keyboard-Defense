@@ -2,8 +2,10 @@
     "name": "KeyboardCats",
     "rootNamespace": "KeyboardCats",
     "references": [
+        "GUID:21d1eb854b91ade49bc69a263d12bee2",
         "GUID:75469ad4d38634e559750d17036d5f7c",
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
         "GUID:fc5b186aaef83404297f189c0729473c",
         "GUID:b380ce015279a124aa7eb85292774261",
         "GUID:a88015c3e00dffd48a3c7daec3b0969d"

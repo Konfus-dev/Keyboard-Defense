@@ -6,12 +6,12 @@ namespace KeyboardCats.Input
     {
         public void Start()
         {
-            Keyboard.Instance.keyPressed.AddListener(OnKeyPressed);
+            Player.Instance.keyPressed.AddListener(OnKeyPressed);
         }
 
         public void OnDestroy()
         {
-            Keyboard.Instance.keyPressed?.RemoveListener(OnKeyPressed);
+            Player.Instance.keyPressed?.RemoveListener(OnKeyPressed);
         }
 
         protected abstract void OnKeyPressed(string key);
