@@ -95,7 +95,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b817dd5bd76f8624a9ecd1c06b3c10ad,
         type: 3}
       propertyPath: m_Name
-      value: Tree
+      value: Pine Tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -184,7 +184,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b817dd5bd76f8624a9ecd1c06b3c10ad,
         type: 3}
       propertyPath: m_Name
-      value: Tree (2)
+      value: Pine Tree (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -273,7 +273,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b817dd5bd76f8624a9ecd1c06b3c10ad,
         type: 3}
       propertyPath: m_Name
-      value: Tree (1)
+      value: Pine Tree (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
