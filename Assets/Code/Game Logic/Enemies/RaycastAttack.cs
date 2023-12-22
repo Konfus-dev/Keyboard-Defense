@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using KeyboardCats.Vitality;
+using UnityEngine;
 
 namespace KeyboardCats.Enemies
 {

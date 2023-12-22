@@ -1,6 +1,5 @@
 using System;
 using Konfus.Systems.Cameras;
-using Konfus.Systems.ThreeDCursor;
 using Konfus.Utility.Design_Patterns;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,8 +10,6 @@ namespace KeyboardCats.Input
     {
         public KeyPressedEvent keyPressed;
         
-        [SerializeField]
-        private ThreeDCursor threeDCursor;
         [SerializeField] 
         private RtsCamera rtsCamera;
         
@@ -53,17 +50,17 @@ namespace KeyboardCats.Input
 
         private void OnHover()
         {
-            threeDCursor.SetState("Hover");
+            //threeDCursor.SetState("Hover");
         }
 
         private void OnMouseInput(float mouseX, float mouseY)
         {
-            threeDCursor.OnMouseInput(new Vector2(mouseX, mouseY));
+            //threeDCursor.OnMouseInput(new Vector2(mouseX, mouseY));
         }
         
         private void OnClick(float mouseXDelta, float mouseYDelta)
         {
-            threeDCursor.SetState("Click");
+            //threeDCursor.SetState("Click");
             rtsCamera.OnRotateInput(new Vector2(mouseXDelta, mouseYDelta).normalized);
         }
         
@@ -74,7 +71,7 @@ namespace KeyboardCats.Input
                 layerMask: LayerMask.GetMask("Interactable"), 
                 maxDistance: 10f);
             if (overInteractable) OnHover();
-            else threeDCursor.SetState("Idle");
+            //else threeDCursor.SetState("Idle");
             rtsCamera.OnRotateInput(Vector2.zero);
         }
 

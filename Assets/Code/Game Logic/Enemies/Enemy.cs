@@ -1,5 +1,6 @@
 using System.Collections;
 using KeyboardCats.Prompts;
+using KeyboardCats.Vitality;
 using UnityEngine;
 
 namespace KeyboardCats.Enemies
@@ -31,6 +32,11 @@ namespace KeyboardCats.Enemies
             return _state;
         }
 
+        public Health GetHealth()
+        {
+            return health;
+        }
+
         public float GetMoveSpeed()
         {
             return moveSpeed;
@@ -43,17 +49,7 @@ namespace KeyboardCats.Enemies
 
         public void OnHitCastle()
         {
-            //FindOpenSpace();
             Attack();
-        }
-
-        private void FindOpenSpace()
-        {
-            if (Physics.CheckSphere(transform.position, 0.1f, LayerMask.GetMask("Enemy")))
-            {
-                var currPos = transform.position;
-                transform.position = new Vector3(currPos.x + Random.Range(-0.5f, 0.5f), currPos.y, currPos.z);
-            }
         }
 
         public void OnTakeDamage()
@@ -76,20 +72,21 @@ namespace KeyboardCats.Enemies
 
         private void Attack()
         {
-            _state = State.Attacking;
-            splineMovement.Stop();
             StartCoroutine(AttackRoutine());
         }
 
         private IEnumerator AttackRoutine()
         {
+            _state = State.Attacking;
+            splineMovement.Stop();
+            
             while (_state == State.Attacking)
             {
                 _state = State.Attacking;
                 raycastAttack.Attack(attackDamage);
                 yield return new WaitForSeconds(0.2f);
                 _state = State.Idle;
-                yield return new WaitForSeconds(attackCooldown);
+                yield return new WaitForSeconds(attackCooldown - 0.2f);
                 _state = State.Attacking;
             }
         }
@@ -97,13 +94,13 @@ namespace KeyboardCats.Enemies
         private void Hurt()
         {
             if (_state == State.Dead) return;
-            _state = State.Hurt;
             StartCoroutine(HurtRoutine());
         }
         
         private IEnumerator HurtRoutine()
         {
             var previousState = _state;
+            _state = State.Hurt;
             splineMovement.Stop();
             yield return new WaitForSeconds(0.5f);
             _state = previousState;
@@ -112,13 +109,13 @@ namespace KeyboardCats.Enemies
         
         private void Die()
         {
-            _state = State.Dead;
-            splineMovement.Stop();
             StartCoroutine(DieRoutine());
         }
 
         private IEnumerator DieRoutine()
         {
+            _state = State.Dead;
+            splineMovement.Stop();
             yield return new WaitForSeconds(0.5f);
             // TODO: death FX, like a poof and ghost rising
             Destroy(gameObject);
