@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using KeyboardCats.Prompts;
+using KeyboardCats.UI;
 using KeyboardCats.Vitality;
 using UnityEngine;
 
@@ -11,7 +13,7 @@ namespace KeyboardCats.Enemies
         [SerializeField]
         private PromptDifficulty difficulty;
         [SerializeField] 
-        private MonoPrompt prompt;
+        private PromptUI promptUI;
         [SerializeField]
         private float attackDamage = 1f;
         [SerializeField]
@@ -49,25 +51,61 @@ namespace KeyboardCats.Enemies
 
         public void OnHitCastle()
         {
-            Attack();
+            _state = State.Attacking;
         }
 
         public void OnTakeDamage()
         {
-            Hurt();
+            _state = State.Hurt;
         }
         
         public void OnHealthHitZero()
         {
-            Die();
+            _state = State.Dead;
         }
 
         private void Start()
         {
-            prompt.Generate(difficulty);
+            promptUI.Generate(difficulty);
             splineMovement.SetContainer(EnemyManager.Instance.GetPath());
             splineMovement.SetSpeed(moveSpeed);
             splineMovement.Move();
+        }
+
+        private void Update()
+        {
+            switch (_state)
+            {
+                case State.Moving:
+                    Move();
+                    break;
+                case State.Attacking:
+                    Attack();
+                    break;
+                case State.Idle:
+                    Idle();
+                    break;
+                case State.Hurt:
+                    Hurt();
+                    break;
+                case State.Dead:
+                    Die();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException($"No implementation for {_state}");
+            }
+        }
+
+        private void Move()
+        {
+            splineMovement.SetSpeed(moveSpeed);
+            splineMovement.Move();
+        }
+        
+        private void Idle()
+        {
+            splineMovement.SetSpeed(0f);
+            splineMovement.Stop();
         }
 
         private void Attack()
@@ -77,9 +115,7 @@ namespace KeyboardCats.Enemies
 
         private IEnumerator AttackRoutine()
         {
-            _state = State.Attacking;
             splineMovement.Stop();
-            
             while (_state == State.Attacking)
             {
                 _state = State.Attacking;
@@ -99,12 +135,10 @@ namespace KeyboardCats.Enemies
         
         private IEnumerator HurtRoutine()
         {
-            var previousState = _state;
-            _state = State.Hurt;
             splineMovement.Stop();
+            var previousState = _state;
             yield return new WaitForSeconds(0.5f);
             _state = previousState;
-            splineMovement.Move();
         }
         
         private void Die()
@@ -114,7 +148,6 @@ namespace KeyboardCats.Enemies
 
         private IEnumerator DieRoutine()
         {
-            _state = State.Dead;
             splineMovement.Stop();
             yield return new WaitForSeconds(0.5f);
             // TODO: death FX, like a poof and ghost rising

@@ -1,97 +1,85 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using KeyboardCats.Enemies;
 using KeyboardCats.Projectiles;
+using Konfus.Utility.Extensions;
 using UnityEngine;
 
 namespace KeyboardCats.Castles
 {
-    [RequireComponent(typeof(SphereCollider))]
     public class Turret : MonoBehaviour
     {
         private static readonly int IsShooting = Animator.StringToHash("IsShooting");
-        
-        [SerializeField] 
-        private float range = 8;
-        [SerializeField] 
-        private float shootCooldown = 1;
-        [SerializeField]
-        private Transform shootPos;
-        [SerializeField]
-        private GameObject projectile;
-        [SerializeField] 
-        private Animator animator;
 
-        private Projectile _loadedProjectile;
-        private Queue<Enemy> _enemiesInRange;
+        [SerializeField] private LayerMask targetMask;
+        [SerializeField] private float range = 8;
+        [SerializeField] private float aimSpeed = 8;
+        [SerializeField] private float fireCooldown = 1;
+        [SerializeField] private GameObject projectile;
+        [SerializeField] private Transform shootPos;
+        [SerializeField] private Animator animator;
+
         private Transform _target;
-        private bool _shooting;
-
-        private void Start()
-        {
-            _enemiesInRange = new Queue<Enemy>();
-            Reload();
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            var enemy = other.GetComponent<Enemy>();
-            if (enemy != null) _enemiesInRange.Enqueue(enemy);
-        }
+        private float _cooldownTimer;
 
         private void Update()
         {
-            // Aim
-            if (_target) transform.LookAt(_target);
-            else transform.LookAt(transform.parent.forward);
-            // Shoot
-            if (_enemiesInRange.Any()) ShootAtEnemiesInRange();
-        }
+            FindTarget();
 
-        private void ShootAtEnemiesInRange()
-        {
-            var nearestEnemy = _enemiesInRange.Peek();
-            if (nearestEnemy != null && (transform.position - nearestEnemy.transform.position).magnitude <= range && !_shooting)
-            { 
-                var enemyToShootAt = _enemiesInRange.Dequeue();
-                StartCoroutine(ShootAtNearestEnemyRoutine(enemyToShootAt));
-            }
-        }
-
-        private IEnumerator ShootAtNearestEnemyRoutine(Enemy enemyToShootAt)
-        {
-            _shooting = true;
-            _target = enemyToShootAt.transform;
-            
-            while (_target)
+            if (_target != null)
             {
-                yield return new WaitForSeconds(shootCooldown/2);
-                Reload();
-                yield return new WaitForSeconds(shootCooldown/2);
-                Shoot();
+                Rotate();
+                Fire();
             }
-
-            _target = null;
-            _shooting = false;
         }
 
-        private void Reload()
+        private void FindTarget()
         {
-            if (_loadedProjectile != null) return;
-        
-            animator.SetBool(IsShooting, false);
-            GameObject loadedProjectile = Instantiate(projectile, shootPos);
-            _loadedProjectile = loadedProjectile.GetComponent<Projectile>();
+            Collider[] colliders = Physics.OverlapSphere(transform.position, range);
+
+            foreach (Collider col in colliders)
+            {
+                if (!targetMask.Contains(col.gameObject.layer)) continue;
+                
+                if (_target == null)
+                {
+                    // Set the first found enemy as the current target
+                    _target = col.transform;
+                }
+                else
+                {
+                    // Check if the new enemy is closer than the current target
+                    float distanceToNewTarget = Vector3.Distance(transform.position, col.transform.position);
+                    float distanceToCurrentTarget = Vector3.Distance(transform.position, _target.position);
+
+                    if (distanceToNewTarget < distanceToCurrentTarget)
+                    {
+                        _target = col.transform;
+                    }
+                }
+            }
         }
 
-        private void Shoot()
+        private void Rotate()
         {
-            if (_loadedProjectile == null) return;
-            animator.SetBool(IsShooting, true);
-            _loadedProjectile.GetComponent<Rigidbody>().isKinematic = false;
-            _loadedProjectile.GetComponent<Projectile>().Shoot(range);
-            _loadedProjectile = null;
+            Vector3 targetDirection = _target.position - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, aimSpeed * Time.deltaTime);
+        }
+
+        private void Fire()
+        {
+            // If the cooldown timer is greater than zero, decrement it
+            if (_cooldownTimer > 0f)
+            {
+                _cooldownTimer -= Time.fixedDeltaTime;
+                animator.SetBool(IsShooting, false);
+            }
+            else
+            {
+                // Instantiate projectile and set its direction towards the target
+                GameObject loadedProjectile = Instantiate(projectile, shootPos.position, shootPos.rotation);
+                loadedProjectile.GetComponent<Projectile>().Shoot(10);
+                animator.SetBool(IsShooting, true);
+                _cooldownTimer = fireCooldown;
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace KeyboardCats.Input
             Player.Instance.keyPressed.AddListener(OnKeyPressed);
         }
 
-        public void OnDestroy()
+        public virtual void OnDestroy()
         {
             Player.Instance.keyPressed?.RemoveListener(OnKeyPressed);
         }
