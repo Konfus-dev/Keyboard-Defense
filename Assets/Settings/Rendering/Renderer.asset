@@ -72,48 +72,6 @@ MonoBehaviour:
   m_Active: 0
   settings: {fileID: 11400000, guid: ff3dfd77429d64938a26bd54c27dacd8, type: 2}
   _effectMaterial: {fileID: 0}
---- !u!114 &-1625522295566456545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
-  m_Name: Cursor
-  m_EditorClassIdentifier: 
-  m_Active: 1
-  settings:
-    passTag: Cursor
-    Event: 1000
-    filterSettings:
-      RenderQueueType: 0
-      LayerMask:
-        serializedVersion: 2
-        m_Bits: 8
-      PassNames: []
-    overrideMaterial: {fileID: 0}
-    overrideMaterialPassIndex: 54
-    overrideShader: {fileID: 0}
-    overrideShaderPassIndex: 0
-    overrideMode: 0
-    overrideDepthState: 0
-    depthCompareFunction: 4
-    enableWrite: 0
-    stencilSettings:
-      overrideStencilState: 0
-      stencilReference: 0
-      stencilCompareFunction: 8
-      passOperation: 2
-      failOperation: 2
-      zFailOperation: 2
-    cameraSettings:
-      overrideCamera: 0
-      restoreCamera: 1
-      offset: {x: 0, y: 0, z: 0, w: 0}
-      cameraFieldOfView: 4
 --- !u!114 &-1344586528338988631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,11 +104,10 @@ MonoBehaviour:
       type: 3}
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
   m_RendererFeatures:
-  - {fileID: -1625522295566456545}
   - {fileID: -7868812148769742151}
   - {fileID: -1344586528338988631}
   - {fileID: -2401278517541482506}
-  m_RendererFeatureMap: 1fa948a615fc70e9b9224d9c0a5dcc92a9319428ad1157edf6cf292be9f1acde
+  m_RendererFeatureMap: b9224d9c0a5dcc92a9319428ad1157edf6cf292be9f1acde
   m_UseNativeRenderPass: 1
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}

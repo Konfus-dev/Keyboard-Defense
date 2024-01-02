@@ -33,9 +33,6 @@ namespace KeyboardCats.Roads
         
         private void GenerateMesh()
         {
-            var mesh = new Mesh();
-            Vector3 splineLastKnotWorldPos = spline.Spline.Knots.Last().Position;
-            
             // Vertices and UVs
             var vertices = new Vector3[numSegments * 2];
             var uv = new Vector2[numSegments * 2];
@@ -47,8 +44,8 @@ namespace KeyboardCats.Roads
 
                 Vector3 offset = Vector3.Cross(Vector3.up, splineDirection).normalized * width;
 
-                vertices[i * 2] = (splinePoint - offset * 0.5f + Vector3.up * (height * 0.5f)) + splineLastKnotWorldPos;
-                vertices[i * 2 + 1] = (splinePoint + offset * 0.5f + Vector3.up * (height * 0.5f)) + splineLastKnotWorldPos;
+                vertices[i * 2] = (splinePoint - offset * 0.5f + Vector3.up * (height * 0.5f)) - transform.position;
+                vertices[i * 2 + 1] = (splinePoint + offset * 0.5f + Vector3.up * (height * 0.5f)) - transform.position;
 
                 uv[i * 2] = new Vector2(t, 0f);
                 uv[i * 2 + 1] = new Vector2(t, 1f);
@@ -68,10 +65,13 @@ namespace KeyboardCats.Roads
             }
 
             // Assigning data to the mesh
-            mesh.vertices = vertices;
-            mesh.triangles = triangles;
-            mesh.uv = uv;
-            
+            var mesh = new Mesh
+            {
+                vertices = vertices,
+                triangles = triangles,
+                uv = uv
+            };
+
             // Set mesh
             _meshFilter.mesh = mesh;
         }
