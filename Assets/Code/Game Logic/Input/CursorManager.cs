@@ -20,12 +20,15 @@ namespace KeyboardCats.Input
 
         private void Update()
         {
-            if (UnityEngine.Input.GetMouseButton(0) || UnityEngine.Input.GetMouseButton(1)) SetCursor(clickCursor);
-            else
+            if (Physics.Raycast(mainCamera.ScreenPointToRay(UnityEngine.Input.mousePosition), out var hit) && hit.collider.CompareTag("Clickable"))
             {
-                if (Physics.Raycast(mainCamera.ScreenPointToRay(UnityEngine.Input.mousePosition), out var hit)  && hit.collider.CompareTag("Clickable")) SetCursor(hoverCursor);
-                else SetCursor(defaultCursor);
+                SetCursor(hoverCursor);
+                if (UnityEngine.Input.GetMouseButton(0) || UnityEngine.Input.GetMouseButton(1))
+                {
+                    SetCursor(clickCursor);
+                }
             }
+            else SetCursor(defaultCursor);
         }
 
         private void SetCursor(Texture2D cursorTexture)
