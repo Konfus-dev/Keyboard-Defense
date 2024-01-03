@@ -10,6 +10,7 @@ namespace KeyboardCats.Enemies
     [RequireComponent(typeof(Health))]
     public class Enemy : MonoBehaviour
     {
+        // TODO: move to states object
         [Header("Stats")]
         [SerializeField]
         private PromptDifficulty difficulty;
@@ -48,6 +49,11 @@ namespace KeyboardCats.Enemies
             return healthComp.GetCurrentHealth();
         }
 
+        public float GetAttackCooldown()
+        {
+            return attackCooldown;
+        }
+        
         public float GetMoveSpeed()
         {
             return moveSpeed;

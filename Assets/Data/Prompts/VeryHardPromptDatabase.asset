@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompts:
   - value: Testing prompt
-    difficulty: 2
+    difficulty: 3

@@ -206,7 +206,7 @@ MonoBehaviour:
   health: 2
   attackDamage: 1
   attackCooldown: 5
-  moveSpeed: 10
+  moveSpeed: 2
   prompt: {fileID: 3974964346425836606}
   healthComp: {fileID: 3317307719245211321}
   attackCaster: {fileID: 576912497246171506}
@@ -460,14 +460,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6309237576560037552}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0765284, y: 0.6537012, z: 0.0667101, w: 0.74991196}
+  m_LocalRotation: {x: -0.09229599, y: 0.7010574, z: 0.09229599, w: 0.7010574}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3671933309270596761}
   m_Father: {fileID: 8800169812241203398}
-  m_LocalEulerAnglesHint: {x: 0, y: 79.719, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: 90, z: 0}
 --- !u!114 &3974964346425836606
 MonoBehaviour:
   m_ObjectHideFlags: 0

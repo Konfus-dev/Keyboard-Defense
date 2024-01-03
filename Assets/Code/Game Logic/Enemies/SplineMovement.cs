@@ -46,7 +46,7 @@ namespace KeyboardCats.Enemies
                 _splinePath = new SplinePath<Spline>(splineContainer.Splines);
         }
         
-        private void Update()
+        private void FixedUpdate()
         {
             UpdateTransform();
         }
@@ -62,17 +62,14 @@ namespace KeyboardCats.Enemies
             t /= duration;
             
             // Get rotation
-            var forward = Vector3.Normalize(splineContainer.EvaluateTangent(_splinePath, t));
-            var up = splineContainer.EvaluateUpVector(_splinePath, t);
-            var axisRemapRotation = Quaternion.Inverse(Quaternion.LookRotation(transform.forward, transform.up));
-            var rotation = Quaternion.LookRotation(forward, up) * axisRemapRotation;
+            Vector3 splineDirection = _splinePath.EvaluateTangent(t);
             
             // Get position
             var position = ((Vector3)splineContainer.EvaluatePosition(_splinePath, t)) + _offset;
 
             // Set transform pos and rot
             transform.position = position;
-            transform.rotation = rotation;
+            transform.rotation = Quaternion.Euler(splineDirection);
         }
     }
 }
