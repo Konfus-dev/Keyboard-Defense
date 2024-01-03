@@ -6,7 +6,7 @@ using Unity.Plastic.Newtonsoft.Json;
 using Unity.Plastic.Newtonsoft.Json.Linq;
 using UnityEngine;
 
-namespace KeyboardCats.Prompts
+namespace KeyboardCats.Data
 {
     public static class WordDictionary
     {
@@ -54,9 +54,9 @@ namespace KeyboardCats.Prompts
 
         }
         
-        public static WordDictionaryEntry Lookup(Word word)
+        public static WordDictionaryEntry Lookup(WordData wordData)
         {
-            return Lookup(word.ToString());
+            return Lookup(wordData.ToString());
         }
     }
 }

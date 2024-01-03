@@ -24,6 +24,12 @@ namespace KeyboardCats.Vitality
         {
             return maxHealth;
         }
+
+        public void Set(float value)
+        {
+            currHealth = value;
+            maxHealth = value;
+        }
         
         public void TakeDamage(float damage)
         {
@@ -40,6 +46,11 @@ namespace KeyboardCats.Vitality
         }
         
         private void Start()
+        {
+            currHealth = maxHealth;
+        }
+
+        private void OnValidate()
         {
             currHealth = maxHealth;
         }

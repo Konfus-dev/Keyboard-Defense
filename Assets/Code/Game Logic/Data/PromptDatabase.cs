@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace KeyboardCats.Prompts
+namespace KeyboardCats.Data
 {
     [CreateAssetMenu(fileName = "PromptDatabase", menuName = "Keyboard Cats/PromptDatabase", order = 1)]
     public class PromptDatabase : ScriptableObject
     {
         [SerializeField]
-        private Prompt[] prompts;
+        private PromptData[] prompts;
         
-        public Prompt GetRandom()
+        public PromptData GetRandom()
         {
             var randPromptIndex = Random.Range(0, prompts.Length - 1);
             return prompts[randPromptIndex];
         }
         
-        public Prompt GetRandom(PromptDifficulty difficulty)
+        public PromptData GetRandom(PromptDifficulty difficulty)
         {
             var randPromptIndex = Random.Range(0, prompts.Length - 1);
             return prompts[randPromptIndex];

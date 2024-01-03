@@ -1,102 +1,69 @@
-﻿using System;
+﻿using System.Collections;
 using System.Linq;
-using KeyboardCats.Input;
-using KeyboardCats.Prompts;
 using Konfus.Utility.Extensions;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace KeyboardCats.UI
 {
-    [RequireComponent(typeof(RectTransform))]
-    [RequireComponent(typeof(TMP_Text))]
-    public class PromptUI : KeyboardListener
+    public class PromptUI : MonoBehaviour
     {
-        public PromptCompletedEvent promptCompleted;
+        [SerializeField]
+        private GameObject characterPrefab;
         
-        // TODO: fx and such will be easier if this is an array of tmp text
-        // with each element being a character in the prompt
-        private TMP_Text _tmp;
-        private RectTransform _rectTransform;
-        
+        private TMP_Text[] _promptVisual;
         private string _prompt;
-        private string _remainingPromptText;
-
-        public void Generate(PromptDifficulty difficulty)
+        
+        public void SetPrompt(string prompt)
         {
-            // register to position manager
-            _rectTransform = GetComponent<RectTransform>();
-            PromptUIPositionManager.Instance.Register(_rectTransform);
-            
-            // Generate prompt and update ui visuals
-            _prompt = PromptManager.Instance.GeneratePrompt(difficulty);
-            _remainingPromptText = _prompt;
-            UpdateVisual();
+            _prompt = prompt;
+            Generate();
         }
 
-        public override void OnDestroy()
+        public void OnNextCharInPromptTyped()
         {
-            PromptUIPositionManager.Instance.UnRegister(_rectTransform);
-            base.OnDestroy();
+            StartCoroutine(RemoveRoutine());
         }
 
-        protected override void OnKeyPressed(string key)
+        private void Generate()
         {
-            // Process input...
-            string firstNonTypedCharInPrompt = _remainingPromptText.First().ToString().ToLower();
-            string keyPressed = key.ToLower().Replace("space", " ");
-            if (firstNonTypedCharInPrompt == keyPressed)
+            // Remove any old text
+            if (_promptVisual != null)
             {
-                // User typed the next char in the non typed part of the prompt
-                OnNextCharInPromptTyped();
-                // User successfully typed the entire prompt!
-                if (_remainingPromptText.IsNullOrEmpty())
+                foreach (var tmpText in _promptVisual)
                 {
-                    OnSuccessfullyTypedPrompt();
+                    Destroy(tmpText.gameObject);
                 }
             }
-            else
+            
+            // Generate new text
+            _promptVisual = new TMP_Text[_prompt.Length];
+            for (int charIndex = 0; charIndex < _prompt.Length; charIndex++)
             {
-                // user made mistake... punish them!
-                OnTypedWrongCharacter();
+                var characterUI = Instantiate(characterPrefab, transform);
+                var promptCharUI = characterUI.GetComponent<TMP_Text>();
+                promptCharUI.text = _prompt[charIndex].ToString();
+                _promptVisual[charIndex] = promptCharUI;
             }
         }
 
-        private void Awake()
+        private IEnumerator RemoveRoutine()
         {
-            _tmp = GetComponent<TMP_Text>();
-        }
-        
-        private void OnSuccessfullyTypedPrompt()
-        {
-            promptCompleted.Invoke();
-        }
-
-        private void OnNextCharInPromptTyped()
-        {
-            _remainingPromptText = _remainingPromptText.Remove(0, 1);
-            UpdateVisual();
-        }
-
-        private void OnTypedWrongCharacter()
-        {
-            Reset();
-        }
-
-        private void Reset()
-        {
-            _remainingPromptText = _prompt;
-            UpdateVisual();
-        }
-
-        private void UpdateVisual()
-        {
-            if (_tmp == null) return;
-            _tmp.text = _remainingPromptText;
+            var typedChar = _prompt.First();
+            
+            // Get typed char and turn it red
+            // TODO: add moar juice!
+            var typedCharVisual = _promptVisual.First();
+            typedCharVisual.text = $"<color=red>{typedChar}";
+            
+            // Update remaining text
+            var remainingText = _prompt.Remove(0, 1);
+            _prompt = remainingText;
+            _promptVisual = _promptVisual.RemoveAt(0);
+            
+            // After a small delay remove typed character
+            yield return new WaitForSeconds(0.1f);
+            Destroy(typedCharVisual.gameObject);
         }
     }
-    
-    [Serializable]
-    public class PromptCompletedEvent : UnityEvent { }
 }

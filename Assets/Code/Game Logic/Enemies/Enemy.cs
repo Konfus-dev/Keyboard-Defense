@@ -1,42 +1,51 @@
 using System;
 using System.Collections;
-using KeyboardCats.Prompts;
-using KeyboardCats.UI;
+using KeyboardCats.Data;
 using KeyboardCats.Vitality;
 using UnityEngine;
+using Prompt = KeyboardCats.UI.Prompt;
 
 namespace KeyboardCats.Enemies
 {
     [RequireComponent(typeof(Health))]
     public class Enemy : MonoBehaviour
     {
+        [Header("Stats")]
         [SerializeField]
         private PromptDifficulty difficulty;
         [SerializeField] 
-        private PromptUI promptUI;
+        private float health = 2f;
         [SerializeField]
         private float attackDamage = 1f;
         [SerializeField]
         private float attackCooldown = 1f;
         [SerializeField] 
         private float moveSpeed = 1f;
+        
+        [Header("Dependencies")]
+        [SerializeField] 
+        private Prompt prompt;
         [SerializeField]
-        private Health health;
+        private Health healthComp;
         [SerializeField]
         private RaycastAttack raycastAttack;
         [SerializeField]
         private SplineMovement splineMovement;
+        [SerializeField] 
+        private GameObject deathFX;
 
         private State _state = State.Moving;
+        private State _runningState;
+        private State _previousState;
 
         public State GetState()
         {
             return _state;
         }
 
-        public Health GetHealth()
+        public float GetHealth()
         {
-            return health;
+            return healthComp.GetCurrentHealth();
         }
 
         public float GetMoveSpeed()
@@ -46,27 +55,34 @@ namespace KeyboardCats.Enemies
 
         public void OnPromptCompleted()
         {
-            health.TakeDamage(int.MaxValue);
+            healthComp.TakeDamage(int.MaxValue);
         }
 
         public void OnHitCastle()
         {
-            _state = State.Attacking;
+            SetState(State.Attacking);
         }
 
         public void OnTakeDamage()
         {
-            _state = State.Hurt;
+            if (_state == State.Dead) return;
+            SetState(State.Hurt);
         }
         
         public void OnHealthHitZero()
         {
-            _state = State.Dead;
+            SetState(State.Dead);
         }
 
+        private void SetState(State state)
+        {
+            _previousState = _state;
+            _state = state;
+        }
+        
         private void Start()
         {
-            promptUI.Generate(difficulty);
+            prompt.Generate(difficulty);
             splineMovement.SetContainer(EnemyManager.Instance.GetPath());
             splineMovement.SetSpeed(moveSpeed);
             splineMovement.Move();
@@ -98,60 +114,68 @@ namespace KeyboardCats.Enemies
 
         private void Move()
         {
+            _runningState = State.Moving;
             splineMovement.SetSpeed(moveSpeed);
             splineMovement.Move();
         }
         
         private void Idle()
         {
+            _runningState = State.Idle;
             splineMovement.SetSpeed(0f);
             splineMovement.Stop();
         }
 
         private void Attack()
         {
+            if (_runningState == State.Attacking) return;
             StartCoroutine(AttackRoutine());
         }
 
         private IEnumerator AttackRoutine()
         {
+            _runningState = State.Attacking;
             splineMovement.Stop();
             while (_state == State.Attacking)
             {
-                _state = State.Attacking;
                 raycastAttack.Attack(attackDamage);
-                yield return new WaitForSeconds(0.2f);
-                _state = State.Idle;
-                yield return new WaitForSeconds(attackCooldown - 0.2f);
-                _state = State.Attacking;
+                yield return new WaitForSeconds(attackCooldown);
             }
         }
 
         private void Hurt()
         {
-            if (_state == State.Dead) return;
+            if (_runningState == State.Hurt) return;
             StartCoroutine(HurtRoutine());
         }
         
         private IEnumerator HurtRoutine()
         {
+            _runningState = State.Hurt;
             splineMovement.Stop();
-            var previousState = _state;
             yield return new WaitForSeconds(0.5f);
-            _state = previousState;
+            SetState(_previousState);
         }
         
         private void Die()
         {
+            if (_runningState == State.Dead) return;
             StartCoroutine(DieRoutine());
         }
 
         private IEnumerator DieRoutine()
         {
+            _runningState = State.Dead;
             splineMovement.Stop();
             yield return new WaitForSeconds(0.5f);
-            // TODO: death FX, like a poof and ghost rising
+            var deathEffects = Instantiate(deathFX, transform.position, transform.rotation);
+            deathEffects.GetComponent<ParticleSystem>().Play();
             Destroy(gameObject);
+        }
+
+        private void OnValidate()
+        {
+            healthComp.Set(health);
         }
 
         public enum State

@@ -10,7 +10,7 @@ namespace KeyboardCats.Enemies
             if (Physics.Raycast(transform.position, transform.forward * 2, out var hit))
             {
                 var health = hit.transform.gameObject.GetComponent<Health>();
-                health.TakeDamage(attackDamage);
+                if (health != null) health.TakeDamage(attackDamage);
             }
         }
     }

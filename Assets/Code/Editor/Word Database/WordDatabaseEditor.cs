@@ -1,25 +1,25 @@
 using System.Linq;
 using System.Text.RegularExpressions;
-using KeyboardCats.Prompts;
+using KeyboardCats.Data;
 using UnityEditor;
 using UnityEngine;
 
 namespace KeyboardCats.Editor.WordDatabase
 {
-    [CustomEditor(typeof(Prompts.WordDatabase))]
+    [CustomEditor(typeof(Data.WordDatabase))]
     public class WordDatabaseEditor : UnityEditor.Editor
     {
         private int _currentPageIndex;
         private Vector2 _currentPageScrollAmount;
         
         private Regex _nonAlphabetFilter;
-        private Prompts.WordDatabase _wordDatabase;
+        private Data.WordDatabase _wordDatabase;
         private PlayerSettings.Switch.Languages _language;
         private PromptDifficulty _difficulty;
 
         private void Awake()
         {
-            _wordDatabase = (Prompts.WordDatabase)target;
+            _wordDatabase = (Data.WordDatabase)target;
             _difficulty = _wordDatabase.Words.FirstOrDefault().Difficulty;
             _nonAlphabetFilter = new Regex("[^a-zA-Z]");
         }
@@ -102,7 +102,7 @@ namespace KeyboardCats.Editor.WordDatabase
                     var newWordDifficulty = (PromptDifficulty)EditorGUILayout.EnumPopup("Difficulty:", word.Difficulty);
                     var newWordCommonality = (WordCommonality)EditorGUILayout.EnumPopup("Commonality:", word.Commonality);
                     if (word != newWord || word.Difficulty != newWordDifficulty || word.Commonality != newWordCommonality) 
-                        _wordDatabase.Words[wordIndex] =  new Word(newWord, newWordLanguage, newWordDifficulty, newWordCommonality);
+                        _wordDatabase.Words[wordIndex] =  new WordData(newWord, newWordLanguage, newWordDifficulty, newWordCommonality);
                     
                     EditorGUILayout.EndVertical();
                 }
@@ -175,7 +175,7 @@ namespace KeyboardCats.Editor.WordDatabase
                             _ => WordCommonality.VeryUncommon
                         };
 
-                        _wordDatabase.Add(new Word(word, _language, _difficulty, commonality));
+                        _wordDatabase.Add(new WordData(word, _language, _difficulty, commonality));
                         break;
                     }
                 }

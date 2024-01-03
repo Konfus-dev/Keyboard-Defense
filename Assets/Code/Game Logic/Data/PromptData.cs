@@ -1,12 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
-namespace KeyboardCats.Prompts
+namespace KeyboardCats.Data
 {
     [Serializable]
-    public struct Prompt : IEquatable<Prompt>
+    public struct PromptData : IEquatable<PromptData>
     {
-        public Prompt(string prompt, PromptDifficulty promptDifficulty)
+        public PromptData(string prompt, PromptDifficulty promptDifficulty)
         {
             value = prompt;
             difficulty = promptDifficulty;
@@ -25,14 +25,14 @@ namespace KeyboardCats.Prompts
             return value;
         }
         
-        public bool Equals(Prompt other)
+        public bool Equals(PromptData other)
         {
             return value == other.value && difficulty == other.difficulty;
         }
 
         public override bool Equals(object obj)
         {
-            return obj is Prompt other && Equals(other);
+            return obj is PromptData other && Equals(other);
         }
 
         public override int GetHashCode()
@@ -40,11 +40,11 @@ namespace KeyboardCats.Prompts
             return HashCode.Combine(value, (int)difficulty);
         } 
         
-        public static implicit operator string(Prompt prompt)
+        public static implicit operator string(PromptData promptData)
         {
-            return prompt.value;
+            return promptData.value;
         }
         
-        public static readonly Prompt None = default;
+        public static readonly PromptData None = default;
     }
 }

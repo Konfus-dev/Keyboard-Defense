@@ -1,4 +1,4 @@
-﻿namespace KeyboardCats.Prompts
+﻿namespace KeyboardCats.Data
 {
     public enum PromptDifficulty
     {

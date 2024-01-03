@@ -1,3 +1,4 @@
+using System;
 using KeyboardCats.Projectiles;
 using Konfus.Utility.Extensions;
 using UnityEngine;
@@ -18,6 +19,11 @@ namespace KeyboardCats.Castles
 
         private Transform _target;
         private float _cooldownTimer;
+
+        private void Start()
+        {
+            _cooldownTimer = fireCooldown;
+        }
 
         private void Update()
         {

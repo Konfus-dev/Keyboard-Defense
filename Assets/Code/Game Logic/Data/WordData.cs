@@ -2,12 +2,12 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace KeyboardCats.Prompts
+namespace KeyboardCats.Data
 {
     [Serializable]
-    public struct Word : IEquatable<Word>
+    public struct WordData : IEquatable<WordData>
     {
-        public Word(string word, PlayerSettings.Switch.Languages wordLanguage, PromptDifficulty promptDifficulty, WordCommonality wordCommonality)
+        public WordData(string word, PlayerSettings.Switch.Languages wordLanguage, PromptDifficulty promptDifficulty, WordCommonality wordCommonality)
         {
             value = word;
             language = wordLanguage;
@@ -36,14 +36,14 @@ namespace KeyboardCats.Prompts
             return value;
         }
 
-        public bool Equals(Word other)
+        public bool Equals(WordData other)
         {
             return value == other.value && difficulty == other.difficulty;
         }
 
         public override bool Equals(object obj)
         {
-            return obj is Word other && Equals(other);
+            return obj is WordData other && Equals(other);
         }
 
         public override int GetHashCode()
@@ -51,11 +51,11 @@ namespace KeyboardCats.Prompts
             return HashCode.Combine(value, difficulty);
         }
         
-        public static implicit operator string(Word word)
+        public static implicit operator string(WordData wordData)
         {
-            return word.value;
+            return wordData.value;
         }
 
-        public static readonly Word None = default;
+        public static readonly WordData None = default;
     }
 }

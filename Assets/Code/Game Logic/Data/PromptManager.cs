@@ -3,7 +3,7 @@ using Konfus.Utility.Design_Patterns;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace KeyboardCats.Prompts
+namespace KeyboardCats.Data
 {
     public class PromptManager : Singleton<PromptManager>
     {

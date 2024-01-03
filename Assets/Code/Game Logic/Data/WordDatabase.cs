@@ -1,32 +1,32 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace KeyboardCats.Prompts
+namespace KeyboardCats.Data
 {
     [CreateAssetMenu(fileName = "WordDatabase", menuName = "Keyboard Cats/WordDatabase", order = 1)]
     public class WordDatabase : ScriptableObject
     {
         [SerializeField, HideInInspector]
-        private List<Word> words;
-        public List<Word> Words => words;
+        private List<WordData> words;
+        public List<WordData> Words => words;
         
-        private readonly Dictionary<string, Word> _wordDict = new();
+        private readonly Dictionary<string, WordData> _wordDict = new();
 
-        public Word GetRandom()
+        public WordData GetRandom()
         {
             var randWordIndex = Random.Range(0, words.Count - 1);
             return words[randWordIndex];
         }
         
-        public Word Get(string word)
+        public WordData Get(string word)
         {
-            Word cachedVal = _wordDict.TryGetValue(word, out var value) ? value : Word.None;
+            WordData cachedVal = _wordDict.TryGetValue(word, out var value) ? value : WordData.None;
             return cachedVal;
         }
 
-        public void Add(Word word)
+        public void Add(WordData wordData)
         {
-            if (_wordDict.TryAdd(word, word)) words.Add(word);
+            if (_wordDict.TryAdd(wordData, wordData)) words.Add(wordData);
         }
 
         internal void Clear()
@@ -42,7 +42,7 @@ namespace KeyboardCats.Prompts
 
         private void RefreshCache()
         {
-            foreach (Word word in words)
+            foreach (WordData word in words)
             {
                 _wordDict.TryAdd(word, word);
             }

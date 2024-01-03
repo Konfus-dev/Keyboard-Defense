@@ -7,6 +7,7 @@ namespace KeyboardCats.Enemies
     // TODO: create an intelligent spawning system that spawns enemies in waves and at intervals based off difficulty!
     public class EnemySpawner : MonoBehaviour
     {
+        [Header("Settings")]
         [SerializeField] 
         private Transform spawnPosition;
         [SerializeField]
@@ -14,6 +15,7 @@ namespace KeyboardCats.Enemies
         [SerializeField] 
         private float spawnInterval;
 
+        [Header("Debug")]
         [SerializeField] 
         private bool spawnEnemies = true;
 
@@ -26,8 +28,8 @@ namespace KeyboardCats.Enemies
         {
             while (spawnEnemies)
             {
-                SpawnRandomEnemy();
                 yield return new WaitForSeconds(spawnInterval);
+                SpawnRandomEnemy();
             }
         }
 
