@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 6211584675017206740}
   - component: {fileID: 3317307719245211321}
   - component: {fileID: 5221298970726330290}
+  - component: {fileID: 576912497246171506}
   m_Layer: 7
   m_Name: Basic Enemy
   m_TagString: Clickable
@@ -208,7 +209,7 @@ MonoBehaviour:
   moveSpeed: 10
   prompt: {fileID: 3974964346425836606}
   healthComp: {fileID: 3317307719245211321}
-  raycastAttack: {fileID: 5186060993420340669}
+  attackCaster: {fileID: 576912497246171506}
   splineMovement: {fileID: 5221298970726330290}
   deathFX: {fileID: 2964866897684664097, guid: f546980bc790d044ca37e11d46521100, type: 3}
 --- !u!114 &6211584675017206740
@@ -282,6 +283,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splineContainer: {fileID: 0}
+--- !u!114 &576912497246171506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942891894029686957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7c6a9a19ab4419936fece07c7fe200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensor: {fileID: 3416190699742887046}
 --- !u!1 &4015854481305613505
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,9 +395,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1592585384412386980}
-  - component: {fileID: 5186060993420340669}
+  - component: {fileID: 3416190699742887046}
   m_Layer: 7
-  m_Name: Attack Caster
+  m_Name: Attack Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,7 +418,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 870217604540842072}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5186060993420340669
+--- !u!114 &3416190699742887046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -413,9 +427,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4317705942399008853}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f7c6a9a19ab4419936fece07c7fe200, type: 3}
+  m_Script: {fileID: 11500000, guid: 85a3bb6e007fd824cbe87c7a66aefd77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionFilter:
+    serializedVersion: 2
+    m_Bits: 256
+  sensorLength: 2
 --- !u!1 &6309237576560037552
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 870217604540842072}
   m_Layer: 7
-  m_Name: Sensors/Casters
+  m_Name: Sensors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

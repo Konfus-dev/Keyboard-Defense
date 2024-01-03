@@ -28,7 +28,7 @@ namespace KeyboardCats.Enemies
         [SerializeField]
         private Health healthComp;
         [SerializeField]
-        private RaycastAttack raycastAttack;
+        private AttackCaster attackCaster;
         [SerializeField]
         private SplineMovement splineMovement;
         [SerializeField] 
@@ -138,7 +138,7 @@ namespace KeyboardCats.Enemies
             splineMovement.Stop();
             while (_state == State.Attacking)
             {
-                raycastAttack.Attack(attackDamage);
+                attackCaster.Attack(attackDamage);
                 yield return new WaitForSeconds(attackCooldown);
             }
         }

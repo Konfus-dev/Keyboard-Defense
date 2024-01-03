@@ -1,4 +1,3 @@
-using System;
 using KeyboardCats.Projectiles;
 using Konfus.Utility.Extensions;
 using UnityEngine;
