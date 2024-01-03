@@ -24,6 +24,7 @@ namespace KeyboardCats.Input
 
         private bool FilterKeyPress(KeyCode keyCode)
         {
+            if (keyCode.Equals(KeyCode.LeftShift) || keyCode.Equals(KeyCode.RightShift)) return true;
             if (!UnityEngine.Input.GetKeyDown(keyCode)) return true;
             if (keyCode.ToString().Contains("Mouse")) return true;
             
