@@ -13,23 +13,12 @@ MonoBehaviour:
   m_Name: EasyPromptDatabase
   m_EditorClassIdentifier: 
   prompts:
-  - value: Ima snake!
-    difficulty: 0
-  - value: What am I?
-    difficulty: 0
-  - value: Attack!!!
-    difficulty: 0
-  - value: Ahhhh!
-    difficulty: 0
-  - value: Doin stuff
-    difficulty: 0
-  - value: Hello frenz
-    difficulty: 0
-  - value: You are cool
-    difficulty: 0
-  - value: I don't wanna die!!
-    difficulty: 0
-  - value: You'll never take me alive!
-    difficulty: 0
-  - value: Doin snake stuff
+  - words:
+    - value: Testing
+      language: 0
+      difficulty: 0
+    - value: Prompt
+      language: 0
+      difficulty: 0
+    value: Testing prompt
     difficulty: 0

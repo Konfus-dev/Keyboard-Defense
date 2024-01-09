@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Konfus.Utility.Extensions;
 using UnityEngine;
 
 namespace KeyboardCats.Data
@@ -13,7 +14,7 @@ namespace KeyboardCats.Data
             this.wordData = wordData;
             definitions = wordDefinitions.ToArray();
             pronunciation = wordPronunciation;
-            synonyms = wordSynonyms.ToArray();
+            synonyms = wordSynonyms?.ToArray();
         }
         
         [SerializeField]
@@ -49,12 +50,14 @@ namespace KeyboardCats.Data
 
         public override string ToString()
         {
-            return wordData;
+            return definitions.IsNullOrEmpty() 
+                ? "No definitions found!" 
+                : $"{wordData}: {string.Join(", ", definitions)}";
         }
         
         public static implicit operator string(WordDictionaryEntry wordDef)
         {
-            return wordDef.wordData;
+            return wordDef.ToString();
         }
         
         public static readonly WordDictionaryEntry None = default;

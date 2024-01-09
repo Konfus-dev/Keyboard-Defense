@@ -42,7 +42,7 @@ namespace KeyboardCats.Input
             else if (shiftPressed && keyCode == KeyCode.Alpha7) specialCharacter = "#";
             else if (shiftPressed && keyCode == KeyCode.Slash) specialCharacter = "?";
             else if (shiftPressed && keyCode == KeyCode.Quote) specialCharacter = "\"";
-            else if (keyCode == KeyCode.Quote) specialCharacter = "'";
+            else if (keyCode == KeyCode.Quote) specialCharacter = "\'";
             else if (keyCode == KeyCode.Period) specialCharacter = ".";
             
             return !specialCharacter.IsNullOrEmpty();
@@ -50,14 +50,13 @@ namespace KeyboardCats.Input
 
         private IEnumerable<string> GetTypedCharacters()
         {
-            var shiftPressed = false;
+            var shiftPressed = UnityEngine.Input.GetKeyDown(KeyCode.LeftShift) || UnityEngine.Input.GetKeyDown(KeyCode.RightShift);
             var pressedKeys = new List<KeyCode>();
             var typedCharacters = new List<string>();
             
             // Get all the pressed keys
             foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
             {
-                if (keyCode.Equals(KeyCode.LeftShift) || keyCode.Equals(KeyCode.RightShift)) shiftPressed = true;
                 if (FilterKeyPress(keyCode)) continue;
                 pressedKeys.Add(keyCode);
             }

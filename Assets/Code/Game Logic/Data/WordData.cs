@@ -7,12 +7,11 @@ namespace KeyboardCats.Data
     [Serializable]
     public struct WordData : IEquatable<WordData>
     {
-        public WordData(string word, PlayerSettings.Switch.Languages wordLanguage, PromptDifficulty promptDifficulty, WordCommonality wordCommonality)
+        public WordData(string word, PlayerSettings.Switch.Languages wordLanguage, PromptDifficulty difficulty)
         {
             value = word;
             language = wordLanguage;
-            difficulty = promptDifficulty;
-            commonality = wordCommonality;
+            this.difficulty = difficulty;
         }
 
         [SerializeField]
@@ -22,20 +21,11 @@ namespace KeyboardCats.Data
         [SerializeField] 
         private PlayerSettings.Switch.Languages language;
         public PlayerSettings.Switch.Languages Language => language;
-
-        [SerializeField] 
-        private WordCommonality commonality;
-        public WordCommonality Commonality => commonality; 
         
         [SerializeField] 
         private PromptDifficulty difficulty;
         public PromptDifficulty Difficulty => difficulty; 
         
-        public override string ToString()
-        {
-            return value;
-        }
-
         public bool Equals(WordData other)
         {
             return value == other.value && difficulty == other.difficulty;
@@ -51,9 +41,19 @@ namespace KeyboardCats.Data
             return HashCode.Combine(value, difficulty);
         }
         
+        public override string ToString()
+        {
+            return value;
+        }
+        
         public static implicit operator string(WordData wordData)
         {
-            return wordData.value;
+            return wordData.ToString();
+        }
+        
+        public static implicit operator PromptData(WordData wordData)
+        {
+            return new PromptData(new [] { wordData }, wordData.difficulty);
         }
 
         public static readonly WordData None = default;

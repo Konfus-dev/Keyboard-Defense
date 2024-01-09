@@ -100,9 +100,8 @@ namespace KeyboardCats.Editor.WordDatabase
                     var newWord = EditorGUILayout.TextField("Value:", word);
                     var newWordLanguage = (PlayerSettings.Switch.Languages)EditorGUILayout.EnumPopup("Language:", word.Language);
                     var newWordDifficulty = (PromptDifficulty)EditorGUILayout.EnumPopup("Difficulty:", word.Difficulty);
-                    var newWordCommonality = (WordCommonality)EditorGUILayout.EnumPopup("Commonality:", word.Commonality);
-                    if (word != newWord || word.Difficulty != newWordDifficulty || word.Commonality != newWordCommonality) 
-                        _wordDatabase.Words[wordIndex] =  new WordData(newWord, newWordLanguage, newWordDifficulty, newWordCommonality);
+                    if (word != newWord || word.Difficulty != newWordDifficulty) 
+                        _wordDatabase.Words[wordIndex] =  new WordData(newWord, newWordLanguage, newWordDifficulty);
                     
                     EditorGUILayout.EndVertical();
                 }
@@ -175,7 +174,7 @@ namespace KeyboardCats.Editor.WordDatabase
                             _ => WordCommonality.VeryUncommon
                         };
 
-                        _wordDatabase.Add(new WordData(word, _language, _difficulty, commonality));
+                        _wordDatabase.Add(new WordData(word, _language, _difficulty));
                         break;
                     }
                 }

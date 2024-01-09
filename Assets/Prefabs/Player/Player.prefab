@@ -60,7 +60,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13e7c30b0be1ec4b8fd8045921d458d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  defaultCursor: {fileID: 2800000, guid: 99a51134d111d4f4e9a5a3b54f1d512f, type: 3}
-  hoverCursor: {fileID: 2800000, guid: b4fe61cc0e09cd54b95c8f198d3b16f2, type: 3}
-  clickCursor: {fileID: 2800000, guid: a5a41ccd4441c1a43be3d6af2d25af99, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 750f2bdae79ce5d4bbe97a8678c767ce, type: 3}
+  hoverCursor: {fileID: 2800000, guid: 1e6697cb70c7717478b93183f0a2d9fe, type: 3}
+  clickCursor: {fileID: 2800000, guid: 38123e9e63dd8bf45b5ef5e8c9bd91b8, type: 3}

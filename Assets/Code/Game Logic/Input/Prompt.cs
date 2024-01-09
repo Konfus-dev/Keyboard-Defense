@@ -15,7 +15,7 @@ namespace KeyboardCats.UI
         [SerializeField]
         private PromptUI promptUI;
         
-        private string _prompt;
+        private PromptData _prompt;
         private string _remainingPromptText;
 
         public void Generate(PromptDifficulty difficulty)
@@ -26,7 +26,7 @@ namespace KeyboardCats.UI
             // Generate prompt
             _prompt = PromptManager.Instance.GeneratePrompt(difficulty);
             _remainingPromptText = _prompt;
-            promptUI.SetPrompt(_remainingPromptText);
+            promptUI.SetPrompt(_prompt);
         }
 
         public override void OnDestroy()
@@ -74,7 +74,7 @@ namespace KeyboardCats.UI
         private void Reset()
         {
             _remainingPromptText = _prompt;
-            promptUI.SetPrompt(_remainingPromptText);
+            promptUI.SetPrompt(_prompt);
         }
     }
     

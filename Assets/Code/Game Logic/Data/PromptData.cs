@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KeyboardCats.Data
@@ -6,11 +8,17 @@ namespace KeyboardCats.Data
     [Serializable]
     public struct PromptData : IEquatable<PromptData>
     {
-        public PromptData(string prompt, PromptDifficulty promptDifficulty)
+        public PromptData(IEnumerable<WordData> promptWords, PromptDifficulty promptDifficulty)
         {
-            value = prompt;
+            words = promptWords.ToArray();
+            value = string.Join(" ", words);
             difficulty = promptDifficulty;
         }
+        
+        [SerializeField]
+        private WordData[] words;
+        public WordData[] Words => words;
+        
         
         [SerializeField]
         private string value;
@@ -19,11 +27,6 @@ namespace KeyboardCats.Data
         [SerializeField]
         private PromptDifficulty difficulty;
         public PromptDifficulty Difficulty => difficulty;
-        
-        public override string ToString()
-        {
-            return value;
-        }
         
         public bool Equals(PromptData other)
         {
@@ -40,9 +43,14 @@ namespace KeyboardCats.Data
             return HashCode.Combine(value, (int)difficulty);
         } 
         
+        public override string ToString()
+        {
+            return value;
+        }
+
         public static implicit operator string(PromptData promptData)
         {
-            return promptData.value;
+            return promptData.ToString();
         }
         
         public static readonly PromptData None = default;

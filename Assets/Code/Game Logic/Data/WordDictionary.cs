@@ -12,15 +12,15 @@ namespace KeyboardCats.Data
     {
         private static readonly Dictionary<string, WordDictionaryEntry> _entries = new();
         private static readonly HttpClient _client = new();
-
-        public static WordDictionaryEntry Lookup(string word)
+        
+        public static WordDictionaryEntry Lookup(WordData wordData)
         {
             // We have the def cached! Return from cache
-            if (_entries.TryGetValue(word, out WordDictionaryEntry def)) return def;
+            if (_entries.TryGetValue(wordData, out WordDictionaryEntry def)) return def;
             
             // Not in cache, look it up via the merriam webster dictionary api...
             var response = _client.GetAsync(
-                $"https://www.dictionaryapi.com/api/v3/references/collegiate/json/{word}?key=7b992530-80f0-4dd7-ad57-d082018b6658").Result;
+                $"https://www.dictionaryapi.com/api/v3/references/collegiate/json/{wordData}?key=7b992530-80f0-4dd7-ad57-d082018b6658").Result;
             
             // Couldn't look up for some reason or another
             if (!response.IsSuccessStatusCode)
@@ -42,21 +42,15 @@ namespace KeyboardCats.Data
             // TODO: some valid defs don't have a shortdef, figure out how to identify them and how to get their definition!
             var shortDefs = firstDef["shortdef"]?.Values<string>().ToArray();
             
-            // 3rd strike we are out...
+            // We didn't find a def...
             if (shortDefs.IsNullOrEmpty()) return WordDictionaryEntry.None;
                 
             // Create definition struct and add to our defs
-            var wordDef = new WordDictionaryEntry();
-            _entries[word] = wordDef;
+            var wordDef = new WordDictionaryEntry(wordData, shortDefs, null, null);
+            _entries[wordData] = wordDef;
                 
             // Return result
             return wordDef;
-
-        }
-        
-        public static WordDictionaryEntry Lookup(WordData wordData)
-        {
-            return Lookup(wordData.ToString());
         }
     }
 }

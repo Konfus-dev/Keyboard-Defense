@@ -13,5 +13,12 @@ MonoBehaviour:
   m_Name: HardPromptDatabase
   m_EditorClassIdentifier: 
   prompts:
-  - value: Testing prompt
+  - words:
+    - value: Testing
+      language: 0
+      difficulty: 0
+    - value: Prompt
+      language: 0
+      difficulty: 0
+    value: Testing prompt
     difficulty: 2

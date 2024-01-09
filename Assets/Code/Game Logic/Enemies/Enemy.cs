@@ -96,7 +96,7 @@ namespace KeyboardCats.Enemies
         
         private void Start()
         {
-            prompt.Generate(difficulty);
+            if (prompt != null) prompt.Generate(difficulty);
         }
 
         private void Update()

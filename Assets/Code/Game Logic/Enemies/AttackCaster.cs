@@ -15,7 +15,6 @@ namespace KeyboardCats.Enemies
             if (sensor.Scan())
             {
                 var hit = sensor.hits.First();
-                Debug.Log("Attacking: " + hit.gameObject.name);
                 var health = hit.gameObject.GetComponent<Health>();
                 if (health != null) health.TakeDamage(attackDamage);
             }

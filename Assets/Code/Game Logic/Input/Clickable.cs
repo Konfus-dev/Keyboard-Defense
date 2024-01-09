@@ -1,19 +1,29 @@
 using KeyboardCats.Input;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class Clickable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Clickable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    private CursorState _lastCursorState;
+    public UnityEvent mouseDownEvent;
+    public UnityEvent mouseEnterEvent;
+    public UnityEvent mouseExitEvent;
     
     private void OnMouseEnter()
     {
+        mouseEnterEvent.Invoke();
         CursorManager.Instance.SetCursor(CursorState.Hover);
     }
-    
+
     private void OnMouseExit()
     {
+        mouseExitEvent.Invoke();
         CursorManager.Instance.SetCursor(CursorState.Default);
+    }
+
+    private void OnMouseDown()
+    {
+        mouseDownEvent.Invoke();
     }
     
     public void OnPointerEnter(PointerEventData eventData)
@@ -24,5 +34,10 @@ public class Clickable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         OnMouseExit();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        OnMouseDown();
     }
 }

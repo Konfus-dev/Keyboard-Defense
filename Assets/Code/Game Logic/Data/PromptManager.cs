@@ -26,7 +26,7 @@ namespace KeyboardCats.Data
         [SerializeField]
         private WordDatabase veryHardWords;
         
-        public string GeneratePrompt(PromptDifficulty difficulty)
+        public PromptData GeneratePrompt(PromptDifficulty difficulty)
         {
             // TODO: intelligently generate prompts from words, as well as use random prompts and words from databases
             switch (difficulty)
@@ -44,10 +44,10 @@ namespace KeyboardCats.Data
             }
         }
         
-        private string GeneratePrompt(PromptDatabase promptDatabase, WordDatabase wordDatabase)
+        private PromptData GeneratePrompt(PromptDatabase promptDatabase, WordDatabase wordDatabase)
         {
             // TODO: intelligently generate prompts from words, as well as use random prompts and words from databases
-            string prompt;
+            PromptData prompt;
             var randChoice = Random.Range(0, 2);
             if (randChoice == 0) prompt = promptDatabase.GetRandom();
             else prompt = wordDatabase.GetRandom();
