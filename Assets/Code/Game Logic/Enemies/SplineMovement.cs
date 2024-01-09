@@ -14,7 +14,7 @@ namespace KeyboardCats.Enemies
         private bool _isMoving;
         private Vector3 _offset;
 
-        public void SetContainer(SplineContainer container)
+        public void SetPath(SplineContainer container)
         {
             splineContainer = container;
             _splinePath = new SplinePath<Spline>(splineContainer.Splines);

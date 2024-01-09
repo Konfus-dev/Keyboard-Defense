@@ -3,6 +3,7 @@ using System.Collections;
 using KeyboardCats.Data;
 using KeyboardCats.Vitality;
 using UnityEngine;
+using UnityEngine.Splines;
 using Prompt = KeyboardCats.UI.Prompt;
 
 namespace KeyboardCats.Enemies
@@ -80,6 +81,13 @@ namespace KeyboardCats.Enemies
             SetState(State.Dead);
         }
 
+        public void SetPath(SplineContainer splineContainer)
+        {
+            splineMovement.SetPath(splineContainer);
+            splineMovement.SetSpeed(moveSpeed);
+            splineMovement.Move();
+        }
+
         private void SetState(State state)
         {
             _previousState = _state;
@@ -89,9 +97,6 @@ namespace KeyboardCats.Enemies
         private void Start()
         {
             prompt.Generate(difficulty);
-            splineMovement.SetContainer(EnemyManager.Instance.GetPath());
-            splineMovement.SetSpeed(moveSpeed);
-            splineMovement.Move();
         }
 
         private void Update()

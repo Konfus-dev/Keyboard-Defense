@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Art Test.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Main Menu/Main Menu.unity
+    guid: 66f416620bca22844883d451407da0a7
+  - enabled: 1
+    path: Assets/Scenes/The Forest/The Forest.unity
+    guid: 78791e4240f59ce478b024edd695f1f8
   m_configObjects: {}

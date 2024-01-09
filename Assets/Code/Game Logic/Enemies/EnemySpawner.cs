@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Splines;
 using Random = UnityEngine.Random;
 
 namespace KeyboardCats.Enemies
@@ -8,6 +9,8 @@ namespace KeyboardCats.Enemies
     public class EnemySpawner : MonoBehaviour
     {
         [Header("Settings")]
+        [SerializeField]
+        private SplineContainer path;
         [SerializeField] 
         private Transform spawnPosition;
         [SerializeField]
@@ -28,8 +31,8 @@ namespace KeyboardCats.Enemies
         {
             while (spawnEnemies)
             {
-                yield return new WaitForSeconds(spawnInterval);
                 SpawnRandomEnemy();
+                yield return new WaitForSeconds(spawnInterval);
             }
         }
 
@@ -41,6 +44,7 @@ namespace KeyboardCats.Enemies
             
             // Configure spawned enemy
             var randFollowPathOffset = new Vector3(Random.Range(-0.5f, 0.5f), 0, 0);
+            enemy.GetComponent<Enemy>().SetPath(path);
             enemy.GetComponent<SplineMovement>().SetOffset(randFollowPathOffset);
         }
     }

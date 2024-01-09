@@ -117,9 +117,8 @@ GameObject:
   - component: {fileID: 3317307719245211321}
   - component: {fileID: 5221298970726330290}
   - component: {fileID: 576912497246171506}
-  - component: {fileID: 5497980222753545388}
   m_Layer: 7
-  m_Name: Basic Enemy
+  m_Name: Main Menu Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,18 +296,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensor: {fileID: 3416190699742887046}
---- !u!114 &5497980222753545388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2942891894029686957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c3fd8d1a0630344ad986be1eea2a7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4015854481305613505
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7565298987213967290
 Transform:
   m_ObjectHideFlags: 0
@@ -473,7 +460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6309237576560037552}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.09229599, y: 0.7010574, z: 0.09229599, w: 0.7010574}
+  m_LocalRotation: {x: -0.02957412, y: 0.94733363, z: 0.30539915, w: 0.0917375}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

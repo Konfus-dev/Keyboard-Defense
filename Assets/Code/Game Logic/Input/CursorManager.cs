@@ -1,11 +1,12 @@
+using System;
+using KeyboardCats.Enemies;
+using Konfus.Utility.Design_Patterns;
 using UnityEngine;
 
 namespace KeyboardCats.Input
 {
-    public class CursorManager : MonoBehaviour
+    public class CursorManager : Singleton<CursorManager>
     {
-        [SerializeField] 
-        private Camera mainCamera;
         [SerializeField]
         private Texture2D defaultCursor;
         [SerializeField]
@@ -13,6 +14,9 @@ namespace KeyboardCats.Input
         [SerializeField]
         private Texture2D clickCursor;
 
+        private CursorState _cursorState;
+        private CursorState _lastCursorState;
+        
         private void Start()
         {
             SetCursor(defaultCursor);
@@ -20,20 +24,52 @@ namespace KeyboardCats.Input
 
         private void Update()
         {
-            if (Physics.Raycast(mainCamera.ScreenPointToRay(UnityEngine.Input.mousePosition), out var hit) && hit.collider.CompareTag("Clickable"))
+            if (UnityEngine.Input.GetMouseButtonDown(0))
             {
-                SetCursor(hoverCursor);
-                if (UnityEngine.Input.GetMouseButton(0) || UnityEngine.Input.GetMouseButton(1))
-                {
-                    SetCursor(clickCursor);
-                }
+                SetCursor(CursorState.Click);
             }
-            else SetCursor(defaultCursor);
+            if (UnityEngine.Input.GetMouseButtonUp(0))
+            {
+                SetCursor(_lastCursorState);
+            }
         }
 
+        public CursorState GetCursorState() => _cursorState;
+        public CursorState GetLastCursorState() => _lastCursorState;
+
+        public void SetCursor(CursorState cursorState)
+        {
+            if (cursorState == _cursorState) return;
+            
+            _lastCursorState = _cursorState;
+            _cursorState = cursorState;
+            
+            switch (cursorState)
+            {
+                case CursorState.Default:
+                    SetCursor(defaultCursor);
+                    break;
+                case CursorState.Hover:
+                    SetCursor(hoverCursor);
+                    break;
+                case CursorState.Click:
+                    SetCursor(clickCursor);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException($"{cursorState} is not yet supported!", cursorState, null);
+            }
+        }
+        
         private void SetCursor(Texture2D cursorTexture)
         {
-            Cursor.SetCursor(cursorTexture, Vector2.one * cursorTexture.width / 2 , CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(cursorTexture, Vector2.one * cursorTexture.width / 2 , CursorMode.Auto);
         }
+    }
+
+    public enum CursorState
+    {
+        Default,
+        Hover,
+        Click
     }
 }

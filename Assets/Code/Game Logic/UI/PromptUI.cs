@@ -25,6 +25,16 @@ namespace KeyboardCats.UI
             StartCoroutine(RemoveRoutine());
         }
 
+        private void LateUpdate()
+        {
+            // Keep the canvas within the camera's field of view
+            Vector3 viewportPos = Camera.main.WorldToViewportPoint(transform.position);
+            viewportPos.x = Mathf.Clamp01(viewportPos.x);
+            viewportPos.y = Mathf.Clamp01(viewportPos.y);
+
+            transform.position = Camera.main.ViewportToWorldPoint(viewportPos);
+        }
+        
         private void Generate()
         {
             // Remove any old text
