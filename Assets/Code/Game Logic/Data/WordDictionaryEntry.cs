@@ -9,17 +9,17 @@ namespace KeyboardCats.Data
     [Serializable]
     public struct WordDictionaryEntry : IEquatable<WordDictionaryEntry>
     {
-        public WordDictionaryEntry(WordData wordData, IEnumerable<string> wordDefinitions, AudioClip wordPronunciation, IEnumerable<WordData> wordSynonyms)
+        public WordDictionaryEntry(string definedWord, IEnumerable<string> wordDefinitions, AudioClip wordPronunciation = null, IEnumerable<WordData> wordSynonyms = null)
         {
-            this.wordData = wordData;
-            definitions = wordDefinitions.ToArray();
+            word = definedWord;
+            definitions = wordDefinitions?.ToArray();
             pronunciation = wordPronunciation;
             synonyms = wordSynonyms?.ToArray();
         }
         
         [SerializeField]
-        private WordData wordData;
-        public WordData WordData => wordData;
+        private string word;
+        public string Word => word;
         
         [SerializeField]
         private string[] definitions;
@@ -33,26 +33,26 @@ namespace KeyboardCats.Data
         private WordData[] synonyms;
         public WordData[] Synonyms => synonyms;
 
-        public bool Equals(WordDictionaryEntry other)
-        {
-            return wordData.Equals(other.wordData) && Equals(synonyms, other.synonyms);
-        }
-
         public override bool Equals(object obj)
         {
             return obj is WordDictionaryEntry other && Equals(other);
         }
 
+        public bool Equals(WordDictionaryEntry other)
+        {
+            return word == other.word && Equals(definitions, other.definitions) && Equals(pronunciation, other.pronunciation) && Equals(synonyms, other.synonyms);
+        }
+
         public override int GetHashCode()
         {
-            return HashCode.Combine(wordData, synonyms);
+            return HashCode.Combine(word, definitions, pronunciation, synonyms);
         }
 
         public override string ToString()
         {
             return definitions.IsNullOrEmpty() 
-                ? "No definitions found!" 
-                : $"{wordData}: {string.Join(", ", definitions)}";
+                ? $"No definitions for {word}!"
+                : $"{word}: {string.Join(", ", definitions)}";
         }
         
         public static implicit operator string(WordDictionaryEntry wordDef)

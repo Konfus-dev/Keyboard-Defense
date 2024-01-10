@@ -66,8 +66,12 @@ namespace KeyboardCats.UI
         {
             foreach (var word in _prompt.Words)
             {
-                Debug.Log($"Looking up: {word}...");
-                Task.Run(() => Debug.Log(WordDictionary.Lookup(word))).FireAndForget();
+                Task.Run(async () =>
+                {
+                    Debug.Log($"Looking up: {word}...");
+                    var def = await WordDictionary.LookupAsync(word).ContinueOnAnyContext();
+                    Debug.Log(def);
+                }).FireAndForget();
             }
         }
 

@@ -19,7 +19,6 @@ namespace KeyboardCats.Data
         private WordData[] words;
         public WordData[] Words => words;
         
-        
         [SerializeField]
         private string value;
         public string Value => value;
