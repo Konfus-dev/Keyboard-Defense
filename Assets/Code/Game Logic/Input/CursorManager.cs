@@ -1,5 +1,4 @@
 using System;
-using KeyboardCats.Enemies;
 using Konfus.Utility.Design_Patterns;
 using UnityEngine;
 
@@ -30,7 +29,9 @@ namespace KeyboardCats.Input
             }
             if (UnityEngine.Input.GetMouseButtonUp(0))
             {
-                SetCursor(_lastCursorState);
+                SetCursor(_lastCursorState == CursorState.Click
+                    ? CursorState.Default 
+                    : _lastCursorState);
             }
         }
 
