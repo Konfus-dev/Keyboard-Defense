@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8800169812241203398}
   - component: {fileID: 9191439247731796634}
   - component: {fileID: -3575777558847607610}
+  - component: {fileID: 3071251973775181020}
   - component: {fileID: 3230920831498336795}
   - component: {fileID: 6211584675017206740}
   - component: {fileID: 3317307719245211321}
@@ -90,6 +91,102 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1, y: 1.1, z: 1.45}
   m_Center: {x: 0, y: 0.55, z: 0.13}
+--- !u!82 &3071251973775181020
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942891894029686957}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.819
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &3230920831498336795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +250,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3071251973775181020}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8f5248a4d00de614ebe2d2edebac2a90,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   healthZero:
     m_PersistentCalls:
       m_Calls:
@@ -163,6 +273,19 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3071251973775181020}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8b5c0318325c1ed4dadce487fbb39970,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -208,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c3fd8d1a0630344ad986be1eea2a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseDownEvent:
+  mouseDown:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 820716042558376183}
@@ -223,7 +346,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  mouseEnterEvent:
+      - m_Target: {fileID: 3071251973775181020}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8a90ead39f8be18479a73531608b40f5,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  mouseEnter:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 820716042558376183}
@@ -238,7 +374,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  mouseExitEvent:
+      - m_Target: {fileID: 3071251973775181020}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: edceac0f8a0b21647ac04d9d7267e5cb,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  mouseExit:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 820716042558376183}
@@ -653,26 +802,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2297233194613275262, guid: 755f22dcf931779438315c59d87b474f,
-        type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.009433985
-      objectReference: {fileID: 0}
-    - target: {fileID: 2297233194613275262, guid: 755f22dcf931779438315c59d87b474f,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.009433985
-      objectReference: {fileID: 0}
-    - target: {fileID: 2297233194613275262, guid: 755f22dcf931779438315c59d87b474f,
-        type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.009433985
-      objectReference: {fileID: 0}
-    - target: {fileID: 2297233194613275262, guid: 755f22dcf931779438315c59d87b474f,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278321666
-      objectReference: {fileID: 0}
     - target: {fileID: 3333383617572233473, guid: 755f22dcf931779438315c59d87b474f,
         type: 3}
       propertyPath: m_Name
@@ -694,26 +823,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4028766167951847185, guid: 755f22dcf931779438315c59d87b474f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4979082495307367916, guid: 755f22dcf931779438315c59d87b474f,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4979082495307367916, guid: 755f22dcf931779438315c59d87b474f,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4979082495307367916, guid: 755f22dcf931779438315c59d87b474f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4979082495307367916, guid: 755f22dcf931779438315c59d87b474f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -773,6 +882,21 @@ PrefabInstance:
       propertyPath: anchor
       value: 
       objectReference: {fileID: 3275973685927761557}
+    - target: {fileID: 8264000298389841734, guid: 755f22dcf931779438315c59d87b474f,
+        type: 3}
+      propertyPath: typedColor.b
+      value: 0.3739729
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264000298389841734, guid: 755f22dcf931779438315c59d87b474f,
+        type: 3}
+      propertyPath: typedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264000298389841734, guid: 755f22dcf931779438315c59d87b474f,
+        type: 3}
+      propertyPath: typedColor.r
+      value: 0.27058828
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

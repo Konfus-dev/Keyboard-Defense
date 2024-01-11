@@ -3,27 +3,27 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class Clickable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class MouseEventListener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    public UnityEvent mouseDownEvent;
-    public UnityEvent mouseEnterEvent;
-    public UnityEvent mouseExitEvent;
+    public UnityEvent mouseDown;
+    public UnityEvent mouseEnter;
+    public UnityEvent mouseExit;
     
     private void OnMouseEnter()
     {
-        mouseEnterEvent.Invoke();
+        mouseEnter.Invoke();
         CursorManager.Instance.SetCursor(CursorState.Hover);
     }
 
     private void OnMouseExit()
     {
-        mouseExitEvent.Invoke();
+        mouseExit.Invoke();
         CursorManager.Instance.SetCursor(CursorState.Default);
     }
 
     private void OnMouseDown()
     {
-        mouseDownEvent.Invoke();
+        mouseDown.Invoke();
     }
     
     public void OnPointerEnter(PointerEventData eventData)

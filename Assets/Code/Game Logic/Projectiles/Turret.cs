@@ -1,13 +1,15 @@
-using KeyboardCats.Projectiles;
 using Konfus.Utility.Extensions;
 using UnityEngine;
+using UnityEngine.Events;
 
-namespace KeyboardCats.Castles
+namespace KeyboardCats.Projectiles
 {
     public class Turret : MonoBehaviour
     {
         private static readonly int IsShooting = Animator.StringToHash("IsShooting");
 
+        public UnityEvent shotProjectile;
+        
         [SerializeField] private LayerMask targetMask;
         [SerializeField] private float range = 8;
         [SerializeField] private float aimSpeed = 8;
@@ -84,6 +86,7 @@ namespace KeyboardCats.Castles
                 loadedProjectile.GetComponent<Projectile>().Shoot(10);
                 animator.SetBool(IsShooting, true);
                 _cooldownTimer = fireCooldown;
+                shotProjectile.Invoke();
             }
         }
     }

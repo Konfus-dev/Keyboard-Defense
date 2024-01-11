@@ -10,8 +10,13 @@ namespace KeyboardCats.UI
 {
     public class Prompt : KeyboardListener
     {
+        [Header("Events")]
+        [Space]
         public PromptCompletedEvent promptCompleted;
+        public PromptCompletedEvent promptCharacterCorrectlyTyped;
+        public PromptCompletedEvent promptCharacterIncorrectlyTyped;
 
+        [Header("Dependencies")]
         [SerializeField]
         private PromptUI promptUI;
         
@@ -26,7 +31,7 @@ namespace KeyboardCats.UI
             // Generate prompt
             _prompt = PromptManager.Instance.GeneratePrompt(difficulty);
             _remainingPromptText = _prompt;
-            promptUI.SetPrompt(_prompt);
+            promptUI.Initialize(_prompt);
         }
 
         public override void OnDestroy()
@@ -37,6 +42,8 @@ namespace KeyboardCats.UI
 
         protected override void OnKeyPressed(string key)
         {
+            if (_remainingPromptText.IsNullOrEmpty()) return;
+            
             // Process input...
             string firstNonTypedCharInPrompt = _remainingPromptText.First().ToString().ToLower();
             string keyPressed = key.ToLower().Replace("space", " ");
@@ -48,7 +55,7 @@ namespace KeyboardCats.UI
                 // Did user successfully type the entire prompt?
                 if (_remainingPromptText.IsNullOrEmpty()) OnSuccessfullyTypedPrompt();
             }
-            else
+            else if (_remainingPromptText != _prompt)
             {
                 // user made mistake... punish them!
                 OnTypedWrongCharacter();
@@ -64,17 +71,19 @@ namespace KeyboardCats.UI
         {
             _remainingPromptText = _remainingPromptText.Remove(0, 1);
             promptUI.OnNextCharInPromptTyped();
+            promptCharacterCorrectlyTyped.Invoke();
         }
 
         private void OnTypedWrongCharacter()
         {
             Reset();
+            promptCharacterIncorrectlyTyped.Invoke();
         }
 
         private void Reset()
         {
             _remainingPromptText = _prompt;
-            promptUI.SetPrompt(_prompt);
+            promptUI.Reset();
         }
     }
     

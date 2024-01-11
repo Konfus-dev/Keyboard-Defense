@@ -5,6 +5,7 @@ using KeyboardCats.Vitality;
 using UnityEngine;
 using UnityEngine.Splines;
 using Prompt = KeyboardCats.UI.Prompt;
+using Random = UnityEngine.Random;
 
 namespace KeyboardCats.Enemies
 {
@@ -39,6 +40,7 @@ namespace KeyboardCats.Enemies
         private State _state = State.Moving;
         private State _runningState;
         private State _previousState;
+        private bool _invulnerable;
 
         public State GetState()
         {
@@ -72,6 +74,11 @@ namespace KeyboardCats.Enemies
 
         public void OnTakeDamage()
         {
+            if (_invulnerable)
+            {
+                healthComp.Set(health); 
+                return;
+            }
             if (_state == State.Dead) return;
             SetState(State.Hurt);
         }
@@ -80,10 +87,17 @@ namespace KeyboardCats.Enemies
         {
             SetState(State.Dead);
         }
-
-        public void SetPath(SplineContainer splineContainer)
+        
+        public void OnSpawn(SplineContainer pathToFollow)
+        {
+            var randFollowPathOffset = new Vector3(Random.Range(-0.5f, 0.5f), 0, 0);
+            SetPath(pathToFollow, randFollowPathOffset);
+            StartCoroutine(SpawnInvulnerabilityTimerRoutine());
+        }
+        private void SetPath(SplineContainer splineContainer, Vector3 offset)
         {
             splineMovement.SetPath(splineContainer);
+            splineMovement.SetOffset(offset);
             splineMovement.SetSpeed(moveSpeed);
             splineMovement.Move();
         }
@@ -97,6 +111,7 @@ namespace KeyboardCats.Enemies
         private void Start()
         {
             if (prompt != null) prompt.Generate(difficulty);
+            _invulnerable = true;
         }
 
         private void Update()
@@ -184,6 +199,12 @@ namespace KeyboardCats.Enemies
             Destroy(gameObject);
         }
 
+        private IEnumerator SpawnInvulnerabilityTimerRoutine()
+        {
+            yield return new WaitForSeconds(0.25f);
+            _invulnerable = false;
+        }
+        
         private void OnValidate()
         {
             healthComp.Set(health);
