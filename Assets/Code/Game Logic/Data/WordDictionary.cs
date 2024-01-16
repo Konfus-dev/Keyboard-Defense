@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -13,6 +13,11 @@ namespace KeyboardCats.Data
     {
         //private static readonly Dictionary<string, WordDictionaryEntry> _entries = new();
         private static readonly HttpClient _client = new();
+
+        static WordDictionary()
+        {
+            _client.BaseAddress = new Uri("https://www.dictionaryapi.com/api/v3/references/collegiate/json/");
+        }
         
         public static async Task<WordDictionaryEntry> LookupAsync(WordData wordData)
         {
@@ -21,8 +26,8 @@ namespace KeyboardCats.Data
             //if (_entries.TryGetValue(wordData, out WordDictionaryEntry def)) return def;
             
             // Not in cache, look it up via the merriam webster dictionary api...
-            var response = await _client
-                .GetAsync($"https://www.dictionaryapi.com/api/v3/references/collegiate/json/{wordData}?key=7b992530-80f0-4dd7-ad57-d082018b6658")
+            using var response = await _client
+                .GetAsync($"{wordData}?key=7b992530-80f0-4dd7-ad57-d082018b6658\"")
                 .ContinueOnAnyContext();
             
             // Couldn't look up for some reason or another
@@ -33,7 +38,7 @@ namespace KeyboardCats.Data
             }
             
             // Read response as string, then deserialize it as json
-            string responseBody = response.Content.ReadAsStringAsync().Result;
+            string responseBody = await response.Content.ReadAsStringAsync().ContinueOnAnyContext();
             var dictInfo = JsonConvert.DeserializeObject<JArray>(responseBody);
                 
             // We didn't find a definition

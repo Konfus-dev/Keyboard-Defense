@@ -76,14 +76,9 @@ namespace KeyboardCats.UI
 
         private void OnTypedWrongCharacter()
         {
-            Reset();
-            promptCharacterIncorrectlyTyped.Invoke();
-        }
-
-        private void Reset()
-        {
             _remainingPromptText = _prompt;
-            promptUI.Reset();
+            promptUI.OnFailedToTypePrompt();
+            promptCharacterIncorrectlyTyped.Invoke();
         }
     }
     

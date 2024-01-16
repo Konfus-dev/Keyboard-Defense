@@ -912,7 +912,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669515885}
-  m_Mesh: {fileID: 1040212157}
+  m_Mesh: {fileID: 950356098}
 --- !u!1 &679040964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1074,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 679040965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1040212157
+--- !u!43 &950356098
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1421,11 +1421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20752da974f24a909eba0ca3f4eddb93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  easyPrompts: {fileID: 11400000, guid: 992d7456e5c580a49b8fa838f7c1ab34, type: 2}
-  intermediatePrompts: {fileID: 11400000, guid: 2f4e7ccb561a11c4aa2887d00718e6e7,
-    type: 2}
-  hardPrompts: {fileID: 11400000, guid: 670c8157465d6714c90d24616ed57d39, type: 2}
-  veryHardPrompts: {fileID: 11400000, guid: cdf427ca814c8d24fb46f901c0488a59, type: 2}
   easyWords: {fileID: 11400000, guid: 937bb353d69be354ca45598d67fe00fa, type: 2}
   intermediateWords: {fileID: 11400000, guid: f890509a6d79ab94fbf20d6661ab1ed9, type: 2}
   hardWords: {fileID: 11400000, guid: ffe89c7cf9d32e94e94de042b4b2f425, type: 2}
