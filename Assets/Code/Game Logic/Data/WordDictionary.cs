@@ -27,7 +27,7 @@ namespace KeyboardCats.Data
             
             // Not in cache, look it up via the merriam webster dictionary api...
             using var response = await _client
-                .GetAsync($"{wordData}?key=7b992530-80f0-4dd7-ad57-d082018b6658\"")
+                .GetAsync($"{wordData}?key=7b992530-80f0-4dd7-ad57-d082018b6658")
                 .ContinueOnAnyContext();
             
             // Couldn't look up for some reason or another

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using KeyboardCats.Data;
 using Konfus.Utility.Extensions;
 using TMPro;
@@ -20,7 +18,7 @@ namespace KeyboardCats.UI
 
         private string _title;
         private string _definition;
-        private float _regTimeScale;
+        private bool _isOpen;
         private bool _isDirty;
         private bool _isLoading;
 
@@ -29,20 +27,19 @@ namespace KeyboardCats.UI
             _title = data;
             SetDefinition(data).FireAndForget();
         }
+
+        public bool IsOpen() => _isOpen;
         
         public void Open()
         {
+            _isOpen = true;
             root.SetActive(true);
         }
 
         public void Close()
         {
+            _isOpen = false;
             root.SetActive(false);
-        }
-
-        private void Start()
-        {
-            _regTimeScale = Time.timeScale;
         }
 
         private void Update()

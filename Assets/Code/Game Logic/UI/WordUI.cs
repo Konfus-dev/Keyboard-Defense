@@ -83,8 +83,9 @@ namespace KeyboardCats.UI
             wordText.text = $"<color=#{hexColor}>{_typedText}</color>{_currentText}";
         }
 
-        private void OnStartHover()
+        private void OnStartHover(GameObject go)
         {
+            if (go != this) return;
             SetColor(hoverColor);
             SetStyle(FontStyles.Underline);
         }
@@ -95,8 +96,10 @@ namespace KeyboardCats.UI
             SetStyle(_originalStyle);
         }
 
-        private void OnClicked()
+        private void OnClicked(GameObject go)
         {
+            if (go != this) return;
+            if (_definitionUI.IsOpen()) return;
             _definitionUI.Open();
             _definitionUI.Lookup(_wordData);
         }
