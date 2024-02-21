@@ -1,68 +1,45 @@
-using KeyboardCats.Input;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class MouseEventListener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+namespace KeyboardDefense.Input
 {
-    public MouseEvent mouseDown;
-    public MouseEvent mouseEnter;
-    public UnityEvent mouseExit;
-
-    private GameObject _focusedOn;
+    public class MouseEventListener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+    {
+        public UnityEvent mouseDown;
+        public UnityEvent mouseEnter;
+        public UnityEvent mouseExit;
     
-    private void OnMouseEnter()
-    {
-        if (_focusedOn == null)
+        private void OnMouseEnter()
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit info))
-            {
-                _focusedOn = info.collider.gameObject;
-            }
+            mouseEnter.Invoke();
+            CursorManager.Instance.SetCursor(CursorState.Hover);
         }
-        mouseEnter.Invoke(_focusedOn);
-        CursorManager.Instance.SetCursor(CursorState.Hover);
-        _focusedOn = null;
-    }
 
-    private void OnMouseExit()
-    {
-        mouseExit.Invoke();
-        CursorManager.Instance.SetCursor(CursorState.Default);
-    }
-
-    private void OnMouseDown()
-    {
-        if (_focusedOn == null)
+        private void OnMouseExit()
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit info))
-            {
-                _focusedOn = info.collider.gameObject;
-            }
+            mouseExit.Invoke();
+            CursorManager.Instance.SetCursor(CursorState.Default);
         }
-        mouseDown.Invoke(_focusedOn);
-        _focusedOn = null;
-    }
+
+        private void OnMouseDown()
+        {
+            mouseDown.Invoke();
+        }
     
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        _focusedOn = eventData.pointerEnter;
-        OnMouseEnter();
-    }
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            OnMouseEnter();
+        }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        OnMouseExit();
-    }
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            OnMouseExit();
+        }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        _focusedOn = eventData.pointerClick;
-        OnMouseDown();
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            OnMouseDown();
+        }
     }
 }
-
-[System.Serializable]
-public class MouseEvent : UnityEvent<GameObject> { }

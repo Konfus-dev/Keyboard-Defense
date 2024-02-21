@@ -1,0 +1,109 @@
+.header {
+    font-size: 35px;
+    -unity-font-style: bold;
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-self: center;
+    -unity-text-align: middle-center;
+}
+
+.text {
+    color: rgb(255, 255, 255);
+    -unity-text-outline-color: rgb(101, 101, 101);
+    -unity-text-outline-width: 1px;
+    text-shadow: 1px 1px 0 rgb(148, 148, 148);
+    letter-spacing: 1px;
+}
+
+.fillAvailableSpace {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: relative;
+    flex-grow: 1;
+}
+
+.button {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    -unity-font-style: bold;
+    font-size: 25px;
+}
+
+.paragraph {
+    font-size: 15px;
+    -unity-font-style: normal;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    color: rgb(66, 66, 66);
+    white-space: normal;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.titleBar {
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    -unity-text-align: upper-center;
+    background-color: rgb(94, 132, 255);
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: relative;
+    top: 0;
+}
+
+.content {
+    background-color: rgb(247, 247, 247);
+    background-image: none;
+    -unity-slice-scale: 0.1px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.rounded {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.outline {
+    border-left-color: rgba(0, 0, 0, 0.21);
+    border-right-color: rgba(0, 0, 0, 0.21);
+    border-top-color: rgba(0, 0, 0, 0.21);
+    border-bottom-color: rgba(0, 0, 0, 0.21);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 6px;
+}
+
+.primaryColor {
+    background-color: rgb(121, 179, 255);
+    -unity-slice-scale: 0;
+}
+
+.secondaryColor {
+    background-color: rgb(108, 255, 134);
+    -unity-slice-scale: 0;
+}
+
+.tertiaryColor {
+    background-color: rgb(255, 93, 51);
+    -unity-slice-scale: 0;
+}
+
+.backgroundColor {
+    background-color: rgb(247, 247, 247);
+    -unity-slice-scale: 0;
+}

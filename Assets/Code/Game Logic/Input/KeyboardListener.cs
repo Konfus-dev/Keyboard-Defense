@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 
-namespace KeyboardCats.Input
+namespace KeyboardDefense.Input
 {
     public abstract class KeyboardListener : MonoBehaviour
     {
-        public void Start()
+        private void Start()
         {
             Player.Instance.keyPressed.AddListener(OnKeyPressed);
         }
 
-        public virtual void OnDestroy()
+        private void OnDestroy()
         {
             Player.Instance.keyPressed?.RemoveListener(OnKeyPressed);
         }

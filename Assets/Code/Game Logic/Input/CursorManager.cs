@@ -2,7 +2,7 @@ using System;
 using Konfus.Utility.Design_Patterns;
 using UnityEngine;
 
-namespace KeyboardCats.Input
+namespace KeyboardDefense.Input
 {
     public class CursorManager : Singleton<CursorManager>
     {

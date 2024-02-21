@@ -7,19 +7,6 @@
       "dependencies": {},
       "hash": "784c612a600b82f916fc11d13b84e500b200598a"
     },
-    "com.unity.2d.sprite": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.autolod": {
-      "version": "https://github.com/Unity-Technologies/AutoLOD.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "9492bc0620ea02944745c41e1f51b241580e342c"
-    },
     "com.unity.burst": {
       "version": "1.8.12",
       "depth": 1,
@@ -153,7 +140,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "3.0.7",
+      "version": "3.0.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -191,13 +178,6 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
-    },
-    "com.whinarn.unitymeshsimplifier": {
-      "version": "https://github.com/Whinarn/UnityMeshSimplifier.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "d741912bfeaad8da4fe0f258f4f3eefe1fe7b3f3"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

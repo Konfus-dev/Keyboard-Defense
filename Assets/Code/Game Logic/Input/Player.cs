@@ -5,7 +5,7 @@ using Konfus.Utility.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace KeyboardCats.Input
+namespace KeyboardDefense.Input
 {
     public class Player : Singleton<Player>
     {

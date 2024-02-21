@@ -1,0 +1,20 @@
+{
+    "name": "KeyboardDefense.Editor",
+    "rootNamespace": "KeyboardDefense",
+    "references": [
+        "GUID:5c3d29b285424ea18ce11d55878e25e2",
+        "GUID:21d1eb854b91ade49bc69a263d12bee2",
+        "GUID:e43142fc3fec6554980dde6126631f1d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

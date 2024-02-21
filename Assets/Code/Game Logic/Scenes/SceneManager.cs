@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace KeyboardCats.Scenes
+namespace KeyboardDefense.Scenes
 {
     public class SceneManager : Singleton<SceneManager>
     {

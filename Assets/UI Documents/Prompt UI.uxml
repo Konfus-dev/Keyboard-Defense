@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Documents/Custom%20Styles.uss?fileID=7433441132597879392&amp;guid=a12a855d0e79d2c4fa6875aeaa637245&amp;type=3#Custom Styles" />
+    <ui:VisualElement name="Container" class="content rounded backgroundColor" style="align-self: center; justify-content: center; align-items: center;">
+        <ui:VisualElement name="Titlebar" class="titleBar primaryColor outline rounded" style="flex-direction: column; align-self: center;">
+            <ui:Label tabindex="-1" text="Lorem ipsum" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Prompt" class="text paragraph" style="color: rgb(255, 255, 255); -unity-text-outline-color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="Tail" class="backgroundColor" style="bottom: 0; height: 15px; background-image: url(&apos;project://database/Assets/Art/Icons/UI%20Triangle.png?fileID=21300000&amp;guid=0b2ee400aa0ca5140aa463b3a2add9d9&amp;type=3#UI Triangle&apos;); -unity-slice-scale: 0; transform-origin: center; scale: 1 -1; width: 10px; align-self: center; -unity-background-image-tint-color: rgb(247, 247, 247); background-color: rgba(247, 247, 247, 0); align-items: center; justify-content: space-around;" />
+</ui:UXML>

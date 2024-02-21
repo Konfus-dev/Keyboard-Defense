@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace KeyboardCats.Editor
+namespace KeyboardDefense.Editor
 {
     public static class EditorGUIExtensions
     {

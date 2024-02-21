@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Documents/Custom%20Styles.uss?fileID=7433441132597879392&amp;guid=a12a855d0e79d2c4fa6875aeaa637245&amp;type=3#Custom Styles" />
+    <ui:VisualElement name="Container" class="content rounded backgroundColor" style="justify-content: center; flex-direction: column; flex-wrap: nowrap; max-width: 350px; max-height: 450px; flex-grow: 1; align-self: center;">
+        <ui:VisualElement name="Titlebar" class="titleBar primaryColor outline rounded" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; flex-grow: 0; flex-direction: row; border-bottom-width: 8px;">
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="header text" style="left: auto; width: 100%;" />
+            <ui:Button text="X" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CloseBtn" class="rounded tertiaryColor text outline" style="right: 55px; -unity-text-outline-width: 0; padding-top: 4px; padding-right: 0; padding-bottom: 5px; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 40px; width: 40px; font-size: 30px; -unity-text-align: middle-center; flex-direction: column; flex-wrap: nowrap; align-self: center; justify-content: flex-start; align-items: center; -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:ScrollView class="fillAvailableSpace">
+            <ui:Label tabindex="-1" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." parse-escape-sequences="true" display-tooltip-when-elided="true" class="fillAvailableSpace text paragraph" />
+        </ui:ScrollView>
+        <ui:VisualElement name="Buttons" class="text" style="flex-grow: 0; bottom: 0; flex-direction: row; flex-wrap: nowrap; flex-shrink: 1; margin-bottom: 10px; margin-top: 0; margin-right: 5px; margin-left: 0;">
+            <ui:Button text="Open in Browser" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenInBrowserBtn" class="fillAvailableSpace button rounded outline primaryColor secondaryColor" style="width: 80%; height: 40px;" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayPronounciationBtn" class="fillAvailableSpace button rounded outline primaryColor secondaryColor" style="width: 80%; height: 40px; flex-grow: 0; flex-shrink: 1; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                <ui:VisualElement name="SoundIcon" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/Icons/Sound%20Icon.png?fileID=2800000&amp;guid=67c7d472825074b45a93d970640bfa30&amp;type=3#Sound Icon&apos;); margin-top: 4px; margin-right: 4px; margin-bottom: 4px; margin-left: 4px; -unity-background-scale-mode: scale-to-fit;" />
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="Tail" class="backgroundColor" style="height: 15px; background-image: url(&apos;project://database/Assets/Art/Icons/UI%20Triangle.png?fileID=21300000&amp;guid=0b2ee400aa0ca5140aa463b3a2add9d9&amp;type=3#UI Triangle&apos;); -unity-slice-scale: 0; transform-origin: center; scale: 1 -1; width: 10px; align-self: center; -unity-background-image-tint-color: rgb(247, 247, 247); background-color: rgba(247, 247, 247, 0); justify-content: center; align-items: stretch;" />
+</ui:UXML>

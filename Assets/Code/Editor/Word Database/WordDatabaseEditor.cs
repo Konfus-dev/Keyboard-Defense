@@ -1,25 +1,25 @@
 using System.Linq;
 using System.Text.RegularExpressions;
-using KeyboardCats.Data;
+using KeyboardDefense.Prompts;
 using UnityEditor;
 using UnityEngine;
 
-namespace KeyboardCats.Editor.WordDatabase
+namespace KeyboardDefense.Editor.WordDatabase
 {
-    [CustomEditor(typeof(Data.WordDatabase))]
+    [CustomEditor(typeof(Prompts.WordDatabase))]
     public class WordDatabaseEditor : UnityEditor.Editor
     {
         private int _currentPageIndex;
         private Vector2 _currentPageScrollAmount;
         
         private Regex _nonAlphabetFilter;
-        private Data.WordDatabase _wordDatabase;
+        private Prompts.WordDatabase _wordDatabase;
         private PlayerSettings.Switch.Languages _language;
         private PromptDifficulty _difficulty;
 
         private void Awake()
         {
-            _wordDatabase = (Data.WordDatabase)target;
+            _wordDatabase = (Prompts.WordDatabase)target;
             _difficulty = _wordDatabase.Words.FirstOrDefault().Difficulty;
             _nonAlphabetFilter = new Regex("[^a-zA-Z]");
         }
@@ -164,7 +164,7 @@ namespace KeyboardCats.Editor.WordDatabase
                     case PromptDifficulty.Medium when wordLength is < 5 or > 10:
                     case PromptDifficulty.Hard when wordLength is < 10 or > 15:
                     case PromptDifficulty.VeryHard when wordLength < 15: continue;
-                    // Add to database...
+                    // Add to database... TODO: add to dictionary database
                     default:
                     {
                         WordCommonality commonality = wordCommonality switch

@@ -8,13 +8,9 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Cursor
+  - Player Castle
   - Water
   - UI
-  - Interactable
-  - Enemy
-  - Castle
-  - Ground
   - 
   - 
   - 
@@ -36,7 +32,11 @@ TagManager:
   - 
   - 
   - 
-  - HLOD
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
