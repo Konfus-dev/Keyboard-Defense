@@ -8,16 +8,17 @@ namespace KeyboardDefense.UI
         [SerializeField]
         private Image healthBar;
 
+        private float _maxWidth;
+
         private void Start()
         {
-            healthBar.transform.localScale = Vector3.one;
+            _maxWidth = healthBar.rectTransform.rect.width;
         }
 
         public void OnHealthChanged(float currHealth, float maxHealth)
         {
             if (currHealth < 0) return;
-            var healthBarScale = healthBar.transform.localScale;
-            healthBar.transform.localScale = new Vector3(currHealth/maxHealth, healthBarScale.y, healthBarScale.z);
+            healthBar.rectTransform.sizeDelta = new Vector2(currHealth/maxHealth * _maxWidth, healthBar.rectTransform.rect.height);
         }
     }
 }

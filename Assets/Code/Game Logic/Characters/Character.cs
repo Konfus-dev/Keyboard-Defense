@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace KeyboardDefense.Characters
 {
-    public class Character : MonoBehaviour, IHasHealth
+    public abstract class Character : MonoBehaviour, IHasHealth
     {
         public UnityEvent onDie;
         public UnityEvent onIdle;
@@ -44,50 +44,38 @@ namespace KeyboardDefense.Characters
         {
             return stats;
         }
-        
-        protected void Move()
-        {
-            _runningState = State.Moving;
-            onMove.Invoke();
-        }
-        
-        protected void Idle()
-        {
-            _runningState = State.Idle;
-            onIdle.Invoke();
-        }
 
-        protected void Attack()
+        protected void SetState(State state)
         {
-            if (_runningState == State.Attacking) return;
-            StartCoroutine(AttackRoutine());
-        }
-
-        protected void Hurt()
-        {
-            if (_runningState == State.Hurt) return;
-            StartCoroutine(HurtRoutine());
-        }
-
-        protected void Die()
-        {
-            if (_runningState == State.Dead) return;
-            StartCoroutine(HurtRoutine());
-            StartCoroutine(DieRoutine());
-        }
-        
-        private void OnSpawn() 
-        { 
-            _currentHealth = stats.Health;
-            SetState(State.Moving);
+            if (_runningState == state) return;
+            
+            _previousState = _runningState;
+            _runningState = state;
+            Debug.Log($"{name} is: {_runningState}");
+            
+            UpdateState();
         }
 
         private void OnEnable()
         {
             OnSpawn();
         }
+        
+        protected virtual void OnSpawn() 
+        { 
+            _currentHealth = stats.Health;
+        }
 
+        protected virtual void OnUpdate()
+        {
+        }
+        
         private void Update()
+        {
+            OnUpdate();
+        }
+        
+        private void UpdateState()
         {
             switch (_runningState)
             {
@@ -109,14 +97,31 @@ namespace KeyboardDefense.Characters
                 default:
                     throw new ArgumentOutOfRangeException($"No implementation for {_runningState}");
             }
-            
-            Debug.Log($"{name} is: {_runningState}");
+        }
+        
+        private void Move()
+        {
+            onMove.Invoke();
+        }
+        
+        private void Idle()
+        {
+            onIdle.Invoke();
         }
 
-        private void SetState(State state)
+        private void Attack()
         {
-            _previousState = _runningState;
-            _runningState = state;
+            StartCoroutine(AttackRoutine());
+        }
+
+        private void Hurt()
+        {
+            StartCoroutine(HurtRoutine());
+        }
+
+        private void Die()
+        {
+            StartCoroutine(DieRoutine());
         }
         
         private IEnumerator AttackRoutine()

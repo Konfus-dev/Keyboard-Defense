@@ -90,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2785202839442693973}
   - component: {fileID: 6220370257537703117}
+  - component: {fileID: 6615138733979947221}
   - component: {fileID: 4102992322195554107}
   - component: {fileID: 3879874302256724135}
   - component: {fileID: 7393531033576281764}
@@ -99,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2785202839442693973
 Transform:
   m_ObjectHideFlags: 0
@@ -177,6 +178,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6615138733979947221}
+        m_TargetAssemblyTypeName: KeyboardDefense.Characters.AttackCaster, KeyboardDefense
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onMove:
     m_PersistentCalls:
       m_Calls:
@@ -193,6 +206,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   stats: {fileID: 11400000, guid: 1580c2d6bee9fdd478beaf8e82b7718d, type: 2}
+--- !u!114 &6615138733979947221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2619139106308706806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7c6a9a19ab4419936fece07c7fe200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensor: {fileID: 9069238604309234630}
 --- !u!114 &4102992322195554107
 MonoBehaviour:
   m_ObjectHideFlags: 0

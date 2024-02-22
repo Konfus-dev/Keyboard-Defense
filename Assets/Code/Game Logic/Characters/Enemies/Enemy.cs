@@ -20,7 +20,13 @@ namespace KeyboardDefense.Characters.Enemies
             _promptGenerator.GeneratedPrompt.promptCompleted.AddListener(OnPromptCompleted);
         }
 
-        private void FixedUpdate()
+        protected override void OnSpawn()
+        {
+            base.OnSpawn();
+            SetState(State.Moving);
+        }
+
+        protected override void OnUpdate()
         {
             if (_castleSensor.Scan())
             {
@@ -30,12 +36,12 @@ namespace KeyboardDefense.Characters.Enemies
 
         private void OnPromptCompleted()
         {
-            Die();
+            TakeDamage(GetStats().Health);
         }
 
         private void OnHitCastle()
         {
-            Attack();
+            SetState(State.Attacking);
         }
     }
 }
