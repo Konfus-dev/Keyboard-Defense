@@ -1,25 +1,25 @@
 using System;
 using System.Linq;
-using KeyboardDefense.Prompts;
+using KeyboardDefense.Logic.Prompts;
 using UnityEditor;
 using UnityEngine;
 
 namespace KeyboardDefense.Editor.WordDatabase
 {
-    [CustomEditor(typeof(Prompts.WordDatabase))]
+    [CustomEditor(typeof(Logic.Prompts.WordDatabase))]
     public class WordDatabaseEditor : UnityEditor.Editor
     {
         private int _currentPageIndex;
         private Vector2 _currentPageScrollAmount;
         
         //private Regex _nonAlphabetFilter;
-        private Prompts.WordDatabase _wordDatabase;
+        private Logic.Prompts.WordDatabase _wordDatabase;
         private PlayerSettings.Switch.Languages _language;
         private PromptDifficulty _difficulty;
 
         private void Awake()
         {
-            _wordDatabase = (Prompts.WordDatabase)target;
+            _wordDatabase = (Logic.Prompts.WordDatabase)target;
             
             if (!_wordDatabase.Words.Any()) return;
             _difficulty = _wordDatabase.Words.FirstOrDefault().Difficulty;

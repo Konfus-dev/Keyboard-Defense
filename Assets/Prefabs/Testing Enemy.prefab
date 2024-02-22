@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4102992322195554107}
   - component: {fileID: 3879874302256724135}
   - component: {fileID: 7393531033576281764}
+  - component: {fileID: 8374261255385719117}
   m_Layer: 0
   m_Name: Testing Enemy
   m_TagString: Untagged
@@ -259,6 +260,18 @@ MonoBehaviour:
   promptToGenerateDifficulty: 0
   objForGeneratedPromptToFollow: {fileID: 2619139106308706806}
   generatedPromptFollowOffset: {x: 0, y: 100}
+--- !u!114 &8374261255385719117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2619139106308706806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a374ee43bcea4b06b3892277681c23ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3021279267829184605
 GameObject:
   m_ObjectHideFlags: 0
