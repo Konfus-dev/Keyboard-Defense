@@ -1,5 +1,5 @@
+using System;
 using System.Linq;
-using System.Text.RegularExpressions;
 using KeyboardDefense.Prompts;
 using UnityEditor;
 using UnityEngine;
@@ -12,7 +12,7 @@ namespace KeyboardDefense.Editor.WordDatabase
         private int _currentPageIndex;
         private Vector2 _currentPageScrollAmount;
         
-        private Regex _nonAlphabetFilter;
+        //private Regex _nonAlphabetFilter;
         private Prompts.WordDatabase _wordDatabase;
         private PlayerSettings.Switch.Languages _language;
         private PromptDifficulty _difficulty;
@@ -20,8 +20,10 @@ namespace KeyboardDefense.Editor.WordDatabase
         private void Awake()
         {
             _wordDatabase = (Prompts.WordDatabase)target;
+            
+            if (!_wordDatabase.Words.Any()) return;
             _difficulty = _wordDatabase.Words.FirstOrDefault().Difficulty;
-            _nonAlphabetFilter = new Regex("[^a-zA-Z]");
+            //_nonAlphabetFilter = new Regex("[^a-zA-Z]");
         }
 
         public override void OnInspectorGUI()
@@ -34,7 +36,8 @@ namespace KeyboardDefense.Editor.WordDatabase
         private void DrawWordPages()
         {
             const int countPerPage = 50;
-            var wordDatabaseWordCount = _wordDatabase.Words.Count;
+            var wordDatabaseWordCount = _wordDatabase.Words.Any() ? _wordDatabase.Words.Count : 0;
+            var numberPages = wordDatabaseWordCount / countPerPage;
             
             // Page header
             EditorGUILayout.LabelField("Words", EditorStyles.boldLabel);
@@ -53,12 +56,12 @@ namespace KeyboardDefense.Editor.WordDatabase
                 EditorGUILayout.Space(50, expand: true);
                 EditorGUILayout.LabelField("Page:", GUILayout.MaxWidth(35));
                 _currentPageIndex = EditorGUILayout.IntField(_currentPageIndex, GUILayout.MaxWidth(55));
-                EditorGUILayout.LabelField($"/{wordDatabaseWordCount}", GUILayout.MaxWidth(55));
+                EditorGUILayout.LabelField($"/{numberPages}", GUILayout.MaxWidth(55));
                 EditorGUILayout.Space(50, expand: true);
 
                 if (GUILayout.Button(">", GUILayout.Width(25)))
                 {
-                    if (_currentPageIndex == wordDatabaseWordCount) _currentPageIndex = wordDatabaseWordCount;
+                    if (_currentPageIndex == numberPages) _currentPageIndex = numberPages;
                     else _currentPageIndex++;
                 }
 
@@ -89,19 +92,20 @@ namespace KeyboardDefense.Editor.WordDatabase
                 int startingIndex = _currentPageIndex * countPerPage;
                 for (int wordIndex = startingIndex; wordIndex < Mathf.Min(wordDatabaseWordCount, startingIndex + countPerPage); wordIndex++)
                 {
-                    var word = _wordDatabase.Words[wordIndex];
+                    var wordData = _wordDatabase.Words[wordIndex];
                     
                     EditorGUILayout.Space();
-                    EditorGUILayout.LabelField($"[{wordIndex}] {word}:", EditorStyles.boldLabel);
+                    EditorGUILayout.LabelField($"[{wordIndex}] {wordData}:", EditorStyles.boldLabel);
                     
                     EditorGUIExtensions.Line();
                     EditorGUILayout.BeginVertical(wordItemStyle);
                     
-                    var newWord = EditorGUILayout.TextField("Value:", word);
-                    var newWordLanguage = (PlayerSettings.Switch.Languages)EditorGUILayout.EnumPopup("Language:", word.Language);
-                    var newWordDifficulty = (PromptDifficulty)EditorGUILayout.EnumPopup("Difficulty:", word.Difficulty);
-                    if (word != newWord || word.Difficulty != newWordDifficulty) 
-                        _wordDatabase.Words[wordIndex] =  new WordData(newWord, newWordLanguage, newWordDifficulty);
+                    var newWord = EditorGUILayout.TextField("Word:", wordData.Word);
+                    var newWordDef = EditorGUILayout.TextField("Definition:", wordData.Definition);
+                    var newWordLanguage = (PlayerSettings.Switch.Languages)EditorGUILayout.EnumPopup("Language:", wordData.Language);
+                    var newWordDifficulty = (PromptDifficulty)EditorGUILayout.EnumPopup("Difficulty:", wordData.Difficulty);
+                    if (wordData.Word != newWord || wordData.Definition != newWordDef || wordData.Difficulty != newWordDifficulty) 
+                        _wordDatabase.Words[wordIndex] =  new WordData(newWord, newWordDef, newWordLanguage, newWordDifficulty);
                     
                     EditorGUILayout.EndVertical();
                 }
@@ -140,21 +144,15 @@ namespace KeyboardDefense.Editor.WordDatabase
             }
             
             string wordsForLanguageTxt = wordsForLanguageTxtAsset.ToString();
-            string[] lines = wordsForLanguageTxt.Split('\n');
+            
+            string[] stringSeparators = new string[] { "\n" };
+            string[] lines = wordsForLanguageTxt.Split(stringSeparators, StringSplitOptions.None);
             foreach (string line in lines)
             {
-                // split by spaces
-                var wordAndCount = line.Split(' ');
+                // remove spaces
+                var word = line.Replace(" ", "");
                 
-                // we don't have the commonality... skip
-                if (wordAndCount.Length != 2) continue;
-                
-                // this word has non-alphabetic characters... skip
-                var word = wordAndCount[0];
-                if (_nonAlphabetFilter.IsMatch(word)) continue;
-                
-                // Get commonality and length
-                var wordCommonality = int.Parse(wordAndCount[1]);
+                // Get length
                 var wordLength = word.Length;
 
                 switch (_difficulty)
@@ -167,14 +165,8 @@ namespace KeyboardDefense.Editor.WordDatabase
                     // Add to database... TODO: add to dictionary database
                     default:
                     {
-                        WordCommonality commonality = wordCommonality switch
-                        {
-                            > 10000 => WordCommonality.Common,
-                            < 10000 and > 500 => WordCommonality.Uncommon,
-                            _ => WordCommonality.VeryUncommon
-                        };
-
-                        _wordDatabase.Add(new WordData(word, _language, _difficulty));
+                        var definition = WordDictionary.Lookup(word);
+                        _wordDatabase.Add(new WordData(word, definition, _language, _difficulty));
                         break;
                     }
                 }

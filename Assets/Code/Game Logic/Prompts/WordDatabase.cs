@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Konfus.Utility.Extensions;
 using UnityEngine;
 
 namespace KeyboardDefense.Prompts
@@ -42,6 +43,8 @@ namespace KeyboardDefense.Prompts
 
         private void RefreshCache()
         {
+            if (words.IsNullOrEmpty()) return;
+            
             foreach (WordData word in words)
             {
                 _wordDict.TryAdd(word, word);

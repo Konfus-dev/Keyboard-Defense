@@ -7,12 +7,17 @@ namespace KeyboardDefense.Characters.Enemies
     public class Enemy : Character
     {
         private LineScanSensor _castleSensor;
-        private PromptGenerator _promptBinding;
+        private PromptGenerator _promptGenerator;
+
+        private void Awake()
+        {
+            _castleSensor = GetComponentInChildren<LineScanSensor>();
+            _promptGenerator = GetComponent<PromptGenerator>();
+        }
 
         private void Start()
         {
-            _castleSensor = GetComponentInChildren<LineScanSensor>();
-            _promptBinding = GetComponent<PromptGenerator>();
+            _promptGenerator.GeneratedPrompt.promptCompleted.AddListener(OnPromptCompleted);
         }
 
         private void FixedUpdate()
@@ -23,12 +28,12 @@ namespace KeyboardDefense.Characters.Enemies
             }
         }
 
-        public void OnPromptCompleted()
+        private void OnPromptCompleted()
         {
             Die();
         }
 
-        public void OnHitCastle()
+        private void OnHitCastle()
         {
             Attack();
         }

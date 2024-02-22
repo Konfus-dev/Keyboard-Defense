@@ -149,7 +149,19 @@ MonoBehaviour:
         m_CallState: 2
   onHurt:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4102992322195554107}
+        m_TargetAssemblyTypeName: KeyboardDefense.Characters.SplineMovement, KeyboardDefense
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAttack:
     m_PersistentCalls:
       m_Calls:
@@ -218,8 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082f69ce509a2c649bb4697c6879d258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objToBindTo: {fileID: 2619139106308706806}
-  followOffset: {x: 0, y: 100}
+  promptToGenerateDifficulty: 0
+  objForGeneratedPromptToFollow: {fileID: 2619139106308706806}
+  generatedPromptFollowOffset: {x: 0, y: 100}
 --- !u!1 &3021279267829184605
 GameObject:
   m_ObjectHideFlags: 0

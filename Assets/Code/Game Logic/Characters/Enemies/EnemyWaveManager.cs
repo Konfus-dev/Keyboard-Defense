@@ -2,25 +2,29 @@ using System.Collections;
 using KeyboardDefense.Spawning;
 using Konfus.Utility.Design_Patterns;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace KeyboardDefense.Characters.Enemies
 {
+    // TODO: make this more intelligent!
+    // i.e. keeps track of spawned enemies, when they are all dead there will be a countdown till next wave...
+    // and have the settings are configured based on difficulty, stuff like that
     public class EnemyWaveManager : Singleton<EnemyWaveManager>
     {
-        [SerializeField]
-        private float firstWaveSpawnDelay = 0f; // Time till we spawn our first wave
-        [SerializeField]
-        private float waveInterval = 10f; // Time between waves
-        [SerializeField]
-        private float waveIntervalDecreaseRate = 0.1f; // Rate at which the wave interval decreases
-        [SerializeField]
-        private float enemySpawnInterval = 1f; // Time between spawning enemies
-        [SerializeField]
-        private int enemiesPerWave = 5; // Number of enemies per wave
-        [SerializeField]
-        private int enemiesIncreasePerWave = 2; // Number of enemies added per wave
-        [SerializeField]
-        private float waveIntervalMinimum = 2f; // Minimum time between waves
+        [SerializeField, Tooltip("Time till we spawn our first wave")]
+        private float firstWaveSpawnDelay = 0f;
+        [SerializeField, Tooltip("Starting time between waves in seconds")]
+        private float startingTimeBetweenWaves = 10f;
+        [SerializeField, Tooltip("Decrease of wave interval in seconds")]
+        private float timeBetweenWavesDecreaseRatePerWave = 0.1f;
+        [SerializeField, Tooltip("Minimum time between waves")]
+        private float waveIntervalMinimum = 2f; 
+        [SerializeField, Tooltip("Time between spawning enemies in seconds")]
+        private float enemySpawnInterval = 1f;
+        [SerializeField, Tooltip("Starting number of enemies per wave")]
+        private int startingWaveEnemyCount = 5;
+        [SerializeField, Tooltip("Number of enemies added per wave")]
+        private int increaseInEnemiesPerWave = 2;
 
         private float _nextWaveTime; // Time for next wave
         private int _currentWave = 1; // Current wave number
@@ -35,7 +39,7 @@ namespace KeyboardDefense.Characters.Enemies
             if (Time.time >= _nextWaveTime)
             {
                 StartWave();
-                _nextWaveTime = Time.time + waveInterval;
+                _nextWaveTime = Time.time + startingTimeBetweenWaves;
                 DecreaseWaveInterval();
                 IncreaseEnemySpawnCount();
             }
@@ -54,7 +58,7 @@ namespace KeyboardDefense.Characters.Enemies
 
         private IEnumerator SpawnEnemies()
         {
-            for (int i = 0; i < enemiesPerWave; i++)
+            for (int i = 0; i < startingWaveEnemyCount; i++)
             {
                 Spawner.Instance.RandomSpawn();
                 yield return new WaitForSeconds(enemySpawnInterval);
@@ -63,16 +67,16 @@ namespace KeyboardDefense.Characters.Enemies
 
         private void IncreaseEnemySpawnCount()
         {
-            enemiesPerWave += enemiesIncreasePerWave;
+            startingWaveEnemyCount += increaseInEnemiesPerWave;
         }
 
         private void DecreaseWaveInterval()
         {
             // Decrease wave interval over time
-            waveInterval -= waveIntervalDecreaseRate;
+            startingTimeBetweenWaves -= timeBetweenWavesDecreaseRatePerWave;
 
             // Ensure wave interval doesn't go below minimum value
-            waveInterval = Mathf.Max(waveInterval, waveIntervalMinimum);
+            startingTimeBetweenWaves = Mathf.Max(startingTimeBetweenWaves, waveIntervalMinimum);
         }
     }
 }

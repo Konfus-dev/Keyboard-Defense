@@ -23,9 +23,19 @@ namespace KeyboardDefense.UI
             followOffset = offset;
         }
         
+        public GameObject GetObjectToFollow()
+        {
+            return objToFollow;
+        }
+
+        public Vector2 GetFollowOffset()
+        {
+            return followOffset;
+        }
+        
         private void Start()
         {
-            _camera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
+            _camera = Camera.main;
             _rt = GetComponent<RectTransform> ();
         }
      

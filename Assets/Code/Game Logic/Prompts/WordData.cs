@@ -1,22 +1,28 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace KeyboardDefense.Prompts
 {
     [Serializable]
     public struct WordData : IEquatable<WordData>
     {
-        public WordData(string word, PlayerSettings.Switch.Languages wordLanguage, PromptDifficulty difficulty)
+        public WordData(string word, string def, PlayerSettings.Switch.Languages wordLanguage, PromptDifficulty difficulty)
         {
-            value = word;
+            this.word = word;
+            definition = def;
             language = wordLanguage;
             this.difficulty = difficulty;
         }
 
-        [SerializeField]
-        private string value;
-        public string Value => value;
+        [FormerlySerializedAs("value")] [SerializeField]
+        private string word;
+        public string Word => word;
+        
+        [SerializeField] 
+        private string definition;
+        public string Definition => definition; 
 
         [SerializeField] 
         private PlayerSettings.Switch.Languages language;
@@ -28,7 +34,7 @@ namespace KeyboardDefense.Prompts
         
         public bool Equals(WordData other)
         {
-            return value == other.value && difficulty == other.difficulty;
+            return word == other.word && difficulty == other.difficulty;
         }
 
         public override bool Equals(object obj)
@@ -38,12 +44,12 @@ namespace KeyboardDefense.Prompts
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(value, difficulty);
+            return HashCode.Combine(word, difficulty);
         }
         
         public override string ToString()
         {
-            return value;
+            return word;
         }
         
         public static implicit operator string(WordData wordData)

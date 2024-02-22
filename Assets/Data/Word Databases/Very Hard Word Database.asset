@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8154c67bfc140db854aed8e9abaa3d3, type: 3}
+  m_Name: Very Hard Word Database
+  m_EditorClassIdentifier: 
+  words:
+  - word: differentiation
+    definition: 'differentiation: the act or process of differentiating, development
+      from the one to the many, the simple to the complex, or the homogeneous to
+      the heterogeneous, modification of body parts for performance of particular
+      functions'
+    language: 0
+    difficulty: 3
+  - word: notwithstanding
+    definition: "notwithstanding: despite \u2014often used after its object"
+    language: 0
+    difficulty: 3
+  - word: straightforward
+    definition: 'straightforward: free from evasiveness or obscurity : exact, candid,
+      clear-cut, precise, proceeding in a straight course or manner : direct, undeviating'
+    language: 0
+    difficulty: 3

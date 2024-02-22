@@ -1,0 +1,984 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8154c67bfc140db854aed8e9abaa3d3, type: 3}
+  m_Name: Hard Word Database
+  m_EditorClassIdentifier: 
+  words:
+  - word: assessment
+    definition: 'assessment: the action or an instance of making a judgment about
+      something : the act of assessing something : appraisal, the amount assessed
+      : an amount that a person is officially required to pay especially as a tax'
+    language: 0
+    difficulty: 2
+  - word: consistent
+    definition: "consistent: marked by harmony, regularity, or steady continuity
+      : free from variation or contradiction, marked by agreement : compatible \u2014usually
+      used with with, showing steady conformity to character, profession, belief,
+      or custom"
+    language: 0
+    difficulty: 2
+  - word: constitutional
+    definition: 'constitutional: relating to, inherent in, or affecting the constitution
+      of body or mind, of, relating to, or entering into the fundamental makeup of
+      something : essential, being in accordance with or authorized by the constitution
+      of a state or society'
+    language: 0
+    difficulty: 2
+  - word: definition
+    definition: 'definition: a statement of the meaning of a word or word group or
+      a sign or symbol, a statement expressing the essential nature of something,
+      a product of defining'
+    language: 0
+    difficulty: 2
+  - word: distribution
+    definition: 'distribution: the act or process of distributing, the act or process
+      of apportioning by a court the personal property of an intestate, the position,
+      arrangement, or frequency of occurrence (as of the members of a group) over
+      an area or throughout a space or unit of time'
+    language: 0
+    difficulty: 2
+  - word: environment
+    definition: 'environment: the circumstances, objects, or conditions by which
+      one is surrounded, the complex of physical, chemical, and biotic factors (such
+      as climate, soil, and living things) that act upon an organism or an ecological
+      community and ultimately determine its form and survival, the aggregate of
+      social and cultural conditions that influence the life of an individual or
+      community'
+    language: 0
+    difficulty: 2
+  - word: established
+    definition: 'established: accepted and recognized or followed by many people,
+      successful for a long period of time and widely known, growing or flourishing
+      successfully'
+    language: 0
+    difficulty: 2
+  - word: identified
+    definition: 'identified: to perceive or state the identity of (someone or something),
+      to ascertain the identity of (someone or something that is unfamiliar or unknown),
+      to determine the taxonomic position or category of (a biological specimen)'
+    language: 0
+    difficulty: 2
+  - word: individual
+    definition: 'individual: of, relating to, or distinctively associated with an
+      individual, intended for one person, being an individual or existing as an
+      indivisible whole'
+    language: 0
+    difficulty: 2
+  - word: interpretation
+    definition: 'interpretation: the act or the result of interpreting : explanation,
+      a particular adaptation or version of a work, method, or style, a teaching
+      technique that combines factual with stimulating explanatory information'
+    language: 0
+    difficulty: 2
+  - word: legislation
+    definition: 'legislation: the action of legislating; specifically : the exercise
+      of the power and function of making rules (such as laws) that have the force
+      of authority by virtue of their promulgation by an official organ of a state
+      or other organization, the enactments of a legislator or a legislative body,
+      a matter of business for or under consideration by a legislative body'
+    language: 0
+    difficulty: 2
+  - word: significant
+    definition: 'significant: having meaning; especially : suggestive, having or
+      likely to have influence or effect : important; also : of a noticeably or measurably
+      large amount, probably caused by something other than mere chance'
+    language: 0
+    difficulty: 2
+  - word: acquisition
+    definition: 'acquisition: the act of acquiring something, something or someone
+      acquired or gained'
+    language: 0
+    difficulty: 2
+  - word: administration
+    definition: 'administration: performance of executive duties : management, the
+      act or process of administering something, the execution of public affairs
+      as distinguished from policymaking'
+    language: 0
+    difficulty: 2
+  - word: appropriate
+    definition: 'appropriate: especially suitable or compatible : fitting'
+    language: 0
+    difficulty: 2
+  - word: assistance
+    definition: 'assistance: the act of helping or assisting someone or the help
+      supplied : aid'
+    language: 0
+    difficulty: 2
+  - word: categories
+    definition: 'categories: any of several fundamental and distinct classes to which
+      entities or concepts belong, a division within a system of classification'
+    language: 0
+    difficulty: 2
+  - word: commission
+    definition: 'commission: a formal written warrant granting the power to perform
+      various acts or duties, a certificate conferring military rank and authority;
+      also : the rank and authority so conferred, an authorization or command to
+      act in a prescribed manner or to perform prescribed acts : charge'
+    language: 0
+    difficulty: 2
+  - word: conclusion
+    definition: 'conclusion: a reasoned judgment : inference, the necessary consequence
+      of two or more propositions taken as premises; especially : the inferred proposition
+      of a syllogism, the last part of something : such as'
+    language: 0
+    difficulty: 2
+  - word: consequences
+    definition: 'consequences: a conclusion derived through logic : inference, something
+      produced by a cause or necessarily following from a set of conditions, importance
+      with respect to power to produce an effect'
+    language: 0
+    difficulty: 2
+  - word: construction
+    definition: 'construction: the act or result of construing, interpreting, or
+      explaining, the process, art, or manner of constructing something; also : a
+      thing constructed, the construction industry'
+    language: 0
+    difficulty: 2
+  - word: distinction
+    definition: 'distinction: the act of perceiving someone or something as being
+      not the same and often treating as separate or different : the distinguishing
+      of a difference; also : the difference distinguished, something that distinguishes,
+      the quality or state of being distinguishable'
+    language: 0
+    difficulty: 2
+  - word: evaluation
+    definition: 'evaluation: the act or result of evaluating : determination of the
+      value, nature, character, or quality of something or someone'
+    language: 0
+    difficulty: 2
+  - word: investment
+    definition: 'investment: the outlay of money usually for income or profit : capital
+      outlay; also : the sum invested or the property purchased'
+    language: 0
+    difficulty: 2
+  - word: maintenance
+    definition: 'maintenance: the act of maintaining : the state of being maintained
+      : support, something that maintains, the upkeep of property or equipment'
+    language: 0
+    difficulty: 2
+  - word: participation
+    definition: 'participation: the act of participating'
+    language: 0
+    difficulty: 2
+  - word: regulations
+    definition: 'regulations: the act of regulating : the state of being regulated,
+      an authoritative rule dealing with details or procedure, a rule or order issued
+      by an executive authority or regulatory agency of a government and having the
+      force of law'
+    language: 0
+    difficulty: 2
+  - word: restricted
+    definition: 'restricted: subject or subjected to restriction: such as, not general
+      : limited, available to the use of particular groups or specifically excluding
+      others'
+    language: 0
+    difficulty: 2
+  - word: strategies
+    definition: 'strategies: the science and art of employing the political, economic,
+      psychological, and military forces of a nation or group of nations to afford
+      the maximum support to adopted policies in peace or war, the science and art
+      of military command exercised to meet the enemy in combat under advantageous
+      conditions, a variety of or instance of the use of strategy'
+    language: 0
+    difficulty: 2
+  - word: traditional
+    definition: 'traditional: of or relating to tradition : consisting of or derived
+      from tradition, handed down from age to age, following or conforming to tradition
+      : adhering to past practices or established conventions'
+    language: 0
+    difficulty: 2
+  - word: alternative
+    definition: 'alternative: offering or expressing a choice, different from the
+      usual or conventional: such as, existing or functioning outside the established
+      cultural, social, or economic system'
+    language: 0
+    difficulty: 2
+  - word: circumstances
+    definition: 'circumstances: a condition, fact, or event accompanying, conditioning,
+      or determining another : an essential or inevitable concomitant, a subordinate
+      or accessory fact or detail, a piece of evidence that indicates the probability
+      or improbability of an event (such as a crime)'
+    language: 0
+    difficulty: 2
+  - word: compensation
+    definition: 'compensation: the act of compensating : the state of being compensated,
+      correction of an organic defect or loss by hypertrophy or by increased functioning
+      of another organ or unimpaired parts of the same organ, a psychological mechanism
+      by which feelings of inferiority, frustration, or failure in one field are
+      counterbalanced by achievement in another'
+    language: 0
+    difficulty: 2
+  - word: components
+    definition: 'components: a constituent part : ingredient, any one of the vector
+      terms added to form a vector sum or resultant, a coordinate of a vector; also
+      : either member of an ordered pair of numbers'
+    language: 0
+    difficulty: 2
+  - word: considerable
+    definition: 'considerable: worth consideration : significant, large in extent
+      or degree'
+    language: 0
+    difficulty: 2
+  - word: constraints
+    definition: 'constraints: the act of constraining, the state of being checked,
+      restricted, or compelled to avoid or perform some action, a constraining condition,
+      agency, or force : check'
+    language: 0
+    difficulty: 2
+  - word: contribution
+    definition: 'contribution: the act of contributing: such as, the giving or supplying
+      of something (such as money or time) as a part or share, the giving or supplying
+      of something that plays a significant part in making something happen'
+    language: 0
+    difficulty: 2
+  - word: convention
+    definition: 'convention: agreement, contract, an agreement between states for
+      regulation of matters affecting all of them, a compact between opposing commanders
+      especially concerning prisoner exchange or armistice'
+    language: 0
+    difficulty: 2
+  - word: coordination
+    definition: 'coordination: the process of organizing people or groups so that
+      they work together properly and well, the harmonious functioning of parts for
+      effective results'
+    language: 0
+    difficulty: 2
+  - word: corresponding
+    definition: 'corresponding: having or participating in the same relationship
+      (such as kind, degree, position, correspondence, or function) especially with
+      regard to the same or like wholes (such as geometric figures or sets), related,
+      accompanying, charged with the duty of writing letters'
+    language: 0
+    difficulty: 2
+  - word: demonstrate
+    definition: 'demonstrate: to show clearly, to prove or make clear by reasoning
+      or evidence, to illustrate and explain especially with many examples'
+    language: 0
+    difficulty: 2
+  - word: illustrated
+    definition: 'illustrated: to provide with visual features intended to explain
+      or decorate, to make clear by giving or by serving as an example or instance,
+      to make clear : clarify'
+    language: 0
+    difficulty: 2
+  - word: immigration
+    definition: 'immigration: an act or instance of immigrating; specifically : travel
+      into a country for the purpose of permanent residence there'
+    language: 0
+    difficulty: 2
+  - word: interaction
+    definition: 'interaction: mutual or reciprocal action or influence'
+    language: 0
+    difficulty: 2
+  - word: justification
+    definition: 'justification: the act or an instance of justifying something :
+      vindication, an acceptable reason for doing something : something that justifies
+      an act or way of behaving, the act, process, or state of being justified by
+      God'
+    language: 0
+    difficulty: 2
+  - word: minorities
+    definition: "minorities: the smaller in number of two groups constituting a whole
+      : a number or percentage equaling less than half of a total, the smaller quantity
+      or share, the group or political party having the smaller number of votes \u2014often
+      used before another noun"
+    language: 0
+    difficulty: 2
+  - word: partnership
+    definition: 'partnership: the state of being a partner : participation, a legal
+      relation existing between two or more persons contractually associated as joint
+      principals in a business, the persons joined together in a partnership'
+    language: 0
+    difficulty: 2
+  - word: philosophy
+    definition: 'philosophy: all learning exclusive of technical precepts and practical
+      arts, the sciences and liberal arts exclusive of medicine, law, and theology,
+      the 4-year college course of a major seminary'
+    language: 0
+    difficulty: 2
+  - word: proportion
+    definition: 'proportion: harmonious relation of parts to each other or to the
+      whole : balance, symmetry, proper or equal share, quota, percentage'
+    language: 0
+    difficulty: 2
+  - word: registered
+    definition: 'registered: having the owner''s name entered in a register, recorded
+      as the owner of a security, recorded on the basis of pedigree or breed characteristics
+      in the stud book of a breed association'
+    language: 0
+    difficulty: 2
+  - word: sufficient
+    definition: 'sufficient: enough to meet the needs of a situation or a proposed
+      end, being a sufficient condition, qualified, competent'
+    language: 0
+    difficulty: 2
+  - word: techniques
+    definition: 'techniques: the manner in which technical details are treated (as
+      by a writer) or basic physical movements are used (as by a dancer); also :
+      ability to treat such details or use such movements, a body of technical methods
+      (as in a craft or in scientific research), a method of accomplishing a desired
+      aim'
+    language: 0
+    difficulty: 2
+  - word: technology
+    definition: 'technology: the practical application of knowledge especially in
+      a particular area : engineering, a capability given by the practical application
+      of knowledge, a manner of accomplishing a task especially using technical processes,
+      methods, or knowledge'
+    language: 0
+    difficulty: 2
+  - word: approximated
+    definition: 'approximated: to come near to or be close to (something), to bring
+      near or close, to bring (cut edges of tissue) together'
+    language: 0
+    difficulty: 2
+  - word: attributed
+    definition: 'attributed: to explain (something) by indicating a cause, to regard
+      as a characteristic of a person or thing, to reckon as made or originated in
+      an indicated fashion'
+    language: 0
+    difficulty: 2
+  - word: commitment
+    definition: 'commitment: an agreement or pledge to do something in the future;
+      especially : an engagement to assume a financial obligation at a future date,
+      something pledged, the state or an instance of being obligated or emotionally
+      impelled'
+    language: 0
+    difficulty: 2
+  - word: communication
+    definition: 'communication: a process by which information is exchanged between
+      individuals through a common system of symbols, signs, or behavior; also :
+      exchange of information, personal rapport, information communicated : information
+      transmitted or conveyed'
+    language: 0
+    difficulty: 2
+  - word: concentration
+    definition: 'concentration: the act or process of concentrating : the state of
+      being concentrated; especially : direction of attention to a single object,
+      an academic major or area of focus within a major, a concentrated mass or thing'
+    language: 0
+    difficulty: 2
+  - word: conference
+    definition: 'conference: a meeting of two or more persons for discussing matters
+      of common concern, a usually formal interchange of views : consultation, a
+      meeting of members of the two branches of a legislature to adjust differences'
+    language: 0
+    difficulty: 2
+  - word: dimensions
+    definition: 'dimensions: measure in one direction; specifically : one of three
+      coordinates determining a position in space or four coordinates determining
+      a position in space and time, one of a group of properties whose number is
+      necessary and sufficient to determine uniquely each element of a system of
+      usually mathematical entities (such as an aggregate of points in real or abstract
+      space); also : a parameter or coordinate variable assigned to such a property,
+      the number of elements in a basis of a vector space'
+    language: 0
+    difficulty: 2
+  - word: hypothesis
+    definition: 'hypothesis: an assumption or concession made for the sake of argument,
+      an interpretation of a practical situation or condition taken as the ground
+      for action, a tentative assumption made in order to draw out and test its logical
+      or empirical consequences'
+    language: 0
+    difficulty: 2
+  - word: implementation
+    definition: 'implementation: an act or instance of implementing something : the
+      process of making something active or effective'
+    language: 0
+    difficulty: 2
+  - word: implications
+    definition: 'implications: something implied: such as, a possible significance,
+      suggestion'
+    language: 0
+    difficulty: 2
+  - word: integration
+    definition: "integration: the act or process or an instance of integrating :
+      such as, incorporation as equals into society or an organization of individuals
+      of different groups \u2014often used with into, coordination of mental processes
+      into a normal effective personality or with the environment"
+    language: 0
+    difficulty: 2
+  - word: investigation
+    definition: 'investigation: to observe or study by close examination and systematic
+      inquiry, to make a systematic examination; especially : to conduct an official
+      inquiry'
+    language: 0
+    difficulty: 2
+  - word: occupational
+    definition: 'occupational: of or relating to a job or occupation, relating to
+      or engaged in the military occupation of a country'
+    language: 0
+    difficulty: 2
+  - word: parameters
+    definition: 'parameters: an arbitrary constant whose value characterizes a member
+      of a system (such as a family of curves); also : a quantity (such as a mean
+      or variance) that describes a statistical population, an independent variable
+      used to express the coordinates of a variable point and functions of them,
+      any of a set of physical properties whose values determine the characteristics
+      or behavior of something'
+    language: 0
+    difficulty: 2
+  - word: professional
+    definition: 'professional: of, relating to, or characteristic of a profession,
+      engaged in one of the learned professions, characterized by or conforming to
+      the technical or ethical standards of a profession'
+    language: 0
+    difficulty: 2
+  - word: resolution
+    definition: 'resolution: the act or process of resolving: such as, the act of
+      analyzing a complex notion into simpler ones, the act of answering : solving'
+    language: 0
+    difficulty: 2
+  - word: statistics
+    definition: 'statistics: a branch of mathematics dealing with the collection,
+      analysis, interpretation, and presentation of masses of numerical data, a collection
+      of quantitative data'
+    language: 0
+    difficulty: 2
+  - word: subsequent
+    definition: 'subsequent: following in time, order, or place'
+    language: 0
+    difficulty: 2
+  - word: undertaken
+    definition: 'undertaken: to take upon oneself : set about : attempt, to put oneself
+      under obligation to perform; also : to accept as a charge or responsibility,
+      guarantee, promise'
+    language: 0
+    difficulty: 2
+  - word: adjustment
+    definition: 'adjustment: the act or process of adjusting, a settlement of a claim
+      or debt in a case in which the amount involved is uncertain or full payment
+      is not made, the state of being adjusted'
+    language: 0
+    difficulty: 2
+  - word: consultation
+    definition: 'consultation: council, conference; specifically : a deliberation
+      between physicians on a case or its treatment, the act of consulting or conferring'
+    language: 0
+    difficulty: 2
+  - word: discretion
+    definition: 'discretion: individual choice or judgment, power of free decision
+      or latitude of choice within certain legal bounds, the quality of having or
+      showing discernment or good judgment : the quality of being discreet : circumspection;
+      especially : cautious reserve in speech'
+    language: 0
+    difficulty: 2
+  - word: enforcement
+    definition: 'enforcement: to give force to : strengthen, to urge with energy,
+      constrain, compel'
+    language: 0
+    difficulty: 2
+  - word: equivalent
+    definition: 'equivalent: equal in force, amount, or value; also : equal in area
+      or volume but not superposable, like in signification or import, having logical
+      equivalence'
+    language: 0
+    difficulty: 2
+  - word: facilitate
+    definition: 'facilitate: to make (something) easier : such as, to help bring
+      (something) about, to help (something, such as a discussion) run more smoothly
+      and effectively'
+    language: 0
+    difficulty: 2
+  - word: fundamental
+    definition: 'fundamental: serving as a basis supporting existence or determining
+      essential structure or function : basic, serving as an original or generating
+      source : primary, of or relating to essential structure, function, or facts
+      : radical; also : of or dealing with general principles rather than practical
+      application'
+    language: 0
+    difficulty: 2
+  - word: generation
+    definition: 'generation: a body of living beings constituting a single step in
+      the line of descent from an ancestor, a group of individuals born and living
+      contemporaneously, a group of individuals having contemporaneously a status
+      (such as that of students in a school) which each one holds only for a limited
+      period'
+    language: 0
+    difficulty: 2
+  - word: monitoring
+    definition: 'monitoring: to watch, keep track of, or check usually for a special
+      purpose'
+    language: 0
+    difficulty: 2
+  - word: orientation
+    definition: 'orientation: the act or process of orienting or of being oriented,
+      the state of being oriented; broadly : arrangement, alignment, a usually general
+      or lasting direction of thought, inclination, or interest'
+    language: 0
+    difficulty: 2
+  - word: perspective
+    definition: 'perspective: a mental view or prospect, a visible scene; especially
+      : one giving a distinctive impression of distance : vista, the interrelation
+      in which a subject or its parts are mentally viewed; also : point of view'
+    language: 0
+    difficulty: 2
+  - word: psychology
+    definition: 'psychology: the science of mind and behavior, the mental or behavioral
+      characteristics of an individual or group, the study of mind and behavior in
+      relation to a particular field of knowledge or activity'
+    language: 0
+    difficulty: 2
+  - word: substitution
+    definition: 'substitution: the act, process, or result of substituting one thing
+      for another, replacement of one mathematical entity by another of equal value,
+      one that is substituted for another'
+    language: 0
+    difficulty: 2
+  - word: sustainable
+    definition: 'sustainable: capable of being sustained, of, relating to, or being
+      a method of harvesting or using a resource so that the resource is not depleted
+      or permanently damaged, of or relating to a lifestyle involving the use of
+      sustainable methods'
+    language: 0
+    difficulty: 2
+  - word: transition
+    definition: 'transition: a change or shift from one state, subject, place, etc.
+      to another, a period or phase in which such a change or shift is happening,
+      something that links one state, subject, place, etc. to another : a connecting
+      part or piece : such as'
+    language: 0
+    difficulty: 2
+  - word: acknowledged
+    definition: 'acknowledged: generally recognized, accepted, or admitted'
+    language: 0
+    difficulty: 2
+  - word: allocation
+    definition: 'allocation: to apportion for a specific purpose or to particular
+      persons or things : distribute, to set apart or earmark : designate'
+    language: 0
+    difficulty: 2
+  - word: cooperative
+    definition: 'cooperative: marked by cooperation, marked by a willingness and
+      ability to work with others, of, relating to, or organized as a cooperative'
+    language: 0
+    difficulty: 2
+  - word: discrimination
+    definition: 'discrimination: prejudiced or prejudicial outlook, action, or treatment,
+      the act, practice, or an instance of discriminating categorically rather than
+      individually, the quality or power of finely distinguishing'
+    language: 0
+    difficulty: 2
+  - word: flexibility
+    definition: 'flexibility: capable of being flexed : pliant, yielding to influence
+      : tractable, characterized by a ready capability to adapt to new, different,
+      or changing requirements'
+    language: 0
+    difficulty: 2
+  - word: furthermore
+    definition: 'furthermore: in addition to what precedes : besides'
+    language: 0
+    difficulty: 2
+  - word: incorporated
+    definition: 'incorporated: united in one body, formed into a legal corporation'
+    language: 0
+    difficulty: 2
+  - word: inhibition
+    definition: 'inhibition: an inner impediment to free activity, expression, or
+      functioning: such as, a mental process imposing restraint upon behavior or
+      another mental process (such as a desire), a restraining of the function of
+      a bodily organ or an agent (such as an enzyme)'
+    language: 0
+    difficulty: 2
+  - word: initiatives
+    definition: 'initiatives: an introductory step, energy or aptitude displayed
+      in initiation of action : enterprise, the right to initiate legislative action'
+    language: 0
+    difficulty: 2
+  - word: instructions
+    definition: "instructions: an outline or manual of technical procedure : directions,
+      a direction calling for compliance : order \u2014usually used in plural, a
+      code that tells a computer to perform a particular operation"
+    language: 0
+    difficulty: 2
+  - word: intelligence
+    definition: 'intelligence: the ability to learn or understand or to deal with
+      new or trying situations : reason; also : the skilled use of reason, the ability
+      to apply knowledge to manipulate one''s environment or to think abstractly
+      as measured by objective criteria (such as tests), mental acuteness : shrewdness'
+    language: 0
+    difficulty: 2
+  - word: motivation
+    definition: 'motivation: the act or process of motivating, the condition of being
+      motivated, a motivating force, stimulus, or influence : incentive, drive'
+    language: 0
+    difficulty: 2
+  - word: nevertheless
+    definition: 'nevertheless: in spite of that : however'
+    language: 0
+    difficulty: 2
+  - word: presumption
+    definition: 'presumption: presumptuous attitude or conduct : audacity, an attitude
+      or belief dictated by probability : assumption, the ground, reason, or evidence
+      lending probability to a belief'
+    language: 0
+    difficulty: 2
+  - word: subsidiary
+    definition: 'subsidiary: furnishing aid or support : auxiliary, of secondary
+      importance, of, relating to, or constituting a subsidy'
+    language: 0
+    difficulty: 2
+  - word: transformation
+    definition: 'transformation: an act, process, or instance of transforming or
+      being transformed, false hair worn especially by a woman to replace or supplement
+      natural hair, the operation of changing (as by rotation or mapping) one configuration
+      or expression into another in accordance with a mathematical rule; especially
+      : a change of variables or coordinates in which a function of new variables
+      or coordinates is substituted for each original variable or coordinate'
+    language: 0
+    difficulty: 2
+  - word: underlying
+    definition: 'underlying: lying beneath or below, basic, fundamental, evident
+      only on close inspection : implicit'
+    language: 0
+    difficulty: 2
+  - word: adaptation
+    definition: 'adaptation: something that is adapted; specifically : a composition
+      rewritten into a new form, the act or process of adapting : the state of being
+      adapted, adjustment to environmental conditions: such as'
+    language: 0
+    difficulty: 2
+  - word: comprehensive
+    definition: 'comprehensive: covering completely or broadly : inclusive, having
+      or exhibiting wide mental grasp'
+    language: 0
+    difficulty: 2
+  - word: differentiation
+    definition: 'differentiation: the act or process of differentiating, development
+      from the one to the many, the simple to the complex, or the homogeneous to
+      the heterogeneous, modification of body parts for performance of particular
+      functions'
+    language: 0
+    difficulty: 2
+  - word: foundation
+    definition: 'foundation: the act of founding, a basis (such as a tenet, principle,
+      or axiom) upon which something stands or is supported, funds given for the
+      permanent support of an institution : endowment'
+    language: 0
+    difficulty: 2
+  - word: hierarchical
+    definition: 'hierarchical: of, relating to, or arranged in a hierarchy'
+    language: 0
+    difficulty: 2
+  - word: innovation
+    definition: 'innovation: a new idea, method, or device : novelty, the introduction
+      of something new'
+    language: 0
+    difficulty: 2
+  - word: intervention
+    definition: 'intervention: the act or an instance of intervening : such as, the
+      act of interfering with the outcome or course especially of a condition or
+      process (as to prevent harm or improve functioning), the interference of a
+      country in the affairs of another country for the purpose of compelling it
+      to do or forbear doing certain acts'
+    language: 0
+    difficulty: 2
+  - word: phenomenon
+    definition: 'phenomenon: an observable fact or event, an object or aspect known
+      through the senses rather than by thought or intuition, a temporal or spatiotemporal
+      object of sensory experience as distinguished from a noumenon'
+    language: 0
+    difficulty: 2
+  - word: prohibited
+    definition: 'prohibited: not permitted : forbidden by authority'
+    language: 0
+    difficulty: 2
+  - word: publication
+    definition: 'publication: the act or process of publishing, a published work'
+    language: 0
+    difficulty: 2
+  - word: simulation
+    definition: 'simulation: the act or process of simulating, a sham object : counterfeit,
+      the imitative representation of the functioning of one system or process by
+      means of the functioning of another'
+    language: 0
+    difficulty: 2
+  - word: successive
+    definition: 'successive: following in order : following each other without interruption,
+      characterized by or produced in succession'
+    language: 0
+    difficulty: 2
+  - word: transmission
+    definition: 'transmission: an act, process, or instance of transmitting, the
+      passage of radio waves in the space between transmitting and receiving stations;
+      also : the act or process of transmitting by radio or television, an assembly
+      of parts including the speed-changing gears and the driveshaft by which the
+      power is transmitted from an engine to a live axle; also : the speed-changing
+      gears in such an assembly'
+    language: 0
+    difficulty: 2
+  - word: ultimately
+    definition: 'ultimately: in the end : fundamentally, eventually'
+    language: 0
+    difficulty: 2
+  - word: accompanied
+    definition: 'accompanied: to go with as an associate or companion, to perform
+      an accompaniment to or for, to cause to be in association'
+    language: 0
+    difficulty: 2
+  - word: accumulation
+    definition: 'accumulation: something that has accumulated or has been accumulated,
+      the action or process of accumulating something : the state of being or having
+      accumulated, increase or growth by addition especially when continuous or repeated'
+    language: 0
+    difficulty: 2
+  - word: appreciation
+    definition: 'appreciation: a feeling or expression of admiration, approval, or
+      gratitude, judgment, evaluation; especially : a favorable critical estimate,
+      sensitive awareness; especially : recognition of aesthetic values'
+    language: 0
+    difficulty: 2
+  - word: automatically
+    definition: 'automatically: largely or wholly involuntary; especially : reflex,
+      acting or done spontaneously or unconsciously, done or produced as if by machine
+      : mechanical'
+    language: 0
+    difficulty: 2
+  - word: conformity
+    definition: 'conformity: correspondence in form, manner, or character : agreement,
+      an act or instance of conforming, action in accordance with some specified
+      standard or authority'
+    language: 0
+    difficulty: 2
+  - word: complement
+    definition: 'complement: something that fills up, completes, or makes better
+      or perfect, the full quantity, number, or assortment needed or included, the
+      whole force or personnel of a ship'
+    language: 0
+    difficulty: 2
+  - word: contemporary
+    definition: 'contemporary: marked by characteristics of the present period :
+      modern, current, simultaneous, happening, existing, living, or coming into
+      being during the same period of time'
+    language: 0
+    difficulty: 2
+  - word: contradiction
+    definition: 'contradiction: act or an instance of contradicting, a proposition,
+      statement, or phrase that asserts or implies both the truth and falsity of
+      something, a statement or phrase whose parts contradict each other'
+    language: 0
+    difficulty: 2
+  - word: displacement
+    definition: 'displacement: the act or process of displacing : the state of being
+      displaced, the volume or weight of a fluid (such as water) displaced by a floating
+      body (such as a ship) of equal weight, the difference between the initial position
+      of something (such as a body or geometric figure) and any later position'
+    language: 0
+    difficulty: 2
+  - word: eventually
+    definition: 'eventually: at an unspecified later time : in the end'
+    language: 0
+    difficulty: 2
+  - word: exploitation
+    definition: 'exploitation: an act or instance of exploiting'
+    language: 0
+    difficulty: 2
+  - word: fluctuations
+    definition: 'fluctuations: an act or instance of fluctuating : an irregular shifting
+      back and forth or up and down in the level, strength, or value of something'
+    language: 0
+    difficulty: 2
+  - word: guidelines
+    definition: 'guidelines: a line by which one is guided: such as, a cord or rope
+      to aid a passer over a difficult point or to permit retracing a course, an
+      indication or outline of policy or conduct'
+    language: 0
+    difficulty: 2
+  - word: highlighted
+    definition: 'highlighted: to throw a strong light on, to center attention on
+      : emphasize, stress, to constitute a significant or especially interesting
+      part of : to constitute a highlight of'
+    language: 0
+    difficulty: 2
+  - word: inevitably
+    definition: 'inevitably: in an inevitable way, as is to be expected'
+    language: 0
+    difficulty: 2
+  - word: infrastructure
+    definition: 'infrastructure: the system of public works of a country, state,
+      or region; also : the resources (such as personnel, buildings, or equipment)
+      required for an activity, the underlying foundation or basic framework (as
+      of a system or organization), the permanent installations required for military
+      purposes'
+    language: 0
+    difficulty: 2
+  - word: inspection
+    definition: 'inspection: the act of inspecting, recognition of a familiar pattern
+      leading to immediate solution of a mathematical problem, a checking or testing
+      of an individual against established standards'
+    language: 0
+    difficulty: 2
+  - word: manipulation
+    definition: 'manipulation: to treat or operate with or as if with the hands or
+      by mechanical means especially in a skillful manner, to manage or utilize skillfully,
+      to control or play upon by artful, unfair, or insidious means especially to
+      one''s own advantage'
+    language: 0
+    difficulty: 2
+  - word: practitioners
+    definition: 'practitioners: one who practices; especially : one who practices
+      a profession, an authorized healer'
+    language: 0
+    difficulty: 2
+  - word: predominantly
+    definition: 'predominantly: for the most part : mainly'
+    language: 0
+    difficulty: 2
+  - word: reinforced
+    definition: 'reinforced: to strengthen by additional assistance, material, or
+      support : make stronger or more pronounced, to strengthen or increase by fresh
+      additions, to stimulate (a subject, such as an experimental animal) by reinforcement;
+      also : to encourage (a response) by reinforcement'
+    language: 0
+    difficulty: 2
+  - word: termination
+    definition: 'termination: end in time or existence : conclusion, the last part
+      of a word; especially : an inflectional ending, the act of terminating'
+    language: 0
+    difficulty: 2
+  - word: widespread
+    definition: 'widespread: widely diffused or prevalent, widely extended or spread
+      out'
+    language: 0
+    difficulty: 2
+  - word: accommodation
+    definition: "accommodation: something supplied for convenience or to satisfy
+      a need: such as, lodging, food, and services or traveling space and related
+      services \u2014usually used in plural, a public conveyance (such as a train)
+      that stops at all or nearly all points"
+    language: 0
+    difficulty: 2
+  - word: anticipated
+    definition: 'anticipated: expected or looked-forward to'
+    language: 0
+    difficulty: 2
+  - word: incompatible
+    definition: 'incompatible: not compatible: such as, incapable of association
+      or harmonious coexistence, unsuitable for use together because of undesirable
+      chemical or physiological effects'
+    language: 0
+    difficulty: 2
+  - word: concurrent
+    definition: 'concurrent: operating or occurring at the same time, running parallel,
+      convergent; specifically : meeting or intersecting in a point'
+    language: 0
+    difficulty: 2
+  - word: controversy
+    definition: 'controversy: a discussion marked especially by the expression of
+      opposing views : dispute, quarrel, strife'
+    language: 0
+    difficulty: 2
+  - word: conversely
+    definition: "conversely: in a contrasting or opposite way\u2014used to introduce
+      a statement that contrasts with a previous statement or presents a differing
+      interpretation or possibility"
+    language: 0
+    difficulty: 2
+  - word: diminished
+    definition: 'diminished: made one half step less than perfect or minor'
+    language: 0
+    difficulty: 2
+  - word: distortion
+    definition: 'distortion: the act of twisting or altering something out of its
+      true, natural, or original state : the act of distorting, the quality or state
+      of being distorted : a product of distorting: such as, a lack of proportionality
+      in an image resulting from defects in the optical system'
+    language: 0
+    difficulty: 2
+  - word: intermediate
+    definition: 'intermediate: being or occurring at the middle place, stage, or
+      degree or between extremes, of or relating to an intermediate school'
+    language: 0
+    difficulty: 2
+  - word: preliminary
+    definition: 'preliminary: coming before and usually forming a necessary prelude
+      to something else'
+    language: 0
+    difficulty: 2
+  - word: qualitative
+    definition: 'qualitative: of, relating to, or involving quality or kind'
+    language: 0
+    difficulty: 2
+  - word: restraints
+    definition: 'restraints: an act of restraining : the state of being restrained,
+      a means of restraining : a restraining force or influence, a device that restricts
+      movement'
+    language: 0
+    difficulty: 2
+  - word: revolution
+    definition: 'revolution: the action by a celestial body of going round in an
+      orbit or elliptical course; also : apparent movement of such a body round the
+      earth, the time taken by a celestial body to make a complete round in its orbit,
+      the rotation of a celestial body on its axis'
+    language: 0
+    difficulty: 2
+  - word: subordinate
+    definition: 'subordinate: placed in or occupying a lower class, rank, or position
+      : inferior, submissive to or controlled by authority, of, relating to, or constituting
+      a clause that functions as a noun, adjective, or adverb'
+    language: 0
+    difficulty: 2
+  - word: supplementary
+    definition: 'supplementary: added or serving as a supplement : additional, being
+      or relating to a supplement or a supplementary angle'
+    language: 0
+    difficulty: 2
+  - word: colleagues
+    definition: 'colleagues: an associate or coworker typically in a profession or
+      in a civil or ecclesiastical office and often of similar rank or status : a
+      fellow worker or professional'
+    language: 0
+    difficulty: 2
+  - word: depression
+    definition: 'depression: an act of depressing or a state of being depressed:
+      such as, a state of feeling sad : low spirits : melancholy; specifically :
+      a mood disorder that is marked by varying degrees of sadness, despair, and
+      loneliness and that is typically accompanied by inactivity, guilt, loss of
+      concentration, social withdrawal, sleep disturbances, and sometimes suicidal
+      tendencies, a reduction in activity, amount, quality, or force'
+    language: 0
+    difficulty: 2
+  - word: encountered
+    definition: 'encountered: to meet as an adversary or enemy, to engage in conflict
+      with, to come upon face-to-face'
+    language: 0
+    difficulty: 2
+  - word: forthcoming
+    definition: 'forthcoming: being about to appear or to be produced or made available,
+      responsive, outgoing, characterized by openness, candidness, and forthrightness'
+    language: 0
+    difficulty: 2
+  - word: inclination
+    definition: 'inclination: a tendency to a particular aspect, state, character,
+      or action, a deviation from the true vertical or horizontal : slant; also :
+      the degree of such deviation, an inclined surface : slope'
+    language: 0
+    difficulty: 2
+  - word: nonetheless
+    definition: 'nonetheless: in spite of what has just been said : nevertheless'
+    language: 0
+    difficulty: 2
+  - word: notwithstanding
+    definition: "notwithstanding: despite \u2014often used after its object"
+    language: 0
+    difficulty: 2
+  - word: persistent
+    definition: 'persistent: existing for a long or longer than usual time or continuously:
+      such as, retained beyond the usual period, continuing without change in function
+      or structure'
+    language: 0
+    difficulty: 2
+  - word: straightforward
+    definition: 'straightforward: free from evasiveness or obscurity : exact, candid,
+      clear-cut, precise, proceeding in a straight course or manner : direct, undeviating'
+    language: 0
+    difficulty: 2

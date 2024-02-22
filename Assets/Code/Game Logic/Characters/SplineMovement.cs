@@ -81,7 +81,7 @@ namespace KeyboardDefense.Characters
 
         private void GenerateRandomOffset()
         {
-            var randFollowPathOffset = new Vector3(Random.Range(-0.5f, 0.5f), 0, 0);
+            var randFollowPathOffset = new Vector3(Random.Range(-1.5f, 1.5f), 0, Random.Range(-0.5f, 0.5f));
             _offset = randFollowPathOffset;
         }
     }

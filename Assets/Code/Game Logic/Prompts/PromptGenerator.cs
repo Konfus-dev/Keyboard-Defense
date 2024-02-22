@@ -9,12 +9,17 @@ namespace KeyboardDefense.Prompts
     {
         private const string PROMPT_SPAWNPOOL_KEY = "Prompt";
         
+        [SerializeField]
+        private PromptDifficulty promptToGenerateDifficulty;
         [SerializeField] 
-        private GameObject objToBindTo;
+        private GameObject objForGeneratedPromptToFollow;
         [SerializeField] 
-        private Vector2 followOffset;
+        private Vector2 generatedPromptFollowOffset;
 
-        private PromptBinding _binding;
+        public Prompt GeneratedPrompt => _generatedPrompt;
+        
+        private Prompt _generatedPrompt;
+        private PromptUI _generatedPromptUI;
         
         private void OnEnable()
         {
@@ -23,20 +28,30 @@ namespace KeyboardDefense.Prompts
         
         private void OnDisable()
         {
-            if (_binding)
+            if (_generatedPromptUI)
             {
-                _binding.gameObject.SetActive(false);
+                _generatedPromptUI.gameObject.SetActive(false);
             }
         }
 
         private void GeneratePrompt()
         {
-            GameObject prompt = ObjectPoolManager.Instance
+            // Spawn prompt prefab
+            GameObject promptGo = ObjectPoolManager.Instance
                 .SpawnFromPool(PROMPT_SPAWNPOOL_KEY, transform.position, quaternion.identity);
-            _binding = prompt.GetComponent<PromptBinding>();
-            _binding.Reset();
-            _binding.SetObjToFollow(objToBindTo);
-            _binding.SetFollowOffset(followOffset);
+            
+            // Generate prompt
+            string promptStr = PromptManager.Instance.GeneratePrompt(promptToGenerateDifficulty);
+            _generatedPrompt = promptGo.GetComponent<Prompt>();
+            _generatedPrompt.Set(promptStr);
+            _generatedPromptUI = _generatedPrompt.GetComponent<PromptUI>();
+            _generatedPromptUI.SetPrompt(promptStr);
+            
+            // Tell prompt to follow the object we are configured to follow
+            var uiFollowObjectInWorld = _generatedPrompt.GetComponent<UIFollowObjectInWorld>();
+            uiFollowObjectInWorld.SetObjectToFollow(objForGeneratedPromptToFollow);
+            uiFollowObjectInWorld.SetFollowOffset(generatedPromptFollowOffset);
+            
         }
     }
 }

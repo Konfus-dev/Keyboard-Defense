@@ -72,17 +72,14 @@ namespace KeyboardDefense.Characters
         protected void Die()
         {
             if (_runningState == State.Dead) return;
+            StartCoroutine(HurtRoutine());
             StartCoroutine(DieRoutine());
         }
         
-        protected virtual void OnSpawn() 
+        private void OnSpawn() 
         { 
             _currentHealth = stats.Health;
             SetState(State.Moving);
-        }
-        
-        protected virtual void OnDie() 
-        { 
         }
 
         private void OnEnable()
@@ -145,8 +142,7 @@ namespace KeyboardDefense.Characters
             _runningState = State.Dead;
             yield return new WaitForSeconds(0.5f);
             onDie.Invoke();
-            OnDie();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         private IEnumerator SpawnInvulnerabilityTimerRoutine()

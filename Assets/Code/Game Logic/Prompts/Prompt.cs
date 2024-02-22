@@ -23,13 +23,6 @@ namespace KeyboardDefense.Prompts
             _prompt = prompt;
             _remainingPromptText = _prompt;
         }
-        
-        public void Generate(PromptDifficulty difficulty)
-        {
-            // Generate prompt
-            _prompt = PromptManager.Instance.GeneratePrompt(difficulty);
-            _remainingPromptText = _prompt;
-        }
 
         protected override void OnKeyPressed(string key)
         {
