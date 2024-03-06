@@ -22,7 +22,7 @@ namespace KeyboardDefense.Scenes
         
         public void TransitionToQuit()
         {
-            StartCoroutine(FadeOutRoutine(transitionDuration/2));
+            StartCoroutine(FadeOutRoutine(transitionDuration));
         }
         
         private void Start()

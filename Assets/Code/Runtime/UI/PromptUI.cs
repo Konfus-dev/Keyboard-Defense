@@ -1,13 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using KeyboardDefense.Localization;
 using KeyboardDefense.Player.Input;
+using KeyboardDefense.Prompts;
 using TMPro;
-using UnityEngine.EventSystems;
 
 namespace KeyboardDefense.UI
 {
+    [RequireComponent(typeof(Tooltip))]
     [RequireComponent(typeof(MouseEventListener))]
     public class PromptUI : MonoBehaviour
     {
@@ -34,6 +35,7 @@ namespace KeyboardDefense.UI
         private FontStyles _originalStyle;
         private Color _originalColor;
         
+        private Tooltip _tooltip;
         private MouseEventListener _mouseEventListenter;
 
         public void SetPrompt(string prompt)
@@ -41,6 +43,15 @@ namespace KeyboardDefense.UI
             _typedText = string.Empty;
             _prompt = prompt;
             _currentText = prompt;
+            StartCoroutine(TypeOutPromptRoutine());
+        }
+        
+        public void SetPrompt(PromptData promptData)
+        {
+            _typedText = string.Empty;
+            _prompt = promptData.Word;
+            _currentText = promptData.Word;
+            _tooltip.Set(promptData.Definition, $"{promptData.Locale.GetCultureInfo().TextInfo.ToTitleCase(_prompt)} Definition:");
             StartCoroutine(TypeOutPromptRoutine());
         }
 
@@ -64,6 +75,7 @@ namespace KeyboardDefense.UI
 
         private void Awake()
         {
+            _tooltip = GetComponent<Tooltip>();
             _mouseEventListenter = GetComponent<MouseEventListener>();
         }
 
@@ -71,9 +83,9 @@ namespace KeyboardDefense.UI
         {
             _originalStyle = promptText.fontStyle;
             _originalColor = promptText.color;
-            _mouseEventListenter.mouseEnter.AddListener(OnStartHover);
+            /*_mouseEventListenter.mouseEnter.AddListener(OnStartHover);
             _mouseEventListenter.mouseExit.AddListener(OnStopHover);
-            _mouseEventListenter.mouseDown.AddListener(OnClick);
+            _mouseEventListenter.mouseDown.AddListener(OnClick);*/
         }
 
         // TODO: this isn't working!!! Get it to work...

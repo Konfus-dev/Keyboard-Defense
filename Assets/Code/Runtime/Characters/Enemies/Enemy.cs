@@ -1,5 +1,7 @@
 ﻿using KeyboardDefense.Prompts;
+using KeyboardDefense.Services;
 using Konfus.Systems.Sensor_Toolkit;
+using UnityEngine;
 
 namespace KeyboardDefense.Characters.Enemies
 {
@@ -7,25 +9,26 @@ namespace KeyboardDefense.Characters.Enemies
     {
         private LineScanSensor _castleSensor;
         private PromptGenerator _promptGenerator;
-
+        
+        protected override void OnSpawn()
+        {
+            base.OnSpawn();
+            SetState(State.Moving);
+        }
+        
         private void Awake()
         {
             _castleSensor = GetComponentInChildren<LineScanSensor>();
             _promptGenerator = GetComponent<PromptGenerator>();
         }
 
+        // TODO: maybe follow pattern of other things such as AddToScoreOnDeath and PlayEffectOnDeath and create a KillOnPromptCompleted script
         private void Start()
         {
             _promptGenerator.GeneratedPrompt.promptCompleted.AddListener(OnPromptCompleted);
         }
 
-        protected override void OnSpawn()
-        {
-            base.OnSpawn();
-            SetState(State.Moving);
-        }
-
-        protected override void OnUpdate()
+        private void Update()
         {
             if (_castleSensor.Scan())
             {

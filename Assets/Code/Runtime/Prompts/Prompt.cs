@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
-using KeyboardDefense.Localization;
 using KeyboardDefense.Player.Input;
-using KeyboardDefense.UI;
 using Konfus.Utility.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,16 +15,19 @@ namespace KeyboardDefense.Prompts
         public PromptEvent promptCharacterCorrectlyTyped;
         public PromptEvent promptCharacterIncorrectlyTyped;
         
-        private string _prompt;
+        private string _text;
         private string _remainingPromptText;
-
-        private Tooltip _tooltip;
+        
+        public void Set(string promptText)
+        {
+            _text = promptText;
+            _remainingPromptText = _text;
+        }
         
         public void Set(PromptData promptData)
         {
-            _prompt = promptData.Word;
-            _remainingPromptText = _prompt;
-            _tooltip.Set(promptData.Definition, $"{promptData.Locale.GetCultureInfo().TextInfo.ToTitleCase(_prompt)} Definition:");
+            _text = promptData.Word;
+            _remainingPromptText = _text;
         }
 
         protected override void OnKeyPressed(string key)
@@ -45,16 +45,11 @@ namespace KeyboardDefense.Prompts
                 // Did user successfully type the entire prompt?
                 if (_remainingPromptText.IsNullOrEmpty()) OnSuccessfullyTypedPrompt();
             }
-            else if (_remainingPromptText != _prompt)
+            else if (_remainingPromptText != _text)
             {
                 // user made mistake... punish them!
                 OnTypedWrongCharacter();
             }
-        }
-
-        private void Awake()
-        {
-            _tooltip = GetComponent<Tooltip>();
         }
         
         private void OnSuccessfullyTypedPrompt()
@@ -70,7 +65,7 @@ namespace KeyboardDefense.Prompts
 
         private void OnTypedWrongCharacter()
         {
-            _remainingPromptText = _prompt;
+            _remainingPromptText = _text;
             promptCharacterIncorrectlyTyped.Invoke();
         }
     }

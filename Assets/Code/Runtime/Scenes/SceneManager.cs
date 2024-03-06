@@ -16,12 +16,19 @@ namespace KeyboardDefense.Scenes
             sceneTransitioner.TransitionTo(sceneName);
         }
 
-        public void LoadNextScene()
+        // Doesn't work for some reason... don't need it so just commenting it out
+        /*public void LoadNextScene()
         {
             int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-            int nextSceneIndex = (currentSceneIndex + 1) % UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
-            LoadScene(UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(nextSceneIndex).name);
-        }
+            int nextSceneIndex = currentSceneIndex + 1;
+            if (nextSceneIndex > UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
+            {
+                nextSceneIndex = 0;
+            }
+            
+            var nextScene = UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(nextSceneIndex);
+            LoadScene(nextScene.name);
+        }*/
 
         public void ReloadCurrentScene()
         {

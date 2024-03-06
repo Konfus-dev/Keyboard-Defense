@@ -445,6 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9f26335c6e464694b21bba2fa202f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: 
   promptCompleted:
     m_PersistentCalls:
       m_Calls:
@@ -534,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57a92546065417c8731e308c8ba7f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: 'Definition:'
+  header: 
   content: 
 --- !u!114 &3408441595994757688
 MonoBehaviour:
@@ -543,7 +544,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7423728126687445284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7d4f5e44e98431d99c894d5bce7485d, type: 3}
   m_Name: 

@@ -55,25 +55,18 @@ namespace KeyboardDefense.Characters
             
             UpdateState();
         }
+        
+        protected virtual void OnSpawn() 
+        { 
+            _currentHealth = stats.Health;
+            StartCoroutine(SpawnInvulnerabilityTimerRoutine());
+        }
 
         private void OnEnable()
         {
             OnSpawn();
         }
         
-        protected virtual void OnSpawn() 
-        { 
-            _currentHealth = stats.Health;
-        }
-
-        protected virtual void OnUpdate()
-        {
-        }
-        
-        private void Update()
-        {
-            OnUpdate();
-        }
         
         private void UpdateState()
         {

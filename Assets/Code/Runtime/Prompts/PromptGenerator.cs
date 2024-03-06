@@ -55,7 +55,7 @@ namespace KeyboardDefense.Prompts
             _generatedPrompt = promptGo.GetComponent<Prompt>();
             _generatedPrompt.Set(promptData);
             _generatedPromptUI = _generatedPrompt.GetComponent<PromptUI>();
-            _generatedPromptUI.SetPrompt(promptData.Word);
+            _generatedPromptUI.SetPrompt(promptData);
             
             // Tell prompt to follow the object we are configured to follow
             var uiFollowObjectInWorld = _generatedPrompt.GetComponent<UIFollowObjectInWorld>();
