@@ -1,11 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Linq;
+using KeyboardDefense.Player.Input;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace KeyboardDefense.UI
 {
-    [RequireComponent(typeof(BoxCollider))]
+    [RequireComponent(typeof(MouseEventListener))]
     public class PromptUI : MonoBehaviour
     {
         [Header("Settings")]
@@ -30,6 +33,8 @@ namespace KeyboardDefense.UI
         
         private FontStyles _originalStyle;
         private Color _originalColor;
+        
+        private MouseEventListener _mouseEventListenter;
 
         public void SetPrompt(string prompt)
         {
@@ -56,26 +61,35 @@ namespace KeyboardDefense.UI
         {
             gameObject.SetActive(false);
         }
-        
+
+        private void Awake()
+        {
+            _mouseEventListenter = GetComponent<MouseEventListener>();
+        }
+
         private void Start()
         {
             _originalStyle = promptText.fontStyle;
             _originalColor = promptText.color;
+            _mouseEventListenter.mouseEnter.AddListener(OnStartHover);
+            _mouseEventListenter.mouseExit.AddListener(OnStopHover);
+            _mouseEventListenter.mouseDown.AddListener(OnClick);
         }
 
-        private void OnMouseEnter()
+        // TODO: this isn't working!!! Get it to work...
+        private void OnStartHover()
         {
             SetColor(hoverColor);
             SetStyle(FontStyles.Underline);
         }
 
-        private void OnMouseExit()
+        private void OnStopHover()
         {
             SetColor(_originalColor);
             SetStyle(_originalStyle);
         }
 
-        private void OnMouseDown()
+        private void OnClick()
         {
             // TODO: create tooltip system, then use it to open a definition tooltip here!
         }

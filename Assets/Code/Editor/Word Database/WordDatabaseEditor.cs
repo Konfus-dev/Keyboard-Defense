@@ -1,25 +1,26 @@
 using System;
 using System.Linq;
-using KeyboardDefense.Logic.Prompts;
+using KeyboardDefense.Localization;
+using KeyboardDefense.Prompts;
 using UnityEditor;
 using UnityEngine;
 
 namespace KeyboardDefense.Editor.WordDatabase
 {
-    [CustomEditor(typeof(Logic.Prompts.WordDatabase))]
+    [CustomEditor(typeof(Prompts.WordDatabase))]
     public class WordDatabaseEditor : UnityEditor.Editor
     {
         private int _currentPageIndex;
         private Vector2 _currentPageScrollAmount;
         
         //private Regex _nonAlphabetFilter;
-        private Logic.Prompts.WordDatabase _wordDatabase;
-        private PlayerSettings.Switch.Languages _language;
-        private PromptDifficulty _difficulty;
+        private Prompts.WordDatabase _wordDatabase;
+        private Locale locale;
+        private WordDifficulty _difficulty;
 
         private void Awake()
         {
-            _wordDatabase = (Logic.Prompts.WordDatabase)target;
+            _wordDatabase = (Prompts.WordDatabase)target;
             
             if (!_wordDatabase.Words.Any()) return;
             _difficulty = _wordDatabase.Words.FirstOrDefault().Difficulty;
@@ -102,10 +103,10 @@ namespace KeyboardDefense.Editor.WordDatabase
                     
                     var newWord = EditorGUILayout.TextField("Word:", wordData.Word);
                     var newWordDef = EditorGUILayout.TextField("Definition:", wordData.Definition);
-                    var newWordLanguage = (PlayerSettings.Switch.Languages)EditorGUILayout.EnumPopup("Language:", wordData.Language);
-                    var newWordDifficulty = (PromptDifficulty)EditorGUILayout.EnumPopup("Difficulty:", wordData.Difficulty);
+                    var newWorldLocale = (Locale)EditorGUILayout.EnumPopup("Locale:", wordData.Locale);
+                    var newWordDifficulty = (WordDifficulty)EditorGUILayout.EnumPopup("Difficulty:", wordData.Difficulty);
                     if (wordData.Word != newWord || wordData.Definition != newWordDef || wordData.Difficulty != newWordDifficulty) 
-                        _wordDatabase.Words[wordIndex] =  new WordData(newWord, newWordDef, newWordLanguage, newWordDifficulty);
+                        _wordDatabase.Words[wordIndex] =  new WordData(newWord, newWordDef, newWorldLocale, newWordDifficulty);
                     
                     EditorGUILayout.EndVertical();
                 }
@@ -124,8 +125,8 @@ namespace KeyboardDefense.Editor.WordDatabase
             EditorGUILayout.Space();
             
             // Settings
-            _language = (PlayerSettings.Switch.Languages)EditorGUILayout.EnumPopup(_language);
-            _difficulty = (PromptDifficulty)EditorGUILayout.EnumPopup(_difficulty);
+            locale = (Locale)EditorGUILayout.EnumPopup(locale);
+            _difficulty = (WordDifficulty)EditorGUILayout.EnumPopup(_difficulty);
             
             // Import btn
             if (GUILayout.Button("Import Selected Language & Difficulty", GUILayout.Height(45))) ImportWords();
@@ -135,17 +136,17 @@ namespace KeyboardDefense.Editor.WordDatabase
         {
             _wordDatabase.Clear();
             
-            string importPath = $"Words/{_language}";
+            string importPath = $"Words/{locale}";
             var wordsForLanguageTxtAsset = Resources.Load<TextAsset>(importPath);
             if (wordsForLanguageTxtAsset == null)
             {
-                Debug.LogError($"Failed to import {_language}, does the file exist in the editor resources?");
+                Debug.LogError($"Failed to import {locale}, does the file exist in the editor resources?");
                 return;
             }
             
             string wordsForLanguageTxt = wordsForLanguageTxtAsset.ToString();
             
-            string[] stringSeparators = new string[] { "\n" };
+            string[] stringSeparators = { "\n" };
             string[] lines = wordsForLanguageTxt.Split(stringSeparators, StringSplitOptions.None);
             foreach (string line in lines)
             {
@@ -158,15 +159,15 @@ namespace KeyboardDefense.Editor.WordDatabase
                 switch (_difficulty)
                 {
                     // Filter based on import settings...
-                    case PromptDifficulty.Easy when wordLength > 5:
-                    case PromptDifficulty.Medium when wordLength is < 5 or > 10:
-                    case PromptDifficulty.Hard when wordLength is < 10 or > 15:
-                    case PromptDifficulty.VeryHard when wordLength < 15: continue;
-                    // Add to database... TODO: add to dictionary database
+                    case WordDifficulty.Easy when wordLength > 5:
+                    case WordDifficulty.Medium when wordLength is < 5 or > 10:
+                    case WordDifficulty.Hard when wordLength is < 10 or > 15:
+                    case WordDifficulty.VeryHard when wordLength < 15: continue;
+                    // Add to database...
                     default:
                     {
-                        var definition = WordDictionary.Lookup(word);
-                        _wordDatabase.Add(new WordData(word, definition, _language, _difficulty));
+                        WordDictionaryEntry definition = WordDictionary.Lookup(word);
+                        _wordDatabase.Add(new WordData(word, definition.ToString().Replace($"{word}: ", ""), locale, _difficulty));
                         break;
                     }
                 }

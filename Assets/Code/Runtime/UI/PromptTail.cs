@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace KeyboardDefense.UI
 {
@@ -15,7 +14,7 @@ namespace KeyboardDefense.UI
             _uiFollowObjectInWorld = GetComponentInParent<UIFollowObjectInWorld>();
         }
 
-        private void Start()
+        private void OnEnable()
         {
             _camera = Camera.main;
         }

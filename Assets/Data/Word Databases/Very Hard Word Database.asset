@@ -14,18 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   words:
   - word: differentiation
-    definition: 'differentiation: the act or process of differentiating, development
-      from the one to the many, the simple to the complex, or the homogeneous to
-      the heterogeneous, modification of body parts for performance of particular
-      functions'
-    language: 0
+    definition: the act or process of differentiating, development from the one to
+      the many, the simple to the complex, or the homogeneous to the heterogeneous,
+      modification of body parts for performance of particular functions
+    locale: 0
     difficulty: 3
   - word: notwithstanding
-    definition: "notwithstanding: despite \u2014often used after its object"
-    language: 0
+    definition: "despite \u2014often used after its object"
+    locale: 0
     difficulty: 3
   - word: straightforward
-    definition: 'straightforward: free from evasiveness or obscurity : exact, candid,
-      clear-cut, precise, proceeding in a straight course or manner : direct, undeviating'
-    language: 0
+    definition: 'free from evasiveness or obscurity : exact, candid, clear-cut, precise,
+      proceeding in a straight course or manner : direct, undeviating'
+    locale: 0
     difficulty: 3

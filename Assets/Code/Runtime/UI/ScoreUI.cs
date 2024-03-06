@@ -1,16 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using KeyboardDefense.Logic.Score;
+using System;
+using KeyboardDefense.Score;
+using KeyboardDefense.Services;
 using TMPro;
 using UnityEngine;
 
-public class ScoreUI : MonoBehaviour
+namespace KeyboardDefense.UI
 {
-    [SerializeField]
-    private TMP_Text scoreText;
-
-    public void OnScoreChanged()
+    public class ScoreUI : MonoBehaviour
     {
-        scoreText.text = $"Score: {ScoreManager.Instance.Score}";
+        [SerializeField]
+        private TMP_Text scoreText;
+
+        private IScoreManager _scoreManager;
+        
+        private void Awake()
+        {
+            _scoreManager = ServiceProvider.Instance.Get<IScoreManager>();
+            _scoreManager.OnScoreChanged.AddListener(OnScoreChanged);
+        }
+
+        public void OnScoreChanged()
+        {
+            scoreText.text = $"Score: {_scoreManager.Score}";
+        }
     }
 }

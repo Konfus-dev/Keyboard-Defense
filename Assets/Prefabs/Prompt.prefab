@@ -393,7 +393,9 @@ GameObject:
   - component: {fileID: -2213534435213476123}
   - component: {fileID: -8701722629749863461}
   - component: {fileID: 8978181685811686539}
-  - component: {fileID: 9042193638339572781}
+  - component: {fileID: 7725355178805977048}
+  - component: {fileID: 3408441595994757688}
+  - component: {fileID: 7970464137510005329}
   m_Layer: 0
   m_Name: Prompt
   m_TagString: Untagged
@@ -520,24 +522,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objToFollow: {fileID: 0}
   followOffset: {x: 0, y: 100}
---- !u!65 &9042193638339572781
-BoxCollider:
+--- !u!114 &7725355178805977048
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7423728126687445284}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57a92546065417c8731e308c8ba7f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: 'Definition:'
+  content: 
+--- !u!114 &3408441595994757688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423728126687445284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d4f5e44e98431d99c894d5bce7485d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7970464137510005329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423728126687445284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c3fd8d1a0630344ad986be1eea2a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseDown:
+    m_PersistentCalls:
+      m_Calls: []
+  mouseEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  mouseExit:
+    m_PersistentCalls:
+      m_Calls: []

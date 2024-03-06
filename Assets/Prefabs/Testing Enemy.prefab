@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2785202839442693973
 Transform:
   m_ObjectHideFlags: 0
@@ -257,7 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082f69ce509a2c649bb4697c6879d258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptToGenerateDifficulty: 0
+  promptPrefab: {fileID: 7423728126687445284, guid: d6408578e032bf446966c5f4ea0bb1f6,
+    type: 3}
+  wordToGenerateDifficulty: 0
   objForGeneratedPromptToFollow: {fileID: 2619139106308706806}
   generatedPromptFollowOffset: {x: 0, y: 100}
 --- !u!114 &8374261255385719117

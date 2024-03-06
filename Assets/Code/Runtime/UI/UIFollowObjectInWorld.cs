@@ -36,7 +36,7 @@ namespace KeyboardDefense.UI
         private void Start()
         {
             _camera = Camera.main;
-            _rt = GetComponent<RectTransform> ();
+            _rt = GetComponent<RectTransform>();
         }
      
         private void Update()
