@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace KeyboardDefense.Services
 {
+    // TODO: Doesn't need to be a singleton!!! Make this a static class!
     public class ServiceProvider
     {
         /// <summary>

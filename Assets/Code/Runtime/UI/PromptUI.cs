@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Linq;
 using KeyboardDefense.Localization;
@@ -86,6 +87,13 @@ namespace KeyboardDefense.UI
             /*_mouseEventListenter.mouseEnter.AddListener(OnStartHover);
             _mouseEventListenter.mouseExit.AddListener(OnStopHover);
             _mouseEventListenter.mouseDown.AddListener(OnClick);*/
+        }
+
+        private void OnEnable()
+        {
+            _typedText = string.Empty;
+            _currentText = string.Empty;
+            promptText.text = string.Empty;
         }
 
         // TODO: this isn't working!!! Get it to work...

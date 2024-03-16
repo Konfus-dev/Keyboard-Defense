@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 7725355178805977048}
   - component: {fileID: 3408441595994757688}
   - component: {fileID: 7970464137510005329}
+  - component: {fileID: -7860283473423213649}
   m_Layer: 0
   m_Name: Prompt
   m_TagString: Untagged
@@ -445,7 +446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9f26335c6e464694b21bba2fa202f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: 
   promptCompleted:
     m_PersistentCalls:
       m_Calls:
@@ -570,3 +570,19 @@ MonoBehaviour:
   mouseExit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-7860283473423213649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423728126687445284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a93f8b8d441fd7499b0773140552c78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 1
+  failSound: {fileID: 8300000, guid: 1b78098f64201bf41815c1dea41fc930, type: 3}
+  typeSound: {fileID: 8300000, guid: e96f69ed3ba8bcf4189d55ac9fc3ceec, type: 3}
+  completeSound: {fileID: 8300000, guid: ab606de5918618f4d900be02ddee51ec, type: 3}

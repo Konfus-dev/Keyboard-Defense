@@ -287,7 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537d0161087c4d9fa8680803ccaf3d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathFxPrefab: {fileID: 2964866897684664097, guid: f546980bc790d044ca37e11d46521100,
+  volume: 1
+  sound: {fileID: 8300000, guid: 3e0945c20cbe13a478049433124ab89e, type: 3}
+  particleEffect: {fileID: 2964866897684664097, guid: f546980bc790d044ca37e11d46521100,
     type: 3}
 --- !u!1 &3021279267829184605
 GameObject:

@@ -17,7 +17,7 @@ namespace KeyboardDefense.Prompts
         
         private string _text;
         private string _remainingPromptText;
-        
+
         public void Set(string promptText)
         {
             _text = promptText;
@@ -51,6 +51,13 @@ namespace KeyboardDefense.Prompts
                 OnTypedWrongCharacter();
             }
         }
+
+        private void OnEnable()
+        {
+            _text = string.Empty;
+            _remainingPromptText = string.Empty;
+        }
+
         
         private void OnSuccessfullyTypedPrompt()
         {
