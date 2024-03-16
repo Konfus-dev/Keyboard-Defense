@@ -17,6 +17,9 @@ namespace KeyboardDefense.Prompts
         
         private string _text;
         private string _remainingPromptText;
+        
+        public string GetPrompt() => _text;
+        public int GetNumberOfRemainingCharacters() => _remainingPromptText.Length;
 
         public void Set(string promptText)
         {

@@ -39,6 +39,15 @@ namespace KeyboardDefense.UI
         private Tooltip _tooltip;
         private MouseEventListener _mouseEventListenter;
 
+        public void Focus()
+        {
+            // TODO: implement focus visuals!
+        }
+
+        public void Unfocus()
+        {
+        }
+        
         public void SetPrompt(string prompt)
         {
             _typedText = string.Empty;
@@ -96,7 +105,6 @@ namespace KeyboardDefense.UI
             promptText.text = string.Empty;
         }
 
-        // TODO: this isn't working!!! Get it to work...
         private void OnStartHover()
         {
             SetColor(hoverColor);
