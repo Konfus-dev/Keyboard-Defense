@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
 using KeyboardDefense.Localization;
@@ -26,6 +25,8 @@ namespace KeyboardDefense.UI
         [Header("Dependencies")] 
         [SerializeField]
         private RectTransform root;
+        [SerializeField]
+        private GameObject highlight;
         [SerializeField] 
         private TMP_Text promptText;
         
@@ -41,11 +42,18 @@ namespace KeyboardDefense.UI
 
         public void Focus()
         {
-            // TODO: implement focus visuals!
+            highlight.SetActive(true);
+            var position = transform.position;
+            position = new Vector3(position.x, position.y, 10);
+            transform.position = position;
         }
 
         public void Unfocus()
         {
+            highlight.SetActive(false);
+            var position = transform.position;
+            position = new Vector3(position.x, position.y, 0);
+            transform.position = position;
         }
         
         public void SetPrompt(string prompt)

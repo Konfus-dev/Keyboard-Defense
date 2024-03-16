@@ -51,13 +51,12 @@ namespace KeyboardDefense.Services
             {
                 Instance = this as T;
                 DontDestroyOnLoad(gameObject);
+                ServiceProvider.Instance.Register<T>(this);
             }
             else if (!ReferenceEquals(Instance, this))
             {
                 Destroy(gameObject);
             }
-            
-            ServiceProvider.Instance.Register<T>(this);
         }
         
         public override void Unregister()

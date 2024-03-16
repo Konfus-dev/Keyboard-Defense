@@ -7,14 +7,14 @@ namespace KeyboardDefense.UI
 {
     public class PromptFocusManager : GameService<IPromptFocusManager>, IPromptFocusManager
     {
+        private readonly PromptUI _lastPromptToRequestFocus;
         private readonly List<(PromptUI promptUI, int priority)> _focusedPrompts = new();
     
         public void RequestFocus(PromptUI promptUI, int priority)
         {
-            var promptsToUnfocus =_focusedPrompts.FindAll(p => p.priority < priority);
-            promptsToUnfocus.ForEach(p => ClearFocus(p.promptUI));
-            if (CanPromptGrabFocus(priority))
+            if (CanPromptGrabFocus(promptUI, priority))
             {
+                _focusedPrompts.ToList().ForEach(p => ClearFocus(p.promptUI));
                 _focusedPrompts.Add((promptUI, priority));
                 promptUI.Focus();
             }
@@ -26,9 +26,11 @@ namespace KeyboardDefense.UI
             promptUI.Unfocus();
         }
 
-        private bool CanPromptGrabFocus(int priority)
+        private bool CanPromptGrabFocus(PromptUI promptUI, int priority)
         {
-            return _focusedPrompts.IsNullOrEmpty() || _focusedPrompts.Any(p => p.priority == priority);
+            return _lastPromptToRequestFocus == promptUI ||
+                   _focusedPrompts.IsNullOrEmpty() || 
+                   _focusedPrompts.Any(p => p.priority == priority);
         }
     }
 }

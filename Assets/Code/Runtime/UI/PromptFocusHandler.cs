@@ -19,7 +19,7 @@ namespace KeyboardDefense.UI
             _promptFocusManager = ServiceProvider.Instance.Get<IPromptFocusManager>();
         }
         
-        private void OnEnable()
+        private void OnDisable()
         {
             _promptFocusManager.ClearFocus(_promptUI);
         }
