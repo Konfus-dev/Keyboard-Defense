@@ -10,6 +10,7 @@ namespace KeyboardDefense.Scenes
     {
         public UnityEvent onTransitionComplete;
         
+        // TODO: put this into scene transition info SO! Then move this into our scene manager class or maybe make it static?
         [SerializeField]
         private float transitionDuration = 1.0f;
         [SerializeField]

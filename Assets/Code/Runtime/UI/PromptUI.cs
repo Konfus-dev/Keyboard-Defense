@@ -14,11 +14,11 @@ namespace KeyboardDefense.UI
     {
         [Header("Settings")]
         [SerializeField]
-        private Color hoverColor = Color.cyan;
+        private Color hoverTextColor = Color.cyan;
         [SerializeField] 
-        private Color failedColor = Color.red;
+        private Color failedTextColor = Color.red;
         [SerializeField] 
-        private Color typedColor = Color.blue;
+        private Color typedTextColor = Color.blue;
         [SerializeField]
         private float typeEffectDelay = 0.1f;
 
@@ -27,6 +27,8 @@ namespace KeyboardDefense.UI
         private RectTransform root;
         [SerializeField]
         private GameObject highlight;
+        [SerializeField]
+        private GameObject textCursor;
         [SerializeField] 
         private TMP_Text promptText;
         
@@ -42,7 +44,12 @@ namespace KeyboardDefense.UI
 
         public void Focus()
         {
+            // Highlight and set cursor active
             highlight.SetActive(true);
+            textCursor.SetActive(true);
+            
+            // Move to front
+            // TODO: fix this! Its not working and we need to move the thing we are focused on in front of all other UI elements!
             var position = transform.position;
             position = new Vector3(position.x, position.y, 10);
             transform.position = position;
@@ -50,7 +57,11 @@ namespace KeyboardDefense.UI
 
         public void Unfocus()
         {
+            // Clear highlight and hide wcursor
             highlight.SetActive(false);
+            textCursor.SetActive(false);
+            
+            // Move back
             var position = transform.position;
             position = new Vector3(position.x, position.y, 0);
             transform.position = position;
@@ -61,16 +72,14 @@ namespace KeyboardDefense.UI
             _typedText = string.Empty;
             _prompt = prompt;
             _currentText = prompt;
+            
             StartCoroutine(TypeOutPromptRoutine());
         }
         
         public void SetPrompt(PromptData promptData)
         {
-            _typedText = string.Empty;
-            _prompt = promptData.Word;
-            _currentText = promptData.Word;
             _tooltip.Set(promptData.Definition, $"{promptData.Locale.GetCultureInfo().TextInfo.ToTitleCase(_prompt)} Definition:");
-            StartCoroutine(TypeOutPromptRoutine());
+            SetPrompt(promptData);
         }
 
         public void OnNextCharacterIncorrectlyTyped()
@@ -80,10 +89,13 @@ namespace KeyboardDefense.UI
         
         public void OnNextCharInPromptTyped()
         {
+            // Keep track of what has been typed
             _typedText += _currentText.FirstOrDefault();
             _currentText = _currentText.Remove(startIndex: 0, count: 1);
-            var hexColor = ColorUtility.ToHtmlStringRGB(typedColor);
-            promptText.text = $"<color=#{hexColor}>{_typedText}</color>{_currentText}";
+            
+            // Update UI with new text
+            var hexTextColor = ColorUtility.ToHtmlStringRGB(typedTextColor);
+            promptText.text = $"<b><color=#{hexTextColor}>{_typedText}<b></color><i>{_currentText}</i>";
         }
 
         public void OnPromptSuccessfullyTyped()
@@ -106,7 +118,7 @@ namespace KeyboardDefense.UI
             _mouseEventListenter.mouseDown.AddListener(OnClick);*/
         }
 
-        private void OnEnable()
+        private void OnDisable()
         {
             _typedText = string.Empty;
             _currentText = string.Empty;
@@ -115,7 +127,7 @@ namespace KeyboardDefense.UI
 
         private void OnStartHover()
         {
-            SetColor(hoverColor);
+            SetColor(hoverTextColor);
             SetStyle(FontStyles.Underline);
         }
 
@@ -127,9 +139,9 @@ namespace KeyboardDefense.UI
 
         private void OnClick()
         {
-            // TODO: create tooltip system, then use it to open a definition tooltip here!
+            //Focus();
         }
-
+        
         private IEnumerator TypeOutPromptRoutine()
         {
             // Type effect
@@ -151,11 +163,11 @@ namespace KeyboardDefense.UI
             promptText.text = _currentText;
             
             // Failed effect...
-            promptText.color = failedColor;
+            promptText.color = failedTextColor;
             yield return new WaitForSeconds(typeEffectDelay/3);
             SetColor(_originalColor);
             yield return new WaitForSeconds(typeEffectDelay/3);
-            SetColor(failedColor);
+            SetColor(failedTextColor);
             yield return new WaitForSeconds(typeEffectDelay/3);
             SetColor(_originalColor);
         }

@@ -1,4 +1,3 @@
-using System;
 using KeyboardDefense.Services;
 using TMPro;
 using UnityEngine;
@@ -26,6 +25,10 @@ namespace KeyboardDefense.UI
         {
             header.text = headerTxt;
             content.text = contentTxt;
+            
+            ScaleToFitText();
+            MoveToMousePosition();
+            
             gameObject.SetActive(true);
         }
         
@@ -50,22 +53,28 @@ namespace KeyboardDefense.UI
 
         private void Update()
         {
+            if (Application.isPlaying) MoveToMousePosition();
+            ScaleToFitText();
+        }
+
+        private void ScaleToFitText()
+        {
             int headerLen = header.text.Length;
             int contentLen = content.text.Length;
 
             var layoutElementEnabled = (headerLen > characterWrapLimit) || (contentLen > characterWrapLimit);
             _layoutElement.enabled = layoutElementEnabled;
+        }
 
-            if (Application.isPlaying)
-            {
-                Vector2 position = ((Vector2)Input.mousePosition) + new Vector2(0, _rectTransform.rect.height);
+        private void MoveToMousePosition()
+        {
+            Vector2 position = ((Vector2)Input.mousePosition) + new Vector2(0, _rectTransform.rect.height);
 
-                float pivotX = position.x / Screen.width;
-                float pivotY = position.y / Screen.height;
+            float pivotX = position.x / Screen.width;
+            float pivotY = position.y / Screen.height;
 
-                _rectTransform.pivot = new Vector2(pivotX, pivotY);
-                transform.position = position;
-            }
+            _rectTransform.pivot = new Vector2(pivotX, pivotY);
+            transform.position = position;
         }
     }
 }

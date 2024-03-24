@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using KeyboardDefense.Services;
@@ -9,7 +10,14 @@ namespace KeyboardDefense.UI
     {
         private readonly PromptUI _lastPromptToRequestFocus;
         private readonly List<(PromptUI promptUI, int priority)> _focusedPrompts = new();
-    
+
+        public void Focus(PromptUI promptUI, int priority = Int32.MaxValue)
+        {
+            _focusedPrompts.ToList().ForEach(p => ClearFocus(p.promptUI));
+            _focusedPrompts.Add((promptUI, priority));
+            promptUI.Focus();
+        }
+
         public void RequestFocus(PromptUI promptUI, int priority)
         {
             if (CanPromptGrabFocus(promptUI, priority))

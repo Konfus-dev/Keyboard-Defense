@@ -11,6 +11,9 @@ namespace KeyboardDefense.Scenes
         [SerializeField]
         private SceneTransitioner sceneTransitioner;
         
+        // TODO: make a scene info scriptable obj that we can use to transition between scenes
+        // this scene info will contain the name of the scene, the scene transition (music to play in next scene, transition effect), as well as and 
+        // other info that we need to know about a scene. Perhaps it contains a ref to the scene itself? So it auto updates the name?
         public void LoadScene(string sceneName)
         {
             sceneTransitioner.TransitionTo(sceneName);

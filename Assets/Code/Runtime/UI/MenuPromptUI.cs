@@ -12,12 +12,17 @@ namespace KeyboardDefense.UI
         private string text;
         [SerializeField, Multiline]
         private string tooltip;
+        [SerializeField] 
+        private bool startFocused;
         
         private void Start()
         {
+            var promptUI = GetComponent<PromptUI>();
             GetComponent<PromptUI>().SetPrompt(text);
             GetComponent<Prompt>().Set(text);
             GetComponent<Tooltip>().Set(tooltip);
+            
+            if (startFocused) GetComponent<PromptFocusHandler>().FocusPrompt();
         }
     }
 }
