@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KeyboardDefense.Prompts
 {
-    [CreateAssetMenu(fileName = "WordDatabase", menuName = "Keyboard Defense/WordDatabase")]
+    [CreateAssetMenu(fileName = "WordDatabase", menuName = "Keyboard Defense/New Word Database")]
     public class WordDatabase : ScriptableObject
     {
         [SerializeField, HideInInspector]
