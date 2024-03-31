@@ -72,14 +72,22 @@ namespace KeyboardDefense.UI
             _typedText = string.Empty;
             _prompt = prompt;
             _currentText = prompt;
+            promptText.text = prompt;
             
-            StartCoroutine(TypeOutPromptRoutine());
+            UpdateText();
+            //StartCoroutine(TypeOutPromptRoutine());
         }
         
         public void SetPrompt(PromptData promptData)
         {
-            _tooltip.Set(promptData.Definition, $"{promptData.Locale.GetCultureInfo().TextInfo.ToTitleCase(_prompt)} Definition:");
-            SetPrompt(promptData);
+            var promptTooltipHeader = promptData.Locale.GetCultureInfo().TextInfo.ToTitleCase(promptData.Word);
+            _tooltip.Set(promptData.Definition, $"{promptTooltipHeader} Definition:");
+            SetPrompt(promptData.Word);
+        }
+
+        public void SetSize(float size)
+        {
+            root.sizeDelta = new Vector2(size * 32, 60);
         }
 
         public void OnNextCharacterIncorrectlyTyped()
@@ -87,19 +95,25 @@ namespace KeyboardDefense.UI
             StartCoroutine(OnFailedToTypePromptRoutine());
         }
         
-        public void OnNextCharInPromptTyped()
+        public void OnNextCharInPromptCorrectlyTyped()
         {
             // Keep track of what has been typed
             _typedText += _currentText.FirstOrDefault();
             _currentText = _currentText.Remove(startIndex: 0, count: 1);
             
             // Update UI with new text
-            var hexTextColor = ColorUtility.ToHtmlStringRGB(typedTextColor);
-            promptText.text = $"<b><color=#{hexTextColor}>{_typedText}<b></color><i>{_currentText}</i>";
+            UpdateText();
         }
 
         public void OnPromptSuccessfullyTyped()
         {
+            StartCoroutine(OnPromptSuccessfullyTypedRoutine());
+        }
+
+        private IEnumerator OnPromptSuccessfullyTypedRoutine()
+        {
+            // TODO: Show success effect
+            yield return new WaitForSeconds(0.15f);
             gameObject.SetActive(false);
         }
 
@@ -124,7 +138,13 @@ namespace KeyboardDefense.UI
             _currentText = string.Empty;
             promptText.text = string.Empty;
         }
-
+        
+        private void UpdateText()
+        {
+            var hexTextColor = ColorUtility.ToHtmlStringRGB(typedTextColor);
+            promptText.text = $"<b><color=#{hexTextColor}>{_typedText}<b></color><i>{_currentText}</i>";
+        }
+        
         private void OnStartHover()
         {
             SetColor(hoverTextColor);
@@ -149,7 +169,7 @@ namespace KeyboardDefense.UI
             var charsToType = _prompt.ToArray();
             for (var charIndex = 0; charIndex < charsToType.Length; charIndex++)
             {
-                UpdateSize(charIndex + 1);
+                SetSize(charIndex + 1);
                 yield return new WaitForSeconds(typeEffectDelay);
                 promptText.text += charsToType[charIndex];
             }
@@ -170,11 +190,6 @@ namespace KeyboardDefense.UI
             SetColor(failedTextColor);
             yield return new WaitForSeconds(typeEffectDelay/3);
             SetColor(_originalColor);
-        }
-
-        private void UpdateSize(float size)
-        {
-            root.sizeDelta = new Vector2(size * 32, 60);
         }
         
         private void SetColor(Color color)

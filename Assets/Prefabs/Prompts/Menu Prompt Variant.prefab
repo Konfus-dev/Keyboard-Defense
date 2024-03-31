@@ -175,7 +175,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8978181685811686539, guid: d6408578e032bf446966c5f4ea0bb1f6, type: 3}
-    - {fileID: 3408441595994757688, guid: d6408578e032bf446966c5f4ea0bb1f6, type: 3}
     m_RemovedGameObjects:
     - {fileID: 4615093117386841996, guid: d6408578e032bf446966c5f4ea0bb1f6, type: 3}
     m_AddedGameObjects: []
@@ -205,3 +204,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: Menu Prompt!
   tooltip: This is a tooltip :)
+  startFocused: 0

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using KeyboardDefense.Services;
+using KeyboardDefense.UI;
+using UnityEngine;
 
 namespace KeyboardDefense.Player.Input
 {
@@ -6,7 +8,8 @@ namespace KeyboardDefense.Player.Input
     public class Clickable : MonoBehaviour
     {
         private MouseEventListener _mouseEventListener;
-        
+        private ICursorService _cursorService;
+
         private void Awake()
         {
             _mouseEventListener = GetComponent<MouseEventListener>();
@@ -14,6 +17,7 @@ namespace KeyboardDefense.Player.Input
 
         private void Start()
         {
+            _cursorService = ServiceProvider.Instance.Get<ICursorService>();
             _mouseEventListener.mouseEnter.AddListener(OnStartHover);
             _mouseEventListener.mouseExit.AddListener(OnStopHover);
             _mouseEventListener.mouseDown.AddListener(OnClick);
@@ -21,17 +25,17 @@ namespace KeyboardDefense.Player.Input
 
         private void OnClick()
         {
-            //PlayerHealthUI.Instance.CursorUI.SetCursor(CursorState.Click);
+            _cursorService.SetCursor(CursorState.Click);
         }
 
         private void OnStartHover()
         {
-            //PlayerHealthUI.Instance.CursorUI.SetCursor(CursorState.Hover);
+            _cursorService.SetCursor(CursorState.Hover);
         }
 
         private void OnStopHover()
         {
-            //PlayerHealthUI.Instance.CursorUI.SetCursor(CursorState.Default);
+            _cursorService.SetCursor(CursorState.Default);
         }
     }
 }

@@ -5,22 +5,22 @@ using KeyboardDefense.Prompts;
 using UnityEditor;
 using UnityEngine;
 
-namespace KeyboardDefense.Editor.WordDatabase
+namespace KeyboardDefense.Editor.Word_Database
 {
-    [CustomEditor(typeof(Prompts.WordDatabase))]
+    [CustomEditor(typeof(WordDatabase))]
     public class WordDatabaseEditor : UnityEditor.Editor
     {
         private int _currentPageIndex;
         private Vector2 _currentPageScrollAmount;
         
         //private Regex _nonAlphabetFilter;
-        private Prompts.WordDatabase _wordDatabase;
-        private Locale locale;
+        private WordDatabase _wordDatabase;
         private WordDifficulty _difficulty;
+        private Locale _locale;
 
         private void Awake()
         {
-            _wordDatabase = (Prompts.WordDatabase)target;
+            _wordDatabase = (WordDatabase)target;
             
             if (!_wordDatabase.Words.Any()) return;
             _difficulty = _wordDatabase.Words.FirstOrDefault().Difficulty;
@@ -125,7 +125,7 @@ namespace KeyboardDefense.Editor.WordDatabase
             EditorGUILayout.Space();
             
             // Settings
-            locale = (Locale)EditorGUILayout.EnumPopup(locale);
+            _locale = (Locale)EditorGUILayout.EnumPopup(_locale);
             _difficulty = (WordDifficulty)EditorGUILayout.EnumPopup(_difficulty);
             
             // Import btn
@@ -136,11 +136,11 @@ namespace KeyboardDefense.Editor.WordDatabase
         {
             _wordDatabase.Clear();
             
-            string importPath = $"Words/{locale}";
+            string importPath = $"Words/{_locale}";
             var wordsForLanguageTxtAsset = Resources.Load<TextAsset>(importPath);
             if (wordsForLanguageTxtAsset == null)
             {
-                Debug.LogError($"Failed to import {locale}, does the file exist in the editor resources?");
+                Debug.LogError($"Failed to import {_locale}, does the file exist in the editor resources?");
                 return;
             }
             
@@ -167,7 +167,7 @@ namespace KeyboardDefense.Editor.WordDatabase
                     default:
                     {
                         WordDictionaryEntry definition = WordDictionary.Lookup(word);
-                        _wordDatabase.Add(new WordData(word, definition.ToString().Replace($"{word}: ", ""), locale, _difficulty));
+                        _wordDatabase.Add(new WordData(word, definition.ToString().Replace($"{word}: ", ""), _locale, _difficulty));
                         break;
                     }
                 }
