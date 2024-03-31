@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 namespace KeyboardDefense.Scenes
 {
+    // TODO: May need to make into a singleton to persist between scenes so we can store and access current scene info
     public class SceneManager : GameService<ISceneManager>, ISceneManager
     {
         [SerializeField]
