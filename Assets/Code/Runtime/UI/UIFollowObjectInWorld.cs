@@ -2,6 +2,7 @@
 
 namespace KeyboardDefense.UI
 {
+    [ExecuteInEditMode]
     public class UIFollowObjectInWorld : MonoBehaviour
     {
         [SerializeField]

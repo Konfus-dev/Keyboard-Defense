@@ -1,16 +1,12 @@
-using System.Linq;
-using Konfus.Utility.Extensions;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Splines;
 
 namespace KeyboardDefense.Paths
 {
-    [ExecuteInEditMode]
     [RequireComponent(typeof(LineRenderer))]
-    [RequireComponent(typeof(SplineContainer))]
-    public class SplinePathGenerator : MonoBehaviour
+    public class SplineTrailGenerator : MonoBehaviour
     {
-        [SerializeField, Min(0)]
+        [SerializeField]
         private int numberOfPoints = 50;
 
         private LineRenderer _lineRenderer;
@@ -36,8 +32,6 @@ namespace KeyboardDefense.Paths
 
         private void Generate()
         {
-            if (_spline.Spline.Knots.IsNullOrEmpty()) return;
-            
             _lineRenderer = GetComponent<LineRenderer>();
             _lineRenderer.positionCount = numberOfPoints;
 

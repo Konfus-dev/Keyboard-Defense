@@ -2,6 +2,7 @@
 
 namespace KeyboardDefense.UI
 {
+    [ExecuteInEditMode]
     public class PromptTail : MonoBehaviour
     {
         private Camera _camera;
@@ -21,7 +22,15 @@ namespace KeyboardDefense.UI
 
         private void Update()
         {
-            _lineRenderer.SetPosition(0, _uiFollowObjectInWorld.GetObjectToFollow().transform.position);
+            var objToFollow = _uiFollowObjectInWorld.GetObjectToFollow();
+            if (!objToFollow)
+            {
+                _lineRenderer.enabled = false;
+                return;
+            }
+            
+            _lineRenderer.enabled = true;
+            _lineRenderer.SetPosition(0, objToFollow.transform.position);
             _lineRenderer.SetPosition(1, _camera.ScreenToWorldPoint(new Vector3(transform.position.x, transform.position.y, 10)));
         }
 
