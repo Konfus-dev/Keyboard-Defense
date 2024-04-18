@@ -1,6 +1,4 @@
-﻿using System;
-using KeyboardDefense.Paths;
-using KeyboardDefense.Services;
+﻿using KeyboardDefense.Services;
 using UnityEngine;
 using UnityEngine.Splines;
 using Random = UnityEngine.Random;
@@ -12,7 +10,6 @@ namespace KeyboardDefense.Characters
     {
         private Character _character;
         private SplineContainer _splineContainer;
-        private SplinePath<Spline> _splinePath;
         private float _elapsedTime;
         private float _speed;
         private bool _isMoving;
@@ -39,7 +36,6 @@ namespace KeyboardDefense.Characters
         {
             _character = GetComponent<Character>();
             _splineContainer = ServiceProvider.Instance.Get<IPathProvider>().Spline;
-            _splinePath = new SplinePath<Spline>(_splineContainer.Splines);
         }
 
         private void Start()
@@ -69,14 +65,15 @@ namespace KeyboardDefense.Characters
             t /= duration;
             
             // Get rotation
-            Vector3 splineDirection = _splinePath.EvaluateTangent(t);
+            Vector3 splineDirection = _splineContainer.EvaluateTangent(t);
+            var rotation = Quaternion.LookRotation(splineDirection, transform.up);
             
             // Get position
-            var position = ((Vector3)_splineContainer.EvaluatePosition(_splinePath, t)) + _offset;
+            var position = (Vector3)_splineContainer.EvaluatePosition(t) + _offset;
 
             // Set transform pos and rot
             transform.position = position;
-            transform.rotation = Quaternion.Euler(splineDirection);
+            transform.rotation = rotation;
         }
 
         private void GenerateRandomOffset()

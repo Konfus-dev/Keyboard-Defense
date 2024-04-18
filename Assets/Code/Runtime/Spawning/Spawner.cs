@@ -32,7 +32,7 @@ namespace KeyboardDefense.Spawning
                 if (randomValue <= cumulativeChance)
                 {
                     // Spawn the selected prefab
-                    spawnService.Spawn(spawnable.Prefab, transform.position, Quaternion.identity);
+                    var go = spawnService.Spawn(spawnable.Prefab, transform.position, Quaternion.identity);
                     break;
                 }
             }
