@@ -28,6 +28,7 @@ namespace KeyboardDefense.Scenes
         
         private void Start()
         {
+            transitionImage.gameObject.SetActive(true);
             StartCoroutine(FadeInRoutine(transitionDuration));
         }
 

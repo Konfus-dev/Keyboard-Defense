@@ -31,7 +31,7 @@ namespace KeyboardDefense.UI
             
             _lineRenderer.enabled = true;
             _lineRenderer.SetPosition(0, objToFollow.transform.position);
-            _lineRenderer.SetPosition(1, _camera.ScreenToWorldPoint(new Vector3(transform.position.x, transform.position.y, 10)));
+            _lineRenderer.SetPosition(1, _camera.ScreenToWorldPoint(new Vector3(transform.position.x, transform.position.y, 20) + new Vector3(0, 0, transform.position.z)));
         }
 
         private void OnDisable()

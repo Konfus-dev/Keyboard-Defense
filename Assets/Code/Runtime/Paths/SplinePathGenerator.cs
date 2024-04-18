@@ -1,55 +1,92 @@
-using System.Linq;
-using Konfus.Utility.Extensions;
 using UnityEngine;
 using UnityEngine.Splines;
 
 namespace KeyboardDefense.Paths
 {
     [ExecuteInEditMode]
-    [RequireComponent(typeof(LineRenderer))]
+    [RequireComponent(typeof(MeshFilter))]
+    [RequireComponent(typeof(MeshRenderer))]
     [RequireComponent(typeof(SplineContainer))]
     public class SplinePathGenerator : MonoBehaviour
     {
+        [SerializeField, Min(0.1f)]
+        private float width = 2f;
+        [SerializeField, Min(1)]
+        private int resolution = 20;
         [SerializeField, Min(0)]
-        private int numberOfPoints = 50;
+        private float curvature = 0.1f;
 
-        private LineRenderer _lineRenderer;
+        private bool _isDirty;
+        private MeshFilter _meshFilter;
         private SplineContainer _spline;
         
         private void Awake()
         {
             _spline = GetComponent<SplineContainer>();
-            _lineRenderer = GetComponent<LineRenderer>();
+            _meshFilter = GetComponent<MeshFilter>();
         }
 
         private void Start()
         {
-            Generate();
+            GenerateMesh();
+        }
+        
+        private void GenerateMesh()
+        {
+            // Set path to desired curvature (flatness)
+            transform.localScale = new Vector3(
+                x: transform.localScale.x, 
+                y: curvature, 
+                z: transform.localScale.z);
+            
+            // Set mesh
+            var mesh = new Mesh();
+            _meshFilter.mesh = mesh;
+            
+            // Extrude mesh along spline to create path
+            SplineMesh.Extrude(_spline.Splines, mesh, width, 10, resolution, true, new Vector2(0, 1));
         }
 
+        // TODO: put in editor script!
+#if UNITY_EDITOR
+        private void Update()
+        {
+            if (transform.hasChanged)
+            {
+                transform.hasChanged = false;
+                _isDirty = true;
+            }
+            
+            if (_isDirty)
+            {
+                GenerateMesh();
+                _isDirty = false;
+            }
+        }
         private void OnValidate()
         {
+            // Cannot directly generate the mesh as it causes
+            // a warning because we are changing the mesh filters mesh in OnValidate
+            // which causes SendMessage to be called, which causes a warning to be generated.
             _spline = GetComponent<SplineContainer>();
-            _lineRenderer = GetComponent<LineRenderer>();
-            Generate();
+            _meshFilter = GetComponent<MeshFilter>();
+            _isDirty = true;
         }
 
-        private void Generate()
+        private void OnEnable()
         {
-            if (_spline.Spline.Knots.IsNullOrEmpty()) return;
-            
-            _lineRenderer = GetComponent<LineRenderer>();
-            _lineRenderer.positionCount = numberOfPoints;
-
-            Vector3[] points = new Vector3[numberOfPoints];
-
-            for (int i = 0; i < numberOfPoints; i++)
-            {
-                float t = (float)i / (numberOfPoints - 1);
-                points[i] = _spline.EvaluatePosition(t);
-            }
-
-            _lineRenderer.SetPositions(points);
+            Spline.Changed += OnSplineChanged;
         }
+        
+        private void OnDisable()
+        {
+            Spline.Changed -= OnSplineChanged;
+        }
+
+        private void OnSplineChanged(Spline arg1, int arg2, SplineModification arg3)
+        {
+            GenerateMesh();
+        }
+#endif
     }
 }

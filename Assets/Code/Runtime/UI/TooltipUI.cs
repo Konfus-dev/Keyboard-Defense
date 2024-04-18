@@ -1,11 +1,12 @@
 using KeyboardDefense.Services;
+using Konfus.Utility.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace KeyboardDefense.UI
 {
-    [ExecuteInEditMode, RequireComponent(typeof(LayoutElement), typeof(RectTransform))]
+    [ExecuteInEditMode, RequireComponent(typeof(RectTransform))]
     public class TooltipUI : GameService<ITooltipService>, ITooltipService
     {
         [Header("Settings")]
@@ -17,8 +18,10 @@ namespace KeyboardDefense.UI
         private TMP_Text header;
         [SerializeField]
         private TMP_Text content;
+        [SerializeField]
+        private GameObject visuals;
         
-        private LayoutElement _layoutElement;
+        private LayoutElement _layout;
         private RectTransform _rectTransform;
         
         public void Show(string contentTxt, string headerTxt = "")
@@ -29,17 +32,17 @@ namespace KeyboardDefense.UI
             ScaleToFitText();
             MoveToMousePosition();
             
-            gameObject.SetActive(true);
+            visuals.SetActive(true);
         }
         
         public void Hide()
         {
-            gameObject.SetActive(false);
+            visuals.SetActive(false);
         }
 
         private void Awake()
         {
-            _layoutElement = GetComponent<LayoutElement>();
+            _layout = visuals.GetComponent<LayoutElement>();
             _rectTransform = GetComponent<RectTransform>();
         }
 
@@ -53,6 +56,11 @@ namespace KeyboardDefense.UI
 
         private void Update()
         {
+            if (!_layout || !header || !content)
+            {
+                return;
+            }
+            
             if (Application.isPlaying) MoveToMousePosition();
             ScaleToFitText();
         }
@@ -63,7 +71,7 @@ namespace KeyboardDefense.UI
             int contentLen = content.text.Length;
 
             var layoutElementEnabled = (headerLen > characterWrapLimit) || (contentLen > characterWrapLimit);
-            _layoutElement.enabled = layoutElementEnabled;
+            _layout.enabled = layoutElementEnabled;
         }
 
         private void MoveToMousePosition()
