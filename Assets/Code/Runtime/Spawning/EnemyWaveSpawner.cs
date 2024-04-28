@@ -1,5 +1,5 @@
 using System.Collections;
-using KeyboardDefense.Services;
+using KeyboardDefense.Scenes;
 using UnityEngine;
 
 namespace KeyboardDefense.Spawning
@@ -28,12 +28,16 @@ namespace KeyboardDefense.Spawning
         [Header("Dependencies")]
         [SerializeField]
         private Spawner spawner;
+        
+        // TODO: increase wave difficulty based on current scene star difficulty!
+        private ISceneManager _sceneManager;
 
         private float _nextWaveTime; // Time for next wave
         private int _currentWave = 1; // Current wave number
-        
+
         private void Start()
         {
+            _sceneManager = SceneManager.Instance;
             _nextWaveTime = Time.time + firstWaveSpawnDelay;
         }
 

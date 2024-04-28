@@ -55,7 +55,7 @@ namespace KeyboardDefense.Prompts
             }
         }
 
-        private void OnEnable()
+        private void OnDisable()
         {
             _text = string.Empty;
             _remainingPromptText = string.Empty;

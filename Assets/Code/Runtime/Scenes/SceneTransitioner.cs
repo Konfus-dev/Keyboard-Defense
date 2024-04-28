@@ -1,4 +1,5 @@
 using System.Collections;
+using KeyboardDefense.Services;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -16,20 +17,44 @@ namespace KeyboardDefense.Scenes
         [SerializeField]
         private Image transitionImage;
 
-        public void TransitionTo(string sceneName)
+        private ISceneManager _sceneManager;
+        private void Awake()
         {
-            StartCoroutine(FadeOutRoutine(sceneName, transitionDuration));
-        }
-        
-        public void TransitionToQuit()
-        {
-            StartCoroutine(FadeOutRoutine(transitionDuration));
+            _sceneManager = ServiceProvider.Instance.Get<ISceneManager>();
         }
         
         private void Start()
         {
+            _sceneManager.QuitGame.AddListener(OnQuitGame);
+            _sceneManager.ChangedCurrentScene.AddListener(OnChangedScenes);
             transitionImage.gameObject.SetActive(true);
             StartCoroutine(FadeInRoutine(transitionDuration));
+        }
+
+        private void OnDestroy()
+        {
+            _sceneManager.QuitGame.RemoveListener(OnQuitGame);
+            _sceneManager.ChangedCurrentScene.RemoveListener(OnChangedScenes);
+        }
+
+        private void OnQuitGame()
+        {
+            TransitionToQuit();
+        }
+
+        private void OnChangedScenes()
+        {
+            TransitionTo(_sceneManager.CurrentScene.SceneName);
+        }
+
+        private void TransitionTo(string sceneName)
+        {
+            StartCoroutine(FadeOutRoutine(sceneName, transitionDuration));
+        }
+        
+        private void TransitionToQuit()
+        {
+            StartCoroutine(FadeOutRoutine(transitionDuration));
         }
 
         private IEnumerator FadeInRoutine(float fadeDuration)

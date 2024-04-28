@@ -54,7 +54,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9035745359450372027}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -90,7 +90,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -120,7 +120,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.22012573, g: 0.22012573, b: 0.22012573, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -145,7 +145,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -217,7 +217,7 @@ PrefabInstance:
     - target: {fileID: 475670868312113256, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
       propertyPath: m_text
-      value: Menu Prompt!
+      value: <b><color=#1B1B1B><b></color><i>Menu Prompt!</i>
       objectReference: {fileID: 0}
     - target: {fileID: 3646973196281509668, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
@@ -342,7 +342,7 @@ PrefabInstance:
     - target: {fileID: 7725355178805977048, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
       propertyPath: content
-      value: Type 'start' to start the game!
+      value: This is a tooltip :)
       objectReference: {fileID: 0}
     - target: {fileID: 8978181685811686539, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
@@ -383,6 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: Menu Prompt!
   tooltip: This is a tooltip :)
+  objForTailToPointTo: {fileID: 0}
   startFocused: 0
 --- !u!224 &6666669191406551926 stripped
 RectTransform:

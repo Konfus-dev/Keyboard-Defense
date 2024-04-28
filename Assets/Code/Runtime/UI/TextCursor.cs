@@ -59,13 +59,25 @@ namespace KeyboardDefense.UI
             
             if (indexOfLastTypedCharacter == -1)
             {
+                // Reset the cursor position to the beginning
                 TMP_CharacterInfo charInfo = textInfo.characterInfo[0];
                 charPosInLocalSpace = charInfo.bottomLeft;
             }
             else
             {
+                // Update the cursor position to the last typed character
                 TMP_CharacterInfo charInfo = textInfo.characterInfo[indexOfLastTypedCharacter];
-                charPosInLocalSpace = charInfo.bottomRight;
+                if (charInfo.character == ' ' && indexOfLastTypedCharacter + 1 < textInfo.characterCount) 
+                {
+                    // char is a space, need to shift over one more and anchor to the left
+                    charInfo = textInfo.characterInfo[indexOfLastTypedCharacter + 1];
+                    charPosInLocalSpace = charInfo.bottomLeft;
+                }
+                else
+                {
+                    // Reg char anchor to the right
+                    charPosInLocalSpace = charInfo.bottomRight;
+                }
             }
             
             var wordLocationInWorld = text.transform.TransformPoint(charPosInLocalSpace);

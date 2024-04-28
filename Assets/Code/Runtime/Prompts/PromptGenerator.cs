@@ -61,7 +61,8 @@ namespace KeyboardDefense.Prompts
             var uiFollowObjectInWorld = _generatedPrompt.GetComponent<UIFollowObjectInWorld>();
             uiFollowObjectInWorld.SetObjectToFollow(objForGeneratedPromptToFollow);
             uiFollowObjectInWorld.SetFollowOffset(generatedPromptFollowOffset);
-            
+            var promptTail = _generatedPrompt.GetComponentInChildren<PromptTail>();
+            promptTail.SetObjectToFollow(objForGeneratedPromptToFollow);
         }
     }
 }

@@ -1,9 +1,14 @@
-﻿namespace KeyboardDefense.Scenes
+﻿using UnityEngine.Events;
+
+namespace KeyboardDefense.Scenes
 {
     public interface ISceneManager
     {
-        void LoadScene(string sceneName);
+        public UnityEvent QuitGame { get; }
+        UnityEvent ChangedCurrentScene { get; }
+        SceneInfo CurrentScene { get; }
+        void LoadScene(SceneInfo sceneName);
         void ReloadCurrentScene();
-        void QuitGame();
+        void Quit();
     }
 }

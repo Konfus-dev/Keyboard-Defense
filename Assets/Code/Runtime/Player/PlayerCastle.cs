@@ -1,9 +1,9 @@
-using System;
 using KeyboardDefense.Characters;
 using KeyboardDefense.Services;
 
 namespace KeyboardDefense.Player
 {
+    // TODO: make game over state a service, then do game over subscribers...
     public class PlayerCastle : Character
     {
         private IPlayerHealthUI _playerHealthUI;

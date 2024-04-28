@@ -7,22 +7,22 @@ namespace KeyboardDefense.UI
     {
         private Camera _camera;
         private LineRenderer _lineRenderer;
-        private UIFollowObjectInWorld _uiFollowObjectInWorld;
+        private GameObject _objectToFollowInWorld;
+
+        public void SetObjectToFollow(GameObject objToFollow)
+        {
+            _objectToFollowInWorld = objToFollow;
+        }
 
         private void Awake()
         {
-            _lineRenderer = GetComponent<LineRenderer>();
-            _uiFollowObjectInWorld = GetComponentInParent<UIFollowObjectInWorld>();
-        }
-
-        private void OnEnable()
-        {
             _camera = Camera.main;
+            _lineRenderer = GetComponent<LineRenderer>();
         }
 
         private void Update()
         {
-            var objToFollow = _uiFollowObjectInWorld.GetObjectToFollow();
+            var objToFollow = _objectToFollowInWorld;
             if (!objToFollow)
             {
                 _lineRenderer.enabled = false;
@@ -31,7 +31,7 @@ namespace KeyboardDefense.UI
             
             _lineRenderer.enabled = true;
             _lineRenderer.SetPosition(0, objToFollow.transform.position);
-            _lineRenderer.SetPosition(1, _camera.ScreenToWorldPoint(new Vector3(transform.position.x, transform.position.y, 20) + new Vector3(0, 0, transform.position.z)));
+            _lineRenderer.SetPosition(1, transform.position - new Vector3(0 ,0, -1) * 0.5f);
         }
 
         private void OnDisable()
