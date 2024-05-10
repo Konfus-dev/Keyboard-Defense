@@ -11,7 +11,8 @@ namespace KeyboardDefense.Scenes
         public SceneInfo CurrentScene { get; private set; }
         
         private ISceneTransitioner _sceneTransitioner;
-        private bool _quitting = false;
+        private bool _quitting;
+        private bool _initializing;
 
         public void LoadScene(SceneInfo scene)
         {
@@ -23,7 +24,8 @@ namespace KeyboardDefense.Scenes
             {
                 CurrentScene = scene;
                 ChangedCurrentScene.Invoke();
-                _sceneTransitioner.PlayTransitionOutOfScene(1.5f);
+                if (_initializing) _sceneTransitioner.PlayTransitionOutOfScene(0);
+                else _sceneTransitioner.PlayTransitionOutOfScene(1.5f);
             }
         }
 
@@ -41,10 +43,15 @@ namespace KeyboardDefense.Scenes
 
         private void Start()
         {
+            _initializing = true;
             _sceneTransitioner = ServiceProvider.Instance.Get<ISceneTransitioner>();
             _sceneTransitioner.OnTransitionOutComplete.AddListener(OnTransitionOutComplete);
             CurrentScene = ServiceProvider.Instance.Get<ICurrentSceneProvider>()?.CurrentScene;
-            if (CurrentScene) ReloadCurrentScene();
+            if (CurrentScene)
+            {
+                ReloadCurrentScene();
+                _initializing = false;
+            }
         }
 
         private void OnTransitionOutComplete()
@@ -59,10 +66,18 @@ namespace KeyboardDefense.Scenes
             }
             else
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(CurrentScene.SceneName, LoadSceneMode.Single);
-                foreach (var additionalScene in CurrentScene.SceneDependencies)
+                var activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+                if (CurrentScene.SceneName != activeScene.name)
                 {
-                    UnityEngine.SceneManagement.SceneManager.LoadScene(additionalScene.SceneName, LoadSceneMode.Additive);
+                    UnityEngine.SceneManagement.SceneManager.LoadScene(CurrentScene.SceneName, LoadSceneMode.Single);
+                }
+                if (CurrentScene.SceneDependencies != null)
+                {
+                    foreach (var additionalScene in CurrentScene.SceneDependencies)
+                    {
+                        UnityEngine.SceneManagement.SceneManager.LoadScene(additionalScene.SceneName,
+                            LoadSceneMode.Additive);
+                    }
                 }
                 _sceneTransitioner.PlayTransitionIntoScene(1.0f);
             }
