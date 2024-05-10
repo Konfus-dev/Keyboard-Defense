@@ -9,9 +9,9 @@ namespace KeyboardDefense.Characters
         [SerializeField]
         private WordDifficulty difficulty;
         [SerializeField] 
-        private float health = 2f;
+        private int health = 2;
         [SerializeField]
-        private float attackDamage = 1f;
+        private int attackDamage = 1;
         [SerializeField]
         private float attackCooldown = 1f;
         [SerializeField]
@@ -20,8 +20,8 @@ namespace KeyboardDefense.Characters
         private float moveSpeed = 1f;
 
         public WordDifficulty Difficulty => difficulty;
-        public float Health => health;
-        public float AttackDamage => attackDamage;
+        public int Health => health;
+        public int AttackDamage => attackDamage;
         public float AttackCooldown => attackCooldown;
         public float StunDuration => stunDuration;
         public float MoveSpeed => moveSpeed;

@@ -17,7 +17,7 @@ namespace KeyboardDefense.Services
         }
     }
     
-    public abstract class GameService<T> : GameService
+    public abstract class GameService<T> : GameService where T : class, IGameService
     {
         public override void Register()
         {

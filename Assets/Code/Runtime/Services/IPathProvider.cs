@@ -2,7 +2,7 @@
 
 namespace KeyboardDefense.Services
 {
-    public interface IPathProvider
+    public interface IPathProvider : IGameService
     {
         SplineContainer Spline { get; }
     }

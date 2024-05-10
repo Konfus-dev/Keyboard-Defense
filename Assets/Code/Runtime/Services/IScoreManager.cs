@@ -2,7 +2,7 @@
 
 namespace KeyboardDefense.Services
 {
-    public interface IScoreManager
+    public interface IScoreManager : IGameService
     {
         int Score { get; }
         void AddToScore(int amount);

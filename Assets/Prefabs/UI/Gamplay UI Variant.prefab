@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d4f5e44e98431d99c894d5bce7485d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTextField: 0
 --- !u!114 &5157737218746623418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1084,6 +1085,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1006849917416251741, guid: 52f3a5ccffc828144abf93f4a4f2665d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485269430620078734, guid: 52f3a5ccffc828144abf93f4a4f2665d,
+        type: 3}
+      propertyPath: textCursor
+      value: 
+      objectReference: {fileID: 6192944022281365145, guid: 0349f59d1c3bb014ab41c9bd4f9d5866,
+        type: 3}
+    - target: {fileID: 4485269430620078734, guid: 52f3a5ccffc828144abf93f4a4f2665d,
+        type: 3}
+      propertyPath: clickCursor
+      value: 
+      objectReference: {fileID: 6192944022281365145, guid: e8615eac3f630fb4cbce0d2c53f8d8c1,
+        type: 3}
+    - target: {fileID: 4485269430620078734, guid: 52f3a5ccffc828144abf93f4a4f2665d,
+        type: 3}
+      propertyPath: hoverCursor
+      value: 
+      objectReference: {fileID: 6192944022281365145, guid: 70400dba2d8f4dc428a0d5a4ade953be,
+        type: 3}
+    - target: {fileID: 4485269430620078734, guid: 52f3a5ccffc828144abf93f4a4f2665d,
+        type: 3}
+      propertyPath: defaultCursor
+      value: 
+      objectReference: {fileID: 6192944022281365145, guid: 016e4e6c4c0814546980cbdae0acb0cb,
+        type: 3}
     - target: {fileID: 4829657717247516008, guid: 52f3a5ccffc828144abf93f4a4f2665d,
         type: 3}
       propertyPath: m_Pivot.x

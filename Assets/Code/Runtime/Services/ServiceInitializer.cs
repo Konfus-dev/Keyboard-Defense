@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace KeyboardDefense.Services
 {
@@ -7,7 +8,9 @@ namespace KeyboardDefense.Services
         // Awake function that finds and registers all GameService instances
         private void Awake()
         {
-            GameService[] gameServices = FindObjectsByType<GameService>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+            IGameService[] gameServices = FindObjectsByType<MonoBehaviour>(
+                sortMode: FindObjectsSortMode.None, 
+                findObjectsInactive: FindObjectsInactive.Include).OfType<IGameService>().ToArray();
             foreach (var service in gameServices) service.Register();
         }
     }

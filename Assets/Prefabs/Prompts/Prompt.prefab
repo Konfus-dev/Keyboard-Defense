@@ -771,6 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d4f5e44e98431d99c894d5bce7485d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTextField: 1
 --- !u!114 &7970464137510005329
 MonoBehaviour:
   m_ObjectHideFlags: 0

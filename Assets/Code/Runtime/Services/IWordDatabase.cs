@@ -2,7 +2,7 @@
 
 namespace KeyboardDefense.Services
 {
-    public interface IWordDatabase
+    public interface IWordDatabase : IGameService
     {
         PromptData GetRandomWordOfGivenDifficulty(WordDifficulty difficulty);
     }

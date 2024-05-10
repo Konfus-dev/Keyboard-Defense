@@ -1,4 +1,4 @@
-﻿using KeyboardDefense.Player.Input;
+﻿using KeyboardDefense.Input;
 using KeyboardDefense.Prompts;
 using KeyboardDefense.Services;
 using UnityEngine;
@@ -8,24 +8,24 @@ namespace KeyboardDefense.UI
     public class PromptFocusHandler : MonoBehaviour
     {
         private Prompt _prompt;
-        private PromptUI _promptUI;
+        private PromptTextBox _promptTextBox;
         private IPromptFocusManager _promptFocusManager;
 
         public void FocusPrompt()
         {
-            _promptFocusManager.Focus(_promptUI);
+            _promptFocusManager.Focus(_promptTextBox);
         }
 
         public void RequestFocusOnPrompt()
         {
             var priority = (_prompt.GetPrompt().Length - _prompt.GetNumberOfRemainingCharacters()) + _prompt.GetPrompt().Length;
-            _promptFocusManager.RequestFocus(_promptUI, priority);
+            _promptFocusManager.RequestFocus(_promptTextBox, priority);
         }
         
         private void Awake()
         {
             _prompt = GetComponent<Prompt>();
-            _promptUI = GetComponent<PromptUI>();
+            _promptTextBox = GetComponent<PromptTextBox>();
             var mouseEventListener = GetComponent<MouseEventListener>();
             mouseEventListener.mouseDown.AddListener(OnClick);
             
@@ -36,7 +36,7 @@ namespace KeyboardDefense.UI
         
         private void OnDisable()
         {
-            _promptFocusManager.ClearFocus(_promptUI);
+            _promptFocusManager.ClearFocus(_promptTextBox);
         }
 
         private void OnClick()

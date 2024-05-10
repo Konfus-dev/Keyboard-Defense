@@ -1,6 +1,6 @@
 ﻿namespace KeyboardDefense.Services
 {
-    public abstract class SingletonGameService<T> : GameService where T : class
+    public abstract class SingletonGameService<T> : GameService where T : class, IGameService
     {
         /// <summary>
         /// Gets the singleton instance.

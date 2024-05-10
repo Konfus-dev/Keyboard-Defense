@@ -22,7 +22,7 @@ namespace KeyboardDefense.Prompts
         public Prompt GeneratedPrompt => _generatedPrompt;
         
         private Prompt _generatedPrompt;
-        private PromptUI _generatedPromptUI;
+        private PromptTextBox _generatedPromptTextBox;
         private ISpawnService _spawnService;
         private IWordDatabase _wordDatabase;
 
@@ -39,9 +39,9 @@ namespace KeyboardDefense.Prompts
         
         private void OnDisable()
         {
-            if (_generatedPromptUI)
+            if (_generatedPromptTextBox)
             {
-                _generatedPromptUI.gameObject.SetActive(false);
+                _generatedPromptTextBox.gameObject.SetActive(false);
             }
         }
 
@@ -54,11 +54,11 @@ namespace KeyboardDefense.Prompts
             PromptData promptData = _wordDatabase.GetRandomWordOfGivenDifficulty(wordToGenerateDifficulty);
             _generatedPrompt = promptGo.GetComponent<Prompt>();
             _generatedPrompt.Set(promptData);
-            _generatedPromptUI = _generatedPrompt.GetComponent<PromptUI>();
-            _generatedPromptUI.SetPrompt(promptData);
+            _generatedPromptTextBox = _generatedPrompt.GetComponent<PromptTextBox>();
+            _generatedPromptTextBox.SetPrompt(promptData);
             
             // Tell prompt to follow the object we are configured to follow
-            var uiFollowObjectInWorld = _generatedPrompt.GetComponent<UIFollowObjectInWorld>();
+            var uiFollowObjectInWorld = _generatedPrompt.GetComponent<ScreenSpaceObjFollowObjInWorld>();
             uiFollowObjectInWorld.SetObjectToFollow(objForGeneratedPromptToFollow);
             uiFollowObjectInWorld.SetFollowOffset(generatedPromptFollowOffset);
             var promptTail = _generatedPrompt.GetComponentInChildren<PromptTail>();

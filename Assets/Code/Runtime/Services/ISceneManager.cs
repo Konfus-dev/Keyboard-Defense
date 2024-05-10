@@ -1,8 +1,9 @@
-﻿using UnityEngine.Events;
+﻿using KeyboardDefense.Services;
+using UnityEngine.Events;
 
 namespace KeyboardDefense.Scenes
 {
-    public interface ISceneManager
+    public interface ISceneManager : IGameService
     {
         public UnityEvent QuitGame { get; }
         UnityEvent ChangedCurrentScene { get; }

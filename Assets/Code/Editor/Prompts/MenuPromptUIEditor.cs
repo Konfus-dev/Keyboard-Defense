@@ -4,12 +4,12 @@ using UnityEditor;
 
 namespace KeyboardDefense.Editor.Prompts
 {
-    [CustomEditor(typeof(MenuPromptUI))]
+    [CustomEditor(typeof(MenuPrompt))]
     public class MenuPromptUIEditor : UnityEditor.Editor
     {
         private string _lastTextValue;
         private SerializedProperty _uiText;
-        private PromptUI _promptUI;
+        private PromptTextBox _promptTextBox;
         private TMP_Text _promptUIText;
 
         public override void OnInspectorGUI()
@@ -22,14 +22,14 @@ namespace KeyboardDefense.Editor.Prompts
             {
                 _promptUIText.text = _uiText.stringValue;
                 _lastTextValue = _uiText.stringValue;
-                _promptUI.SetSize(_promptUIText.text.Length + 1);
+                _promptTextBox.SetSize(_promptUIText.text.Length + 1);
             }
         }
 
         private void OnEnable()
         {
-            var menuPromptUI = (MenuPromptUI)target;
-            _promptUI = menuPromptUI.GetComponent<PromptUI>();
+            var menuPromptUI = (MenuPrompt)target;
+            _promptTextBox = menuPromptUI.GetComponent<PromptTextBox>();
             _promptUIText = menuPromptUI.GetComponentInChildren<TMP_Text>();
             _uiText = serializedObject.FindProperty("text");
         }

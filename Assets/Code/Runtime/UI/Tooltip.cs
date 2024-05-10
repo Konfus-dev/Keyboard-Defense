@@ -1,5 +1,6 @@
 ﻿using System;
-using KeyboardDefense.Player.Input;
+using KeyboardDefense.Input;
+using KeyboardDefense.Input.Input;
 using KeyboardDefense.Services;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace KeyboardDefense.UI
         private string content;
 
         private ITooltipService _tooltipService;
-        private MouseEventListener _eventListener;
+        private MouseEventListener _mouseEventListener;
 
         public void Set(string tooltipContent, string tooltipHeader = "")
         {
@@ -25,13 +26,13 @@ namespace KeyboardDefense.UI
         private void Awake()
         {
             _tooltipService = ServiceProvider.Instance.Get<ITooltipService>();
-            _eventListener = GetComponent<MouseEventListener>();
+            _mouseEventListener = GetComponent<MouseEventListener>();
         }
         
         private void Start()
         {
-            _eventListener.mouseEnter.AddListener(OnStartHover);
-            _eventListener.mouseExit.AddListener(OnStopHover);
+            _mouseEventListener.mouseEnter.AddListener(OnStartHover);
+            _mouseEventListener.mouseExit.AddListener(OnStopHover);
         }
         
         private void OnStartHover()

@@ -18,7 +18,7 @@ namespace KeyboardDefense.Characters
 
         private State _runningState;
         private State _previousState;
-        private float _currentHealth;
+        private int _currentHealth;
         private bool _invulnerable;
 
         public State GetState()
@@ -26,7 +26,7 @@ namespace KeyboardDefense.Characters
             return _runningState;
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(int damage)
         {
             _currentHealth -= damage;
             if (_invulnerable) return;
@@ -35,7 +35,7 @@ namespace KeyboardDefense.Characters
             if (_currentHealth <= 0) SetState(State.Dead);
         }
 
-        public float GetCurrentHealth()
+        public int GetCurrentHealth()
         {
             return _currentHealth;
         }
@@ -66,7 +66,6 @@ namespace KeyboardDefense.Characters
         {
             OnSpawn();
         }
-        
         
         private void UpdateState()
         {

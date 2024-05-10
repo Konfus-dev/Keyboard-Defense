@@ -2,7 +2,7 @@
 {
     public interface IHasHealth
     {
-        public void TakeDamage(float damage);
-        public float GetCurrentHealth();
+        public void TakeDamage(int damage);
+        public int GetCurrentHealth();
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using KeyboardDefense.Player.Input;
+using KeyboardDefense.Input;
 using Konfus.Utility.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
