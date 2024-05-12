@@ -41,15 +41,19 @@ namespace KeyboardDefense.Input
 
         private bool FilterKeyPress(KeyCode keyCode)
         {
-            if (keyCode.Equals(KeyCode.LeftShift) || keyCode.Equals(KeyCode.RightShift)) return true;
+            const string MOUSE_KEY_PREFIX = "Mouse";
             if (!UnityEngine.Input.GetKeyDown(keyCode)) return true;
-            if (keyCode.ToString().Contains("Mouse")) return true;
+            if (keyCode.ToString().Contains(MOUSE_KEY_PREFIX)) return true;
+            if (keyCode.Equals(KeyCode.LeftShift) || keyCode.Equals(KeyCode.RightShift)) return true;
             return false;
         }
 
         private bool TryParseSpecialCharacters(KeyCode keyCode, bool shiftPressed, out string specialCharacter)
         {
             specialCharacter = string.Empty;
+            
+            if (keyCode == KeyCode.Alpha1) Debug.Log("Alpha 1 pressed");
+            if (shiftPressed) Debug.Log("Shift also pressed");
             
             if (shiftPressed && keyCode == KeyCode.Alpha1) specialCharacter = "!";
             else if (shiftPressed && keyCode == KeyCode.Alpha2) specialCharacter = "@";
@@ -67,7 +71,7 @@ namespace KeyboardDefense.Input
 
         private IEnumerable<string> GetTypedCharacters()
         {
-            var shiftPressed = UnityEngine.Input.GetKeyDown(KeyCode.LeftShift) || UnityEngine.Input.GetKeyDown(KeyCode.RightShift);
+            var shiftPressed = UnityEngine.Input.GetKey(KeyCode.LeftShift) || UnityEngine.Input.GetKey(KeyCode.RightShift);
             var pressedKeys = new List<KeyCode>();
             var typedCharacters = new List<string>();
             

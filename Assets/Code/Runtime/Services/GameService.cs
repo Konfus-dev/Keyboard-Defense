@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 namespace KeyboardDefense.Services
 {
     public abstract class GameService : MonoBehaviour, IGameService
     {
+        public virtual void Initialize() { }
         public virtual void Register() { }
 
         public virtual void Unregister() { }
@@ -19,6 +21,11 @@ namespace KeyboardDefense.Services
     
     public abstract class GameService<T> : GameService where T : class, IGameService
     {
+        private void Awake()
+        {
+            Register();
+        }
+
         public override void Register()
         {
             ServiceProvider.Instance.Register<T>(this);

@@ -11,7 +11,7 @@ namespace KeyboardDefense.UI
 
         private IScoreManager _scoreManager;
         
-        private void Awake()
+        private void Start()
         {
             _scoreManager = ServiceProvider.Instance.Get<IScoreManager>();
             _scoreManager.OnScoreChanged.AddListener(OnScoreChanged);

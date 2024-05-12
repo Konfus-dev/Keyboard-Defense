@@ -34,6 +34,8 @@ namespace KeyboardDefense.Scenes
     {
         Menu,
         Level,
+        Dependency,
+        DependencyContainer,
         QuitGame
     }
 }

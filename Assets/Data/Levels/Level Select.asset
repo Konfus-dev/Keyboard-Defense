@@ -17,4 +17,5 @@ MonoBehaviour:
   sceneDescription: For selecting levels....
   sceneStarDifficulty: 0
   sceneMiniature: {fileID: 0}
-  sceneDependencies: []
+  sceneDependencies:
+  - {fileID: 11400000, guid: 7b8e27dfff571c44684136558b50d3d1, type: 2}

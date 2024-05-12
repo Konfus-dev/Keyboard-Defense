@@ -19,13 +19,13 @@ namespace KeyboardDefense.Characters
 
         private void Awake()
         {
-            _soundService = ServiceProvider.Instance.Get<ISoundService>();
-            _spawnService = ServiceProvider.Instance.Get<ISpawnService>();
             _character = GetComponent<Character>();
         } 
         
         private void Start()
         {
+            _soundService = ServiceProvider.Instance.Get<ISoundService>();
+            _spawnService = ServiceProvider.Instance.Get<ISpawnService>();
             _character.onDie.AddListener(PlayEffectOnCharacterDeath);
         }
         

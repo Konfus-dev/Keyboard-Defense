@@ -35,11 +35,11 @@ namespace KeyboardDefense.Characters
         private void Awake()
         {
             _character = GetComponent<Character>();
-            _splineContainer = ServiceProvider.Instance.Get<IPathProvider>().Spline;
         }
 
         private void Start()
         {
+            _splineContainer = ServiceProvider.Instance.Get<IPathProvider>().Spline;
             SetSpeed(_character.GetStats().MoveSpeed);
             GenerateRandomOffset();
         }

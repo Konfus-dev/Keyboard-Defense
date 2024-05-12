@@ -12,12 +12,12 @@ namespace KeyboardDefense.Characters
         
         private void Awake()
         {
-            _scoreManager = ServiceProvider.Instance.Get<IScoreManager>();
             _character = GetComponent<Character>();
-        } 
+        }
         
         private void Start()
         {
+            _scoreManager = ServiceProvider.Instance.Get<IScoreManager>();
             _character.onDie.AddListener(AddToScoreWhenCharacterDies);
         }
 

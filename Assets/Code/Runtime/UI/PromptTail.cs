@@ -28,10 +28,14 @@ namespace KeyboardDefense.UI
                 _lineRenderer.enabled = false;
                 return;
             }
-            
+
+            var posA = objToFollow.transform.position + Vector3.up;
+            var posB = !_camera.orthographic
+                ? _camera.ScreenToWorldPoint(new Vector3(transform.position.x, transform.position.y, _camera.nearClipPlane))
+                : transform.position - Vector3.back;
             _lineRenderer.enabled = true;
-            _lineRenderer.SetPosition(0, objToFollow.transform.position);
-            _lineRenderer.SetPosition(1, transform.position - new Vector3(0 ,0, -1) * 0.5f);
+            _lineRenderer.SetPosition(0, posA);
+            _lineRenderer.SetPosition(1, posB);
         }
 
         private void OnDisable()

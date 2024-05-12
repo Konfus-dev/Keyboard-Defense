@@ -1,4 +1,7 @@
+using System.Linq;
 using KeyboardDefense.Services;
+using Konfus.Utility.Extensions;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +15,16 @@ namespace KeyboardDefense.Scenes
         
         private ISceneTransitioner _sceneTransitioner;
         private bool _quitting;
-        private bool _initializing;
+
+        public void Initialize(SceneInfo startingScene)
+        {
+            CurrentScene = startingScene;
+            ChangedCurrentScene.Invoke();
+            _sceneTransitioner = ServiceProvider.Instance.Get<ISceneTransitioner>();
+            _sceneTransitioner.PlayTransitionOutOfScene(0);
+            _sceneTransitioner.OnTransitionOutComplete.AddListener(OnTransitionOutComplete);
+            OnTransitionOutComplete();
+        }
 
         public void LoadScene(SceneInfo scene)
         {
@@ -24,8 +36,7 @@ namespace KeyboardDefense.Scenes
             {
                 CurrentScene = scene;
                 ChangedCurrentScene.Invoke();
-                if (_initializing) _sceneTransitioner.PlayTransitionOutOfScene(0);
-                else _sceneTransitioner.PlayTransitionOutOfScene(1.5f);
+                _sceneTransitioner.PlayTransitionOutOfScene(1.5f);
             }
         }
 
@@ -41,19 +52,6 @@ namespace KeyboardDefense.Scenes
             _sceneTransitioner.PlayTransitionOutOfScene(0.5f);
         }
 
-        private void Start()
-        {
-            _initializing = true;
-            _sceneTransitioner = ServiceProvider.Instance.Get<ISceneTransitioner>();
-            _sceneTransitioner.OnTransitionOutComplete.AddListener(OnTransitionOutComplete);
-            CurrentScene = ServiceProvider.Instance.Get<ICurrentSceneProvider>()?.CurrentScene;
-            if (CurrentScene)
-            {
-                ReloadCurrentScene();
-                _initializing = false;
-            }
-        }
-
         private void OnTransitionOutComplete()
         {
             if (_quitting)
@@ -66,21 +64,61 @@ namespace KeyboardDefense.Scenes
             }
             else
             {
-                var activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-                if (CurrentScene.SceneName != activeScene.name)
-                {
-                    UnityEngine.SceneManagement.SceneManager.LoadScene(CurrentScene.SceneName, LoadSceneMode.Single);
-                }
-                if (CurrentScene.SceneDependencies != null)
-                {
-                    foreach (var additionalScene in CurrentScene.SceneDependencies)
-                    {
-                        UnityEngine.SceneManagement.SceneManager.LoadScene(additionalScene.SceneName,
-                            LoadSceneMode.Additive);
-                    }
-                }
+                LoadCurrentScene();
                 _sceneTransitioner.PlayTransitionIntoScene(1.0f);
             }
+        }
+
+        private void LoadCurrentScene()
+        {
+            var openScenes = GetOpenScenes();
+            if (openScenes.All(s => s.name != CurrentScene.SceneName))
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(CurrentScene.SceneName, LoadSceneMode.Single);
+            }
+            LoadSceneDependencies(CurrentScene, openScenes);
+        }
+
+        private void LoadSceneDependencies(SceneInfo sceneInfo, Scene[] openScenes)
+        {
+            // No dependencies, return!
+            if (sceneInfo.SceneDependencies.IsNullOrEmpty()) return;
+            
+            // We do have dependencies! Load them recursively...
+            foreach (var additionalScene in sceneInfo.SceneDependencies)
+            {
+                var canOpenScene = additionalScene.SceneType != SceneType.DependencyContainer &&
+                                   openScenes.All(s => s.name != additionalScene.SceneName);
+                if (canOpenScene)
+                {
+                    // Validate to see if we can load the scene...
+                    if (additionalScene.SceneName.IsNullOrEmpty())
+                    {
+                        Debug.LogWarning($"Scene name is null or empty for {additionalScene.name} " +
+                                         "and this is not marked as a dependency container, skipping loading this scene and its dependencies...");
+                        break;
+                    }
+                    
+                    // If we aren't just a container for additional dependencies, load the scene...
+                    UnityEngine.SceneManagement.SceneManager.LoadScene(additionalScene.SceneName, LoadSceneMode.Additive);
+                }
+                
+                // Load dependencies of this dependency...
+                LoadSceneDependencies(additionalScene, openScenes);
+            }
+        }
+
+        private static Scene[] GetOpenScenes()
+        {
+            int countLoaded = UnityEngine.SceneManagement.SceneManager.sceneCount;
+            Scene[] loadedScenes = new Scene[countLoaded];
+ 
+            for (int i = 0; i < countLoaded; i++)
+            {
+                loadedScenes[i] = UnityEngine.SceneManagement.SceneManager.GetSceneAt(i);
+            }
+
+            return loadedScenes;
         }
     }
 }

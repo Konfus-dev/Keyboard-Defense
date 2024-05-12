@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KeyboardDefense.Services
@@ -13,11 +14,11 @@ namespace KeyboardDefense.Services
         /// <value>The instance.</value>
         public static ServiceProvider Instance { get; } = new ServiceProvider();
         
-        private Dictionary<Type, object> _services;
+        private Dictionary<Type, IGameService> _services;
         
-        public void Register<T>(object service) where T : class, IGameService
+        public void Register<T>(IGameService service) where T : class, IGameService
         {
-            _services ??= new Dictionary<Type, object>();
+            _services ??= new Dictionary<Type, IGameService>();
             _services[typeof(T)] = service;
         }
 
@@ -28,7 +29,7 @@ namespace KeyboardDefense.Services
         
         public T Get<T>() where T : class, IGameService
         {
-            if (!_services.TryGetValue(typeof(T), out object gameService))
+            if (!_services.TryGetValue(typeof(T), out IGameService gameService))
             {
                 Debug.LogWarning($"No service registered for type {typeof(T).Name}");
                 return null;
@@ -36,5 +37,7 @@ namespace KeyboardDefense.Services
 
             return (T)gameService;
         }
+        
+        public IGameService[] GetAllRegisteredServices() => _services.Values.ToArray();
     }
 }

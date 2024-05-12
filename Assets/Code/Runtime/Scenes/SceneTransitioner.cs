@@ -10,19 +10,17 @@ namespace KeyboardDefense.Scenes
         
         private TransitionImage _transitionImage;
 
-        private void Awake()
-        {
-            _transitionImage =  FindObjectOfType<TransitionImage>();
-        }
 
         public void PlayTransitionOutOfScene(float transitionDuration)
         {
+            _transitionImage ??= FindObjectOfType<TransitionImage>();
             StartCoroutine(_transitionImage.PlayFadeOutRoutine(transitionDuration));
             OnTransitionOutComplete.Invoke();
         }
         
         public void PlayTransitionIntoScene(float transitionDuration)
         {
+            _transitionImage ??= FindObjectOfType<TransitionImage>();
             StartCoroutine(_transitionImage.PlayFadeInRoutine(transitionDuration));
             OnTransitionInComplete.Invoke();
         }

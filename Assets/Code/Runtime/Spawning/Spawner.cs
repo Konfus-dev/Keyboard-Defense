@@ -31,8 +31,8 @@ namespace KeyboardDefense.Spawning
                 cumulativeChance += spawnable.SpawnChance;
                 if (randomValue <= cumulativeChance)
                 {
-                    // Spawn the selected prefab
-                    var go = spawnService.Spawn(spawnable.Prefab, transform.position, Quaternion.identity);
+                    // Spawn the selected prefab under map... the enemy will move itself to the path...
+                    spawnService.Spawn(spawnable.Prefab, new Vector3(0, 0, -100), Quaternion.identity);
                     break;
                 }
             }

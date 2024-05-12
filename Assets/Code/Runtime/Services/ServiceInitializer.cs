@@ -5,8 +5,7 @@ namespace KeyboardDefense.Services
 {
     public class ServiceInitializer : MonoBehaviour
     {
-        // Awake function that finds and registers all GameService instances
-        private void Awake()
+        public void FindAndRegisterServices()
         {
             IGameService[] gameServices = FindObjectsByType<MonoBehaviour>(
                 sortMode: FindObjectsSortMode.None, 

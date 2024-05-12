@@ -1,4 +1,5 @@
-﻿using KeyboardDefense.Services;
+﻿using System;
+using KeyboardDefense.Services;
 using UnityEngine;
 
 namespace KeyboardDefense.UI
@@ -11,6 +12,10 @@ namespace KeyboardDefense.UI
         private void Awake()
         {
             _healthBar = GetComponent<HealthBar>();
+        }
+
+        private void Start()
+        {
             var player = ServiceProvider.Instance.Get<IPlayer>();
             player.HealthChanged.AddListener(OnPlayerHealthChanged);
         }

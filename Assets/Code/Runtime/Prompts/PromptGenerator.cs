@@ -1,8 +1,5 @@
-using System;
 using KeyboardDefense.Services;
-using KeyboardDefense.Spawning;
 using KeyboardDefense.UI;
-using Konfus.Utility.Design_Patterns;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -26,14 +23,13 @@ namespace KeyboardDefense.Prompts
         private ISpawnService _spawnService;
         private IWordDatabase _wordDatabase;
 
-        private void Awake()
-        {
-            _wordDatabase = ServiceProvider.Instance.Get<IWordDatabase>();
-            _spawnService = ServiceProvider.Instance.Get<ISpawnService>();
-        }
-
         private void OnEnable()
         {
+            // Get required services
+            _wordDatabase ??= ServiceProvider.Instance.Get<IWordDatabase>();
+            _spawnService ??= ServiceProvider.Instance.Get<ISpawnService>();
+            
+            // Then generate prompt
             GeneratePrompt();
         }
         

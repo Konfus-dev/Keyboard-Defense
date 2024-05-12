@@ -5,6 +5,7 @@ using KeyboardDefense.Input;
 using KeyboardDefense.Localization;
 using KeyboardDefense.Input.Input;
 using KeyboardDefense.Prompts;
+using KeyboardDefense.Services;
 using TMPro;
 
 namespace KeyboardDefense.UI
@@ -51,9 +52,9 @@ namespace KeyboardDefense.UI
             
             // Move to front
             // TODO: fix this! Its not working and we need to move the thing we are focused on in front of all other UI elements!
-            var position = transform.position;
+            /*var position = transform.position;
             position = new Vector3(position.x, position.y, 10);
-            transform.position = position;
+            transform.position = position;*/
         }
 
         public void Unfocus()
@@ -120,12 +121,15 @@ namespace KeyboardDefense.UI
 
         private void Awake()
         {
+            
             _tooltip = GetComponent<Tooltip>();
             _mouseEventListener = GetComponent<MouseEventListener>();
         }
 
         private void Start()
         {
+            var gameplayCanvas = ServiceProvider.Instance.Get<IGameplayCanvasProvider>();
+            if (gameplayCanvas != null) transform.SetParent(gameplayCanvas.GameplayCanvas.transform);
             _originalStyle = promptText.fontStyle;
             _originalColor = promptText.color;
             /*_mouseEventListenter.mouseEnter.AddListener(OnStartHover);

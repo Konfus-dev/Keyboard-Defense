@@ -10,6 +10,7 @@ namespace KeyboardDefense.UI
         private Prompt _prompt;
         private PromptTextBox _promptTextBox;
         private IPromptFocusManager _promptFocusManager;
+        private MouseEventListener _mouseEventListener;
 
         public void FocusPrompt()
         {
@@ -26,22 +27,30 @@ namespace KeyboardDefense.UI
         {
             _prompt = GetComponent<Prompt>();
             _promptTextBox = GetComponent<PromptTextBox>();
-            var mouseEventListener = GetComponent<MouseEventListener>();
-            mouseEventListener.mouseDown.AddListener(OnClick);
-            
+            _mouseEventListener = GetComponent<MouseEventListener>();
+        }
+
+        private void Start()
+        {
             _prompt.promptCharacterIncorrectlyTyped.AddListener(OnCharacterTyped);
             _prompt.promptCharacterCorrectlyTyped.AddListener(OnCharacterTyped);
+            _mouseEventListener.mouseDown.AddListener(OnClick);
             _promptFocusManager = ServiceProvider.Instance.Get<IPromptFocusManager>();
         }
         
         private void OnDisable()
         {
-            _promptFocusManager.ClearFocus(_promptTextBox);
+            _promptFocusManager?.ClearFocus(_promptTextBox);
         }
 
         private void OnClick()
         {
             FocusPrompt();
+        }
+        
+        private void OnClickAway()
+        {
+            _promptFocusManager?.ClearFocus(_promptTextBox);
         }
 
         private void OnCharacterTyped()

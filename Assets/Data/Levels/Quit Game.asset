@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e091a79745044fda8549528548cf265, type: 3}
   m_Name: Quit Game
   m_EditorClassIdentifier: 
+  sceneType: 4
   sceneName: 
   sceneDescription: 
-  sceneType: 2
   sceneStarDifficulty: 0
   sceneMiniature: {fileID: 0}
   sceneDependencies: []

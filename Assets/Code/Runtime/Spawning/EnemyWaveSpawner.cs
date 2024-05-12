@@ -1,5 +1,6 @@
 using System.Collections;
 using KeyboardDefense.Scenes;
+using KeyboardDefense.Services;
 using UnityEngine;
 
 namespace KeyboardDefense.Spawning
@@ -37,7 +38,7 @@ namespace KeyboardDefense.Spawning
 
         private void Start()
         {
-            _sceneManager = SceneManager.Instance;
+            _sceneManager = ServiceProvider.Instance.Get<ISceneManager>();
             _nextWaveTime = Time.time + firstWaveSpawnDelay;
             var currentScene = _sceneManager.CurrentScene;
             if (currentScene) gameObject.SetActive(currentScene.SceneType == SceneType.Level);

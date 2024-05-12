@@ -25,12 +25,12 @@ namespace KeyboardDefense.UI
 
         private void Awake()
         {
-            _tooltipService = ServiceProvider.Instance.Get<ITooltipService>();
             _mouseEventListener = GetComponent<MouseEventListener>();
         }
         
         private void Start()
         {
+            _tooltipService = ServiceProvider.Instance.Get<ITooltipService>();
             _mouseEventListener.mouseEnter.AddListener(OnStartHover);
             _mouseEventListener.mouseExit.AddListener(OnStopHover);
         }
