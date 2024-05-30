@@ -38,7 +38,7 @@ namespace KeyboardDefense.Spawning
 
         private void Start()
         {
-            _sceneManager = ServiceProvider.Instance.Get<ISceneManager>();
+            _sceneManager = ServiceProvider.Get<ISceneManager>();
             _nextWaveTime = Time.time + firstWaveSpawnDelay;
             var currentScene = _sceneManager.CurrentScene;
             if (currentScene) gameObject.SetActive(currentScene.SceneType == SceneType.Level);

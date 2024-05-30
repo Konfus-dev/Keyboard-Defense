@@ -3,7 +3,6 @@ using System.Collections;
 using System.Linq;
 using KeyboardDefense.Input;
 using KeyboardDefense.Localization;
-using KeyboardDefense.Input.Input;
 using KeyboardDefense.Prompts;
 using KeyboardDefense.Services;
 using TMPro;
@@ -64,9 +63,9 @@ namespace KeyboardDefense.UI
             textCursor.SetActive(false);
             
             // Move back
-            var position = transform.position;
+            /*var position = transform.position;
             position = new Vector3(position.x, position.y, 0);
-            transform.position = position;
+            transform.position = position;*/
         }
         
         public void SetPrompt(string prompt)
@@ -128,7 +127,7 @@ namespace KeyboardDefense.UI
 
         private void Start()
         {
-            var gameplayCanvas = ServiceProvider.Instance.Get<IGameplayCanvasProvider>();
+            var gameplayCanvas = ServiceProvider.Get<IGameplayCanvasProvider>();
             if (gameplayCanvas != null) transform.SetParent(gameplayCanvas.GameplayCanvas.transform);
             _originalStyle = promptText.fontStyle;
             _originalColor = promptText.color;

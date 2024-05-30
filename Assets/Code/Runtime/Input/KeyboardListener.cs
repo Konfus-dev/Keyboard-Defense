@@ -9,7 +9,7 @@ namespace KeyboardDefense.Input
 
         protected virtual void Start()
         {
-            _player = ServiceProvider.Instance.Get<IPlayer>();
+            _player = ServiceProvider.Get<IPlayer>();
             _player.KeyPressed.AddListener(OnKeyPressed);
         }
 

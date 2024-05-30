@@ -39,7 +39,7 @@ namespace KeyboardDefense.Characters
 
         private void Start()
         {
-            _splineContainer = ServiceProvider.Instance.Get<IPathProvider>().Spline;
+            _splineContainer = ServiceProvider.Get<IPathProvider>().Spline;
             SetSpeed(_character.GetStats().MoveSpeed);
             GenerateRandomOffset();
         }

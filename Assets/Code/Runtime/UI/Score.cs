@@ -13,7 +13,7 @@ namespace KeyboardDefense.UI
         
         private void Start()
         {
-            _scoreManager = ServiceProvider.Instance.Get<IScoreManager>();
+            _scoreManager = ServiceProvider.Get<IScoreManager>();
             _scoreManager.OnScoreChanged.AddListener(OnScoreChanged);
         }
 

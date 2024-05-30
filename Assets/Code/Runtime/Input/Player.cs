@@ -15,12 +15,12 @@ namespace KeyboardDefense.Input
         
         public void Register()
         {
-            ServiceProvider.Instance.Register<IPlayer>(this);
+            ServiceProvider.Register<IPlayer>(this);
         }
         
         public void Unregister()
         {
-            ServiceProvider.Instance.Unregister<IPlayer>();
+            ServiceProvider.Unregister<IPlayer>();
         }
         
         public new void TakeDamage(int damage)
@@ -51,9 +51,6 @@ namespace KeyboardDefense.Input
         private bool TryParseSpecialCharacters(KeyCode keyCode, bool shiftPressed, out string specialCharacter)
         {
             specialCharacter = string.Empty;
-            
-            if (keyCode == KeyCode.Alpha1) Debug.Log("Alpha 1 pressed");
-            if (shiftPressed) Debug.Log("Shift also pressed");
             
             if (shiftPressed && keyCode == KeyCode.Alpha1) specialCharacter = "!";
             else if (shiftPressed && keyCode == KeyCode.Alpha2) specialCharacter = "@";

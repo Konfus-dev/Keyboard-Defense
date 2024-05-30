@@ -10,7 +10,11 @@ namespace KeyboardDefense.Services
             IGameService[] gameServices = FindObjectsByType<MonoBehaviour>(
                 sortMode: FindObjectsSortMode.None, 
                 findObjectsInactive: FindObjectsInactive.Include).OfType<IGameService>().ToArray();
-            foreach (var service in gameServices) service.Register();
+            foreach (var service in gameServices)
+            {
+                Debug.Log($"Found and registered service: {service.GetType().Name}");
+                service.Register();
+            }
         }
     }
 }

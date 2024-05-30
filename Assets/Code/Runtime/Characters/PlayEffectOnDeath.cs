@@ -1,4 +1,5 @@
-﻿using KeyboardDefense.Services;
+﻿using KeyboardDefense.Audio;
+using KeyboardDefense.Services;
 using UnityEngine;
 
 namespace KeyboardDefense.Characters
@@ -24,8 +25,8 @@ namespace KeyboardDefense.Characters
         
         private void Start()
         {
-            _soundService = ServiceProvider.Instance.Get<ISoundService>();
-            _spawnService = ServiceProvider.Instance.Get<ISpawnService>();
+            _soundService = ServiceProvider.Get<ISoundService>();
+            _spawnService = ServiceProvider.Get<ISpawnService>();
             _character.onDie.AddListener(PlayEffectOnCharacterDeath);
         }
         

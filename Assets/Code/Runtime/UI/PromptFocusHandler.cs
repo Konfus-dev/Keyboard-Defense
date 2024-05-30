@@ -35,7 +35,7 @@ namespace KeyboardDefense.UI
             _prompt.promptCharacterIncorrectlyTyped.AddListener(OnCharacterTyped);
             _prompt.promptCharacterCorrectlyTyped.AddListener(OnCharacterTyped);
             _mouseEventListener.mouseDown.AddListener(OnClick);
-            _promptFocusManager = ServiceProvider.Instance.Get<IPromptFocusManager>();
+            _promptFocusManager = ServiceProvider.Get<IPromptFocusManager>();
         }
         
         private void OnDisable()
@@ -55,7 +55,7 @@ namespace KeyboardDefense.UI
 
         private void OnCharacterTyped()
         {
-            RequestFocusOnPrompt();
+            FocusPrompt();
         }
     }
 }

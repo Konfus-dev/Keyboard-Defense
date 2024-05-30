@@ -16,7 +16,7 @@ namespace KeyboardDefense.UI
 
         private void Start()
         {
-            var player = ServiceProvider.Instance.Get<IPlayer>();
+            var player = ServiceProvider.Get<IPlayer>();
             player.HealthChanged.AddListener(OnPlayerHealthChanged);
         }
 

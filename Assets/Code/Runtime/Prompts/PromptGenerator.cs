@@ -26,8 +26,8 @@ namespace KeyboardDefense.Prompts
         private void OnEnable()
         {
             // Get required services
-            _wordDatabase ??= ServiceProvider.Instance.Get<IWordDatabase>();
-            _spawnService ??= ServiceProvider.Instance.Get<ISpawnService>();
+            _wordDatabase ??= ServiceProvider.Get<IWordDatabase>();
+            _spawnService ??= ServiceProvider.Get<ISpawnService>();
             
             // Then generate prompt
             GeneratePrompt();

@@ -24,7 +24,7 @@ namespace KeyboardDefense.Prompts
         
         private void Start()
         {
-            _soundService = ServiceProvider.Instance.Get<ISoundService>();
+            _soundService = ServiceProvider.Get<ISoundService>();
             _prompt.promptCompleted.AddListener(PlayEffectOnPromptCompleted);
             _prompt.promptCharacterCorrectlyTyped.AddListener(PlayEffectOnPromptType);
             _prompt.promptCharacterIncorrectlyTyped.AddListener(PlayEffectOnPromptFail);

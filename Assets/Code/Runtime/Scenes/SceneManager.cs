@@ -1,7 +1,5 @@
 using System.Linq;
 using KeyboardDefense.Services;
-using Konfus.Utility.Extensions;
-using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
@@ -10,19 +8,27 @@ namespace KeyboardDefense.Scenes
     public class SceneManager : SingletonGameService<ISceneManager>, ISceneManager
     {
         public UnityEvent QuitGame { get; } = new UnityEvent();
-        public UnityEvent ChangedCurrentScene { get; } = new UnityEvent();
+        public UnityEvent ChangedScene { get; } = new UnityEvent();
         public SceneInfo CurrentScene { get; private set; }
         
         private ISceneTransitioner _sceneTransitioner;
         private bool _quitting;
 
-        public void Initialize(SceneInfo startingScene)
+        private void Awake()
         {
-            CurrentScene = startingScene;
-            ChangedCurrentScene.Invoke();
-            _sceneTransitioner = ServiceProvider.Instance.Get<ISceneTransitioner>();
-            _sceneTransitioner.PlayTransitionOutOfScene(0);
+            _sceneTransitioner = GetComponent<ISceneTransitioner>();
+        }
+
+        private void Start()
+        {
+            // Set current scene
+            var currentSceneProvider = ServiceProvider.Get<ICurrentSceneProvider>();
+            CurrentScene = currentSceneProvider.CurrentScene;
+            ChangedScene.Invoke();
+            
+            // Play transition into current scene
             _sceneTransitioner.OnTransitionOutComplete.AddListener(OnTransitionOutComplete);
+            _sceneTransitioner.PlayTransitionOutOfScene(0);
             OnTransitionOutComplete();
         }
 
@@ -35,7 +41,7 @@ namespace KeyboardDefense.Scenes
             else
             {
                 CurrentScene = scene;
-                ChangedCurrentScene.Invoke();
+                ChangedScene.Invoke();
                 _sceneTransitioner.PlayTransitionOutOfScene(1.5f);
             }
         }
@@ -76,9 +82,10 @@ namespace KeyboardDefense.Scenes
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(CurrentScene.SceneName, LoadSceneMode.Single);
             }
-            LoadSceneDependencies(CurrentScene, openScenes);
+            //LoadSceneDependencies(CurrentScene, openScenes);
         }
 
+        /*
         private void LoadSceneDependencies(SceneInfo sceneInfo, Scene[] openScenes)
         {
             // No dependencies, return!
@@ -107,8 +114,9 @@ namespace KeyboardDefense.Scenes
                 LoadSceneDependencies(additionalScene, openScenes);
             }
         }
+        */
 
-        private static Scene[] GetOpenScenes()
+        public Scene[] GetOpenScenes()
         {
             int countLoaded = UnityEngine.SceneManagement.SceneManager.sceneCount;
             Scene[] loadedScenes = new Scene[countLoaded];

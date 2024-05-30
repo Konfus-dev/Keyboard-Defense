@@ -1,11 +1,9 @@
-using System;
 using UnityEngine;
 
 namespace KeyboardDefense.Services
 {
     public abstract class GameService : MonoBehaviour, IGameService
     {
-        public virtual void Initialize() { }
         public virtual void Register() { }
 
         public virtual void Unregister() { }
@@ -14,6 +12,7 @@ namespace KeyboardDefense.Services
         {
             if (Application.isPlaying)
             {
+                Debug.Log($"Unregistering the service {GetType().Name} after being destroyed.");
                 Unregister();
             }
         }
@@ -28,12 +27,12 @@ namespace KeyboardDefense.Services
 
         public override void Register()
         {
-            ServiceProvider.Instance.Register<T>(this);
+            ServiceProvider.Register<T>(this);
         }
         
         public override void Unregister()
         {
-            ServiceProvider.Instance.Unregister<T>();
+            ServiceProvider.Unregister<T>();
         }
     }
 }

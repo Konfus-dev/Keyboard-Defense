@@ -20,7 +20,7 @@ namespace KeyboardDefense.Input.Input
 
         private void Start()
         {
-            _cursorService = ServiceProvider.Instance.Get<ICursorService>();
+            _cursorService = ServiceProvider.Get<ICursorService>();
             _mouseEventListener.mouseEnter.AddListener(OnStartHover);
             _mouseEventListener.mouseExit.AddListener(OnStopHover);
             _mouseEventListener.mouseDown.AddListener(OnClick);
@@ -28,8 +28,8 @@ namespace KeyboardDefense.Input.Input
 
         private void OnClick()
         {
-            if (isTextField) _cursorService.HideCursor();
-            else _cursorService.SetCursor(CursorState.Click);
+            if (isTextField) return;
+            _cursorService.SetCursor(CursorState.Click);
         }
 
         private void OnStartHover()

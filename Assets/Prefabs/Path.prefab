@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e06fefd468d84774abe076dd1b60d806, type: 2}
+  - {fileID: 2100000, guid: 371cd6075028af34b9807dd384d8fc70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,65 +115,65 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: -18.109253
+        x: -18.566217
         y: 0
-        z: 0.15973091
+        z: 0.15907136
       TangentIn:
-        x: -0
-        y: -0
-        z: -1.791824
+        x: 0
+        y: 0
+        z: -2.0868852
       TangentOut:
         x: 0
         y: 0
-        z: 1.791824
+        z: 4.9088707
       Rotation:
         value:
-          x: -0.00000003758441
-          y: 0.7080526
-          z: 0.00000003768515
-          w: 0.7061597
+          x: -2.2344435e-12
+          y: 0.7374268
+          z: -2.0465812e-12
+          w: 0.6754271
     - Position:
-        x: -0.19107819
-        y: 0.0000019073486
-        z: 0.11176491
+        x: 0.60378283
+        y: 0
+        z: -4.8609285
       TangentIn:
         x: -0
         y: -0
-        z: -5.7207623
+        z: -6.000478
       TangentOut:
         x: 0
         y: 0
-        z: 5.2576375
+        z: 5.3837
       Rotation:
         value:
-          x: 0.000000025673346
-          y: 0.7090604
-          z: -0.000000025805953
-          w: 0.7051478
+          x: 5.383652e-12
+          y: 0.6978274
+          z: 5.5259027e-12
+          w: 0.716266
     - Position:
-        x: 14.942913
-        y: -0.0000019073486
-        z: -0.015205383
+        x: 15.803782
+        y: 0
+        z: -0.02092865
       TangentIn:
-        x: -0
-        y: -0
-        z: -1.5134524
+        x: 0
+        y: 0
+        z: -7.084864
       TangentOut:
         x: 0
         y: 0
-        z: 1.5134524
+        z: 1.8801184
       Rotation:
         value:
-          x: 0.000000088739476
-          y: 0.7100667
-          z: -0.000000089487095
-          w: 0.7041344
+          x: -4.5668595e-12
+          y: 0.6617369
+          z: -5.1741684e-12
+          w: 0.7497361
     m_MetaData:
-    - Mode: 0
+    - Mode: 3
       Tension: 0.5
     - Mode: 0
       Tension: 0.5
-    - Mode: 0
+    - Mode: 3
       Tension: 0.5
     m_Closed: 0
     m_IntData:
@@ -211,6 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0aae0fb932b9054794e6b0cd607d810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 2
+  width: 1
   resolution: 20
   curvature: 0.1

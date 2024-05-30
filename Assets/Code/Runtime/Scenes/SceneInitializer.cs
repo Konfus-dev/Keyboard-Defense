@@ -8,9 +8,11 @@ namespace KeyboardDefense.Scenes
     [RequireComponent(typeof(ServiceInitializer))]
     public class SceneInitializer : MonoBehaviour
     {
-        const string REQUIRED_SERVICES_SCENE_NAME = "Required Services";
         const string PLAYER_SCENE_NAME = "Player";
-        const string BASE_UI_SCENE_NAME = "Base UI";
+        const string UNIVERSAL_UI_SCENE_NAME = "Universal UI";
+        const string GAMEPLAY_UI_SCENE_NAME = "Gameplay UI";
+        const string UNIVERSAL_SERVICES_SCENE_NAME = "Universal Services";
+        const string GAMEPLAY_SERVICES_SCENE_NAME = "Gameplay Services";
         
         private ServiceInitializer _serviceInitializer;
         private CurrentSceneProvider _currentSceneProvider;
@@ -21,29 +23,22 @@ namespace KeyboardDefense.Scenes
             _serviceInitializer = GetComponent<ServiceInitializer>();
             _currentSceneProvider = GetComponent<CurrentSceneProvider>();
             
-            // Load required scenes...
-            UnityEngine.SceneManagement.SceneManager.LoadScene(REQUIRED_SERVICES_SCENE_NAME, LoadSceneMode.Additive);
+            // Load required scenes if not already opened...
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UNIVERSAL_SERVICES_SCENE_NAME, LoadSceneMode.Additive);
             UnityEngine.SceneManagement.SceneManager.LoadScene(PLAYER_SCENE_NAME, LoadSceneMode.Additive);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(BASE_UI_SCENE_NAME, LoadSceneMode.Additive);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UNIVERSAL_UI_SCENE_NAME, LoadSceneMode.Additive);
+            
+            // If we are in a level, load gameplay scenes...
+            if (_currentSceneProvider.CurrentScene.SceneType == SceneType.Level)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(GAMEPLAY_UI_SCENE_NAME, LoadSceneMode.Additive);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(GAMEPLAY_SERVICES_SCENE_NAME, LoadSceneMode.Additive);
+            }
         }
-
+        
         private void Start()
         {
-            // Register service required scenes...
             _serviceInitializer.FindAndRegisterServices();
-            
-            // Load current scenes dependencies...
-            ServiceProvider.Instance.Get<ISceneManager>().Initialize(_currentSceneProvider.CurrentScene);
-            
-            // Register service from newly loaded scenes from dependencies...
-            _serviceInitializer.FindAndRegisterServices();
-
-            // Log registered services...
-            var services = ServiceProvider.Instance.GetAllRegisteredServices();
-            foreach (var gameService in services)
-            {
-                Debug.Log($"Registered service: {gameService.GetType().Name}");
-            }
         }
     }
 }

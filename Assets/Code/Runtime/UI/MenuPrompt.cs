@@ -1,5 +1,6 @@
 ﻿using KeyboardDefense.Prompts;
 using KeyboardDefense.Scenes;
+using KeyboardDefense.Services;
 using UnityEngine;
 
 namespace KeyboardDefense.UI
@@ -20,35 +21,51 @@ namespace KeyboardDefense.UI
         private GameObject objForTailToPointTo;
         [SerializeField] 
         private bool startFocused;
-        
+
+        private Prompt _prompt;
+        private PromptTextBox _promptTextBox;
+        private Tooltip _tooltip;
+        private PromptFocusHandler _promptFocusHandler;
+        private PromptTail _promptTail;
+        private ISceneManager _sceneManager;
+
         private void Awake()
         {
-            Initialize();
+            _prompt = GetComponent<Prompt>();
+            _promptTextBox = GetComponent<PromptTextBox>();
+            _tooltip = GetComponent<Tooltip>();
+            _promptFocusHandler = GetComponent<PromptFocusHandler>();
+            _promptTail = GetComponentInChildren<PromptTail>();
+        }
+
+        private void Start()
+        {
+            _prompt.Set(text);
+            _tooltip.Set(tooltip);
+            _promptTextBox.SetPrompt(text);
+            if (_promptTail)
+            {
+                _promptTail.SetObjectToFollow(objForTailToPointTo);
+            }
+            if (Application.isPlaying)
+            {
+                _sceneManager = ServiceProvider.Get<ISceneManager>();
+                if (startFocused) _promptFocusHandler.FocusPrompt();
+                _prompt.promptCompleted.AddListener(TransitionToScene);
+            }
         }
 
         private void OnValidate()
         {
-            Initialize();
-        }
-        
-        private void Initialize()
-        {
-            var prompt = GetComponent<Prompt>();
-            prompt.Set(text);
-            GetComponent<PromptTextBox>().SetPrompt(text);
-            GetComponent<Tooltip>().Set(tooltip);
-
-            if (Application.isPlaying)
-            {
-                if (startFocused) GetComponent<PromptFocusHandler>().FocusPrompt();
-                prompt.promptCompleted.AddListener(TransitionToScene);
-            }
-            if (objForTailToPointTo) GetComponentInChildren<PromptTail>().SetObjectToFollow(objForTailToPointTo);
+            if (Application.isPlaying) return;
+            
+            Awake();
+            Start();
         }
 
         private void TransitionToScene()
         {
-            SceneManager.Instance.LoadScene(sceneToTransitionToOnTyped);
+            _sceneManager.LoadScene(sceneToTransitionToOnTyped);
         }
     }
 }

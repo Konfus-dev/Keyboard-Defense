@@ -8,26 +8,25 @@ namespace KeyboardDefense.Services
     // TODO: Doesn't need to be a singleton!!! Make this a static class!
     public class ServiceProvider
     {
-        /// <summary>
-        /// Gets the singleton instance.
-        /// </summary>
-        /// <value>The instance.</value>
-        public static ServiceProvider Instance { get; } = new ServiceProvider();
+        private static Dictionary<Type, IGameService> _services = new Dictionary<Type, IGameService>();
         
-        private Dictionary<Type, IGameService> _services;
-        
-        public void Register<T>(IGameService service) where T : class, IGameService
+        public static void Register<T>(IGameService service) where T : class, IGameService
         {
             _services ??= new Dictionary<Type, IGameService>();
             _services[typeof(T)] = service;
         }
 
-        public void Unregister<T>() where T : class, IGameService
+        public static void Unregister<T>(T service) where T : class, IGameService
+        {
+            Unregister<T>();
+        }
+        
+        public static void Unregister<T>() where T : class, IGameService
         {
             _services.Remove(typeof(T));
         }
         
-        public T Get<T>() where T : class, IGameService
+        public static T Get<T>() where T : class, IGameService
         {
             if (!_services.TryGetValue(typeof(T), out IGameService gameService))
             {
@@ -38,6 +37,6 @@ namespace KeyboardDefense.Services
             return (T)gameService;
         }
         
-        public IGameService[] GetAllRegisteredServices() => _services.Values.ToArray();
+        public static IGameService[] GetAllRegisteredServices() => _services.Values.ToArray();
     }
 }

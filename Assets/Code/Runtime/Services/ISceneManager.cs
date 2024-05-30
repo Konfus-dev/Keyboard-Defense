@@ -1,16 +1,17 @@
 ﻿using KeyboardDefense.Scenes;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace KeyboardDefense.Services
 {
     public interface ISceneManager : IGameService
     {
         public UnityEvent QuitGame { get; }
-        UnityEvent ChangedCurrentScene { get; }
+        UnityEvent ChangedScene { get; }
         
         SceneInfo CurrentScene { get; }
         
-        void Initialize(SceneInfo startingScene);
+        public Scene[] GetOpenScenes();
         void LoadScene(SceneInfo sceneName);
         void ReloadCurrentScene();
         void Quit();

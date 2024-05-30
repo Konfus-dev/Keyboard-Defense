@@ -25,9 +25,9 @@ namespace KeyboardDefense.Scenes
         private GameObject sceneMiniature;
         public GameObject SceneMiniature => sceneMiniature;
 
-        [SerializeField] 
+        /*[SerializeField] 
         private SceneInfo[] sceneDependencies;
-        public SceneInfo[] SceneDependencies => sceneDependencies;
+        public SceneInfo[] SceneDependencies => sceneDependencies;*/
     }
 
     public enum SceneType

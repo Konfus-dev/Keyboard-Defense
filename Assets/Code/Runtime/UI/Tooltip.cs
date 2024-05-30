@@ -1,6 +1,4 @@
-﻿using System;
-using KeyboardDefense.Input;
-using KeyboardDefense.Input.Input;
+﻿using KeyboardDefense.Input;
 using KeyboardDefense.Services;
 using UnityEngine;
 
@@ -30,7 +28,7 @@ namespace KeyboardDefense.UI
         
         private void Start()
         {
-            _tooltipService = ServiceProvider.Instance.Get<ITooltipService>();
+            _tooltipService = ServiceProvider.Get<ITooltipService>();
             _mouseEventListener.mouseEnter.AddListener(OnStartHover);
             _mouseEventListener.mouseExit.AddListener(OnStopHover);
         }

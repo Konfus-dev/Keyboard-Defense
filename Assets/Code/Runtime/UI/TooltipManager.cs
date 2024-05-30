@@ -11,6 +11,8 @@ namespace KeyboardDefense.UI
         [Header("Settings")]
         [SerializeField]
         private int characterWrapLimit;
+        [SerializeField]
+        private Vector2 offset;
     
         [Header("Dependencies")]
         [SerializeField]
@@ -75,7 +77,9 @@ namespace KeyboardDefense.UI
 
         private void MoveToMousePosition()
         {
-            Vector2 position = ((Vector2)UnityEngine.Input.mousePosition) + new Vector2(0, _rectTransform.rect.height);
+            Vector2 position = ((Vector2)UnityEngine.Input.mousePosition) + 
+                               new Vector2(-_rectTransform.rect.width, -_rectTransform.rect.height) + 
+                               offset;
 
             float pivotX = position.x / Screen.width;
             float pivotY = position.y / Screen.height;
