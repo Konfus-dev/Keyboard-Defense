@@ -19,9 +19,9 @@
             else if (!ReferenceEquals(Instance, this))
             {
                 Destroy(gameObject);
-                ServiceProvider.Register<T>(Instance);
             }
         }
+        
         public override void Unregister()
         {
             Instance = null;
@@ -31,12 +31,12 @@
 
         protected override void OnDestroy()
         {
-            // Do nothing because we don't want to destroy or unregister the singleton.
+            // Do nothing on destroy because we don't want to destroy the singleton or unregister it
         }
 
         private void OnApplicationQuit()
         {
-            ServiceProvider.Unregister<T>();
+            Unregister();
         }
     }
 }

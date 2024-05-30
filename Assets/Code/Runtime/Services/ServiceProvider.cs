@@ -6,7 +6,7 @@ using UnityEngine;
 namespace KeyboardDefense.Services
 {
     // TODO: Doesn't need to be a singleton!!! Make this a static class!
-    public class ServiceProvider
+    public static class ServiceProvider
     {
         private static Dictionary<Type, IGameService> _services = new Dictionary<Type, IGameService>();
         
