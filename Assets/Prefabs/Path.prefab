@@ -115,59 +115,59 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: -18.566217
+        x: -18.28
         y: 0
-        z: 0.15907136
+        z: 0.17
       TangentIn:
         x: 0
         y: 0
-        z: -2.0868852
+        z: -1.8786086
       TangentOut:
         x: 0
         y: 0
-        z: 4.9088707
+        z: 7.560662
       Rotation:
         value:
-          x: -2.2344435e-12
-          y: 0.7374268
-          z: -2.0465812e-12
-          w: 0.6754271
+          x: -2.11759e-12
+          y: 0.7117676
+          z: -2.089769e-12
+          w: 0.70241493
     - Position:
-        x: 0.60378283
+        x: -0.16
         y: 0
-        z: -4.8609285
+        z: 5.84
       TangentIn:
         x: -0
         y: -0
-        z: -6.000478
+        z: -5.8014274
       TangentOut:
         x: 0
         y: 0
-        z: 5.3837
+        z: 5.458908
       Rotation:
         value:
-          x: 5.383652e-12
-          y: 0.6978274
-          z: 5.5259027e-12
-          w: 0.716266
+          x: 5.9551997e-10
+          y: 0.7171544
+          z: 5.787128e-10
+          w: 0.6969143
     - Position:
-        x: 15.803782
+        x: 15.57
         y: 0
-        z: -0.02092865
+        z: -0.09
       TangentIn:
         x: 0
         y: 0
-        z: -7.084864
+        z: -13.222965
       TangentOut:
         x: 0
         y: 0
-        z: 1.8801184
+        z: 1.683246
       Rotation:
         value:
-          x: -4.5668595e-12
-          y: 0.6617369
-          z: -5.1741684e-12
-          w: 0.7497361
+          x: 0.000000014448757
+          y: 0.6995802
+          z: 0.000000014757985
+          w: 0.71455413
     m_MetaData:
     - Mode: 3
       Tension: 0.5
@@ -211,6 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0aae0fb932b9054794e6b0cd607d810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 1
-  resolution: 20
+  width: 2.36
+  resolution: 1
   curvature: 0.1

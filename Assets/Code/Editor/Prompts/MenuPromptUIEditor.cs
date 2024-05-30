@@ -22,7 +22,7 @@ namespace KeyboardDefense.Editor.Prompts
             {
                 _promptUIText.text = _uiText.stringValue;
                 _lastTextValue = _uiText.stringValue;
-                _promptTextBox.SetSize(_promptUIText.text.Length + 1);
+               // _promptTextBox.SetSize(_promptUIText.text.Length + 1);
             }
         }
 

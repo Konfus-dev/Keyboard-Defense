@@ -217,7 +217,12 @@ PrefabInstance:
     - target: {fileID: 475670868312113256, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
       propertyPath: m_text
-      value: <b><color=#1B1B1B><b></color><i>Menu Prompt!</i>
+      value: <b><color=#0E0E0E><b></color><i>Menu Prompt!</i>
+      objectReference: {fileID: 0}
+    - target: {fileID: 644721788442883616, guid: d6408578e032bf446966c5f4ea0bb1f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.100006
       objectReference: {fileID: 0}
     - target: {fileID: 3646973196281509668, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
@@ -383,6 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: Menu Prompt!
   tooltip: This is a tooltip :)
+  sceneToTransitionToOnTyped: {fileID: 0}
   objForTailToPointTo: {fileID: 0}
   startFocused: 0
 --- !u!224 &6666669191406551926 stripped

@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e091a79745044fda8549528548cf265, type: 3}
-  m_Name: Game Loop Test
+  m_Name: The Forest
   m_EditorClassIdentifier: 
   sceneType: 1
-  sceneName: Game Loop Test
-  sceneDescription: My game loop testing level for all things testing!
+  sceneName: The Forest
+  sceneDescription: An eternal battle wages between dogs and squirrels....
   sceneStarDifficulty: 3
   sceneMiniature: {fileID: 0}
-  sceneDependencies:
-  - {fileID: 11400000, guid: 7b8e27dfff571c44684136558b50d3d1, type: 2}
-  - {fileID: 11400000, guid: 3c2d4a02820c79c4a8c10993e68bb95c, type: 2}
