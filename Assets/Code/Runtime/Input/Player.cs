@@ -26,7 +26,7 @@ namespace KeyboardDefense.Input
         public new void TakeDamage(int damage)
         {
             base.TakeDamage(damage);
-            HealthChanged.Invoke(GetStats().Health, GetCurrentHealth());
+            HealthChanged.Invoke(GetCurrentHealth(), GetStats().Health);
         }
 
         private void Update()

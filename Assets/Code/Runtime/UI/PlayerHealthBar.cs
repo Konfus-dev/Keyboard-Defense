@@ -1,5 +1,4 @@
-﻿using System;
-using KeyboardDefense.Services;
+﻿using KeyboardDefense.Services;
 using UnityEngine;
 
 namespace KeyboardDefense.UI

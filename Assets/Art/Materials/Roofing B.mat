@@ -27,11 +27,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 0ccedb015de9e5344821a0504eb4175a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 03ab3393d98ec9642b731a2d3b8fcb6e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 374a0f8b2142451428178e83634b8d42, type: 3}
+        m_Texture: {fileID: 2800000, guid: b88f844740a94fb4a8c8ebf18146b7ed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CelCurveTexture:
@@ -59,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0ccedb015de9e5344821a0504eb4175a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 03ab3393d98ec9642b731a2d3b8fcb6e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -129,7 +129,7 @@ Material:
     - _LightFalloffSize: 0
     - _LightmapDirectionPitch: 0
     - _LightmapDirectionYaw: 0
-    - _Metallic: 0
+    - _Metallic: 0.039
     - _Mode: 0
     - _OcclusionStrength: 1
     - _OutlineDepthOffset: 0
@@ -145,7 +145,7 @@ Material:
     - _SelfShadingSizeExtra: 0.6
     - _ShadowEdgeSize: 0
     - _ShadowEdgeSizeExtra: 0.05
-    - _Smoothness: 0.5
+    - _Smoothness: 0.231
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 0
     - _SpecularHighlights: 1
@@ -163,8 +163,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.90588236, g: 0.52156866, b: 0.5251121, a: 1}
-    - _Color: {r: 0.90588236, g: 0.5215686, b: 0.52511203, a: 1}
+    - _BaseColor: {r: 0.6289307, g: 0, b: 0.006417807, a: 1}
+    - _Color: {r: 0.6289307, g: 0, b: 0.006417807, a: 1}
     - _ColorDim: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
     - _ColorDimExtra: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}

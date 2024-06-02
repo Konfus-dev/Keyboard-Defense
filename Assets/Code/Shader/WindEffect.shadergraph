@@ -599,7 +599,7 @@
     },
     "m_PreviewData": {
         "serializedMesh": {
-            "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
+            "m_SerializedMesh": "{\"mesh\":{\"fileID\":10210,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
         },
         "preventRotation": false
@@ -610,6 +610,7 @@
     "m_OutputNode": {
         "m_Id": ""
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "74e9ab67dfbb41cfbb3fa03c4c15ec58"
@@ -2673,10 +2674,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -834.4002075195313,
-            "y": -712.0,
-            "width": 145.60003662109376,
-            "height": 134.4000244140625
+            "x": -836.6665649414063,
+            "y": -750.6666870117188,
+            "width": 147.333251953125,
+            "height": 138.66668701171876
         }
     },
     "m_Slots": [
@@ -3308,9 +3309,9 @@
     "m_ShaderOutputName": "True",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0,
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
         "w": 1.0
     },
     "m_DefaultValue": {
