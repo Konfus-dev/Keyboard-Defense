@@ -1,4 +1,5 @@
-﻿using KeyboardDefense.Prompts;
+﻿using System;
+using KeyboardDefense.Prompts;
 using KeyboardDefense.Services;
 using Konfus.Systems.Sensor_Toolkit;
 using UnityEngine;
@@ -25,6 +26,8 @@ namespace KeyboardDefense.Characters.Enemies
         // TODO: maybe follow pattern of other things such as AddToScoreOnDeath and PlayEffectOnDeath and create a KillOnPromptCompleted script
         private void Start()
         {
+            var player = ServiceProvider.Get<IPlayer>();
+            player.HealthChanged.AddListener(OnPlayerHealthChanged);
             _promptGenerator.GeneratedPrompt.promptCompleted.AddListener(OnPromptCompleted);
         }
 
@@ -44,6 +47,14 @@ namespace KeyboardDefense.Characters.Enemies
         private void OnHitCastle()
         {
             SetState(State.Attacking);
+        }
+        
+        private void OnPlayerHealthChanged(int currHealth, int _)
+        {
+            if (currHealth <= 0)
+            {
+                TakeDamage(Int32.MaxValue);
+            }
         }
     }
 }

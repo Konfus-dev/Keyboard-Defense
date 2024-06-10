@@ -20,7 +20,7 @@ namespace KeyboardDefense.Spawning
         [SerializeField, Tooltip("Minimum time between waves")]
         private float waveIntervalMinimum = 2f; 
         [SerializeField, Tooltip("Time between spawning enemies in seconds")]
-        private float enemySpawnInterval = 1f;
+        private float enemySpawnInterval = 5f;
         [SerializeField, Tooltip("Starting number of enemies per wave")]
         private int startingWaveEnemyCount = 5;
         [SerializeField, Tooltip("Number of enemies added per wave")]
@@ -38,6 +38,8 @@ namespace KeyboardDefense.Spawning
 
         private void Start()
         {
+            var player = ServiceProvider.Get<IPlayer>();
+            player.HealthChanged.AddListener(OnPlayerHealthChanged);
             _sceneManager = ServiceProvider.Get<ISceneManager>();
             _nextWaveTime = Time.time + firstWaveSpawnDelay;
             var currentScene = _sceneManager.CurrentScene;
@@ -88,6 +90,15 @@ namespace KeyboardDefense.Spawning
 
             // Ensure wave interval doesn't go below minimum value
             startingTimeBetweenWaves = Mathf.Max(startingTimeBetweenWaves, waveIntervalMinimum);
+        }
+        
+        private void OnPlayerHealthChanged(int currHealth, int _)
+        {
+            if (currHealth <= 0)
+            {
+                StopCoroutine(SpawnEnemies());
+                _nextWaveTime = Time.time + float.MaxValue;
+            }
         }
     }
 }

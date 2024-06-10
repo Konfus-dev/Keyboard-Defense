@@ -135,7 +135,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1037986533}
+      objectReference: {fileID: 1294318924}
     - target: {fileID: 3279883317119184253, guid: 9795185c69d2c6c4fbe9a45df991adf2,
         type: 3}
       propertyPath: m_Name
@@ -1211,7 +1211,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012730950}
   m_CullTransparentMesh: 1
---- !u!43 &1037986533
+--- !u!4 &1178673912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7962482604621279969, guid: 012d75022c6b1784f8bb43c2a97fdf61,
+    type: 3}
+  m_PrefabInstance: {fileID: 8106487680668395059}
+  m_PrefabAsset: {fileID: 0}
+--- !u!43 &1294318924
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1376,12 +1382,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &1178673912 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7962482604621279969, guid: 012d75022c6b1784f8bb43c2a97fdf61,
-    type: 3}
-  m_PrefabInstance: {fileID: 8106487680668395059}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1622899007
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,6 +2016,12 @@ PrefabInstance:
       propertyPath: currentScene
       value: 
       objectReference: {fileID: 11400000, guid: d86d7004a5431d34aa796afed50bfd98,
+        type: 2}
+    - target: {fileID: 2711915373147686836, guid: 9bc80351b3fccab43b10320cebd9a349,
+        type: 3}
+      propertyPath: loadingScene
+      value: 
+      objectReference: {fileID: 11400000, guid: fa407353714c9c54a9478ce2d724450a,
         type: 2}
     - target: {fileID: 3794047108390053335, guid: 9bc80351b3fccab43b10320cebd9a349,
         type: 3}

@@ -5,6 +5,11 @@ namespace KeyboardDefense.UI
     [ExecuteInEditMode]
     public class PromptTail : MonoBehaviour
     {
+        [SerializeField]
+        private Vector3 topOffset;
+        [SerializeField]
+        private Vector3 bottomOffset;
+        
         private Camera _camera;
         private LineRenderer _lineRenderer;
         private GameObject _objectToFollowInWorld;
@@ -34,8 +39,8 @@ namespace KeyboardDefense.UI
                 ? _camera.ScreenToWorldPoint(new Vector3(transform.position.x, transform.position.y, _camera.nearClipPlane))
                 : transform.position - Vector3.back;
             _lineRenderer.enabled = true;
-            _lineRenderer.SetPosition(0, posA);
-            _lineRenderer.SetPosition(1, posB);
+            _lineRenderer.SetPosition(0, posA + bottomOffset);
+            _lineRenderer.SetPosition(1, posB + topOffset);
         }
 
         private void OnDisable()

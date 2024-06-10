@@ -15,13 +15,13 @@ namespace KeyboardDefense.Scenes
         const string GAMEPLAY_SERVICES_SCENE_NAME = "Gameplay Services";
         
         private ServiceInitializer _serviceInitializer;
-        private CurrentSceneProvider _currentSceneProvider;
+        private CurrentSceneProvider _currentSceneInfoProvider;
 
         private void Awake()
         {
             // Register service from required scenes...
             _serviceInitializer = GetComponent<ServiceInitializer>();
-            _currentSceneProvider = GetComponent<CurrentSceneProvider>();
+            _currentSceneInfoProvider = GetComponent<CurrentSceneProvider>();
             
             // Load required scenes if not already opened...
             UnityEngine.SceneManagement.SceneManager.LoadScene(UNIVERSAL_SERVICES_SCENE_NAME, LoadSceneMode.Additive);
@@ -29,7 +29,7 @@ namespace KeyboardDefense.Scenes
             UnityEngine.SceneManagement.SceneManager.LoadScene(UNIVERSAL_UI_SCENE_NAME, LoadSceneMode.Additive);
             
             // If we are in a level, load gameplay scenes...
-            if (_currentSceneProvider.CurrentScene.SceneType == SceneType.Level)
+            if (_currentSceneInfoProvider.CurrentScene.SceneType == SceneType.Level)
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(GAMEPLAY_UI_SCENE_NAME, LoadSceneMode.Additive);
                 UnityEngine.SceneManagement.SceneManager.LoadScene(GAMEPLAY_SERVICES_SCENE_NAME, LoadSceneMode.Additive);

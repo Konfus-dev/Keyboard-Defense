@@ -40,9 +40,16 @@ namespace KeyboardDefense.Scenes
             }
             else
             {
-                CurrentScene = scene;
-                ChangedScene.Invoke();
                 _sceneTransitioner.PlayTransitionOutOfScene(1.5f);
+                if (CurrentScene == scene) // Reloading current scene
+                {
+                    UnityEngine.SceneManagement.SceneManager.UnloadScene(CurrentScene.SceneName);
+                }
+                else // Setting new scene
+                {
+                    CurrentScene = scene;
+                    ChangedScene.Invoke();
+                }
             }
         }
 
