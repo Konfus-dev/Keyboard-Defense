@@ -151,10 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstWaveSpawnDelay: 3
-  startingTimeBetweenWaves: 10
+  startingTimeBetweenWaves: 5
   timeBetweenWavesDecreaseRatePerWave: 0.1
   waveIntervalMinimum: 2
-  enemySpawnInterval: 8
+  enemySpawnInterval: 6.5
   startingWaveEnemyCount: 1
   increaseInEnemiesPerWave: 1
   spawner: {fileID: 4301859911262071588}

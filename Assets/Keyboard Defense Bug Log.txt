@@ -1,0 +1,3 @@
+Keyboard Defense Bugs: 
+- Enemy doesn't die on prompt completed (prolly has something to do with spawn pool and re-use of enemies)
+- Def tooltip stuck onscreen when enemy killed because we aren't listening to obj being disabled and we should be...
