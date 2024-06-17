@@ -14,12 +14,14 @@ namespace KeyboardDefense.UI
     public class PromptTextBox : MonoBehaviour
     {
         [Header("Settings")]
+        [SerializeField]
+        private bool autoUpdateSize = true;
         [SerializeField] 
         private Color failedTextColor = Color.red;
         [SerializeField] 
         private Color typedTextColor = Color.blue;
         [SerializeField]
-        private float typeEffectDelay = 0.1f;
+        private float typeEffectDelay = 0.05f;
 
         [Header("Dependencies")] 
         [SerializeField]
@@ -63,7 +65,7 @@ namespace KeyboardDefense.UI
             promptText.text = prompt;
             
             UpdateText();
-            //StartCoroutine(TypeOutPromptRoutine());
+            //if (!_isMenuPrompt) StartCoroutine(TypeOutPromptRoutine());
         }
         
         public void SetPrompt(PromptData promptData)
@@ -136,6 +138,7 @@ namespace KeyboardDefense.UI
         {
             var hexTextColor = ColorUtility.ToHtmlStringRGB(typedTextColor);
             promptText.text = $"<b><color=#{hexTextColor}>{_typedText}<b></color><i>{_currentText}</i>";
+            if (autoUpdateSize) SetSize(_prompt.Length);
         }
         
         private void OnStartHover()
