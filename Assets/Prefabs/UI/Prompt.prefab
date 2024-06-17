@@ -275,7 +275,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 192, y: 60}
+  m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9145081092115690971
 CanvasRenderer:
@@ -670,7 +670,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 70}
+  m_SizeDelta: {x: 500, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7067198031894573979
 CanvasRenderer:
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0776ce43846490c8236e5c3c2692333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverTextColor: {r: 0.39183566, g: 0.9811321, b: 0.9603334, a: 1}
+  autoUpdateSize: 1
   failedTextColor: {r: 0.836478, g: 0.38667372, b: 0.38667372, a: 1}
   typedTextColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
   typeEffectDelay: 0.1
