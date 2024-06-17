@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8374261255385719117}
   - component: {fileID: 7529523695284304398}
   m_Layer: 0
-  m_Name: Testing Enemy
+  m_Name: Very Hard Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  stats: {fileID: 11400000, guid: 1580c2d6bee9fdd478beaf8e82b7718d, type: 2}
+  stats: {fileID: 11400000, guid: c2d286c79e484724f8dbe93bdf9476d5, type: 2}
 --- !u!114 &6615138733979947221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +260,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptPrefab: {fileID: 7423728126687445284, guid: d6408578e032bf446966c5f4ea0bb1f6,
     type: 3}
-  wordToGenerateDifficulty: 0
   objForGeneratedPromptToFollow: {fileID: 2619139106308706806}
   generatedPromptFollowOffset: {x: 0, y: 100}
 --- !u!114 &8374261255385719117
@@ -331,6 +330,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7147343904069780264}
     m_Modifications:
+    - target: {fileID: 1389649335138197320, guid: 7f4da5bb08f0f6f479ae04f82e4040c4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e2aa707ec4f63e4481dde5f3374bff0, type: 2}
+    - target: {fileID: 1389649335199115882, guid: 7f4da5bb08f0f6f479ae04f82e4040c4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e2aa707ec4f63e4481dde5f3374bff0, type: 2}
+    - target: {fileID: 1389649335218447008, guid: 7f4da5bb08f0f6f479ae04f82e4040c4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e2aa707ec4f63e4481dde5f3374bff0, type: 2}
     - target: {fileID: 1389649336133526384, guid: 7f4da5bb08f0f6f479ae04f82e4040c4,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -401,6 +415,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snake
       objectReference: {fileID: 0}
+    - target: {fileID: 1389649336489615613, guid: 7f4da5bb08f0f6f479ae04f82e4040c4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e2aa707ec4f63e4481dde5f3374bff0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,6 +1,4 @@
-﻿using System;
-using KeyboardDefense.Services;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace KeyboardDefense.Spawning
@@ -12,6 +10,13 @@ namespace KeyboardDefense.Spawning
         [SerializeField]
         private SpawnPoolManager spawnService;
 
+        private bool _isSpawning = true;
+        
+        public void StopSpawning()
+        {
+            _isSpawning = false;
+        }
+        
         public void RandomSpawn()
         {
             // Calculate total spawn chance
@@ -29,7 +34,7 @@ namespace KeyboardDefense.Spawning
             foreach (SpawnData spawnable in spawnData)
             {
                 cumulativeChance += spawnable.SpawnChance;
-                if (randomValue <= cumulativeChance)
+                if (randomValue <= cumulativeChance && _isSpawning)
                 {
                     // Spawn the selected prefab under map... the enemy will move itself to the path...
                     spawnService.Spawn(spawnable.Prefab, new Vector3(0, 0, -100), Quaternion.identity);

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bddee62d48f4d4f80c1f1820c4dc701, type: 3}
-  m_Name: Testing Enemy Spawn Data
+  m_Name: Medium Enemy Spawn Data
   m_EditorClassIdentifier: 
-  spawnChance: 1
-  prefab: {fileID: 2619139106308706806, guid: 901290c9a93514845abf9a0d3d45245f, type: 3}
+  spawnChance: 0.5
+  prefab: {fileID: 2619139106308706806, guid: a9dfd1ff2e06e7f498f1024004fcc74f, type: 3}

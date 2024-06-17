@@ -1,3 +1,4 @@
+using KeyboardDefense.Characters;
 using KeyboardDefense.Services;
 using KeyboardDefense.UI;
 using Unity.Mathematics;
@@ -9,8 +10,6 @@ namespace KeyboardDefense.Prompts
     {
         [SerializeField]
         private GameObject promptPrefab;
-        [SerializeField]
-        private WordDifficulty wordToGenerateDifficulty;
         [SerializeField] 
         private GameObject objForGeneratedPromptToFollow;
         [SerializeField] 
@@ -47,7 +46,8 @@ namespace KeyboardDefense.Prompts
             GameObject promptGo = _spawnService.Spawn(promptPrefab, transform.position, quaternion.identity);
             
             // Generate prompt
-            PromptData promptData = _wordDatabase.GetRandomWordOfGivenDifficulty(wordToGenerateDifficulty);
+            var character = GetComponent<Character>();
+            PromptData promptData = _wordDatabase.GetRandomWordOfGivenDifficulty(character.GetStats().Difficulty);
             _generatedPrompt = promptGo.GetComponent<Prompt>();
             _generatedPrompt.Set(promptData);
             _generatedPromptTextBox = _generatedPrompt.GetComponent<PromptTextBox>();

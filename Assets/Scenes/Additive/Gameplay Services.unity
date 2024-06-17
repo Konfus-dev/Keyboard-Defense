@@ -150,13 +150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f363ba885ca5a41ad81af9c91a7424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstWaveSpawnDelay: 3.19
-  startingTimeBetweenWaves: 10
+  firstWaveSpawnDelay: 3
+  startingTimeBetweenWaves: 12
   timeBetweenWavesDecreaseRatePerWave: 0.1
   waveIntervalMinimum: 2
-  enemySpawnInterval: 8
-  startingWaveEnemyCount: 5
-  increaseInEnemiesPerWave: 2
+  enemySpawnInterval: 10
+  startingWaveEnemyCount: 1
+  increaseInEnemiesPerWave: 1
   spawner: {fileID: 4301859911262071588}
 --- !u!4 &2736697767487812592
 Transform:
@@ -187,6 +187,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnData:
   - {fileID: 11400000, guid: 9c5fa2afe448f5649820a41a1693c86e, type: 2}
+  - {fileID: 11400000, guid: 5be84d157f2cc9a41a5084da1919c323, type: 2}
+  - {fileID: 11400000, guid: 2d77ba1d5ae602945b762dca6e205376, type: 2}
+  - {fileID: 11400000, guid: 93c23bc5de8c3f24a93fd3a166f1e7e2, type: 2}
   spawnService: {fileID: 7834211339414964191}
 --- !u!4 &4364769867382188926
 Transform:
@@ -316,12 +319,24 @@ MonoBehaviour:
     prefab: {fileID: 7423728126687445284, guid: d6408578e032bf446966c5f4ea0bb1f6,
       type: 3}
     storage: {fileID: 0}
-  - size: 40
+  - size: 10
+    prefab: {fileID: 2964866897684664097, guid: f546980bc790d044ca37e11d46521100,
+      type: 3}
+    storage: {fileID: 0}
+  - size: 20
     prefab: {fileID: 2619139106308706806, guid: 901290c9a93514845abf9a0d3d45245f,
       type: 3}
     storage: {fileID: 0}
+  - size: 15
+    prefab: {fileID: 2619139106308706806, guid: a9dfd1ff2e06e7f498f1024004fcc74f,
+      type: 3}
+    storage: {fileID: 0}
   - size: 10
-    prefab: {fileID: 2964866897684664097, guid: f546980bc790d044ca37e11d46521100,
+    prefab: {fileID: 2619139106308706806, guid: 9423c4cd6f3ccfe40a72e578290a8920,
+      type: 3}
+    storage: {fileID: 0}
+  - size: 8
+    prefab: {fileID: 2619139106308706806, guid: 79c546de3e276d0448ca133095784f3b,
       type: 3}
     storage: {fileID: 0}
 --- !u!1 &8042889633497674949

@@ -1,4 +1,5 @@
-﻿using KeyboardDefense.Services;
+﻿using KeyboardDefense.Characters;
+using KeyboardDefense.Services;
 using UnityEngine;
 
 namespace KeyboardDefense.UI
@@ -17,6 +18,7 @@ namespace KeyboardDefense.UI
         {
             var player = ServiceProvider.Get<IPlayer>();
             player.HealthChanged.AddListener(OnPlayerHealthChanged);
+            OnPlayerHealthChanged(player.GetCurrentHealth(), ((Character)player).GetStats().Health);
         }
 
         private void OnPlayerHealthChanged(int currHealth, int maxHealth)

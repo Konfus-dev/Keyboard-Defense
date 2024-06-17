@@ -1,8 +1,6 @@
-﻿using System;
-using KeyboardDefense.Prompts;
+﻿using KeyboardDefense.Prompts;
 using KeyboardDefense.Services;
 using Konfus.Systems.Sensor_Toolkit;
-using UnityEngine;
 
 namespace KeyboardDefense.Characters.Enemies
 {
@@ -53,7 +51,7 @@ namespace KeyboardDefense.Characters.Enemies
         {
             if (currHealth <= 0)
             {
-                TakeDamage(Int32.MaxValue);
+                Destroy(gameObject);
             }
         }
     }

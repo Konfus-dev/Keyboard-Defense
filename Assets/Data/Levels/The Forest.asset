@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneType: 1
   sceneName: The Forest
-  sceneDescription: An eternal battle wages between dogs and squirrels....
+  sceneDescription: An eternal battle wages between racoons of the forest and snakes
+    of the desert....
   sceneStarDifficulty: 3
-  sceneMiniature: {fileID: 0}
+  sceneMiniature: {fileID: 5627078170542690237, guid: 6a130612057cc6245a4e552eb805bedb,
+    type: 3}

@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e091a79745044fda8549528548cf265, type: 3}
-  m_Name: Base UI
+  m_Script: {fileID: 11500000, guid: 0bddee62d48f4d4f80c1f1820c4dc701, type: 3}
+  m_Name: Very Hard Enemy Spawn Data
   m_EditorClassIdentifier: 
-  sceneType: 2
-  sceneName: Base UI
-  sceneDescription: 
-  sceneStarDifficulty: 0
-  sceneMiniature: {fileID: 0}
-  sceneDependencies: []
+  spawnChance: 0.106
+  prefab: {fileID: 2619139106308706806, guid: 79c546de3e276d0448ca133095784f3b, type: 3}

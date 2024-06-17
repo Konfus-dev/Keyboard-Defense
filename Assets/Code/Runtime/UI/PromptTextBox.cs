@@ -14,8 +14,6 @@ namespace KeyboardDefense.UI
     public class PromptTextBox : MonoBehaviour
     {
         [Header("Settings")]
-        [SerializeField]
-        private Color hoverTextColor = Color.cyan;
         [SerializeField] 
         private Color failedTextColor = Color.red;
         [SerializeField] 
@@ -48,12 +46,6 @@ namespace KeyboardDefense.UI
             // Highlight and set cursor active
             highlight.SetActive(true);
             textCursor.SetActive(true);
-            
-            // Move to front
-            // TODO: fix this! Its not working and we need to move the thing we are focused on in front of all other UI elements!
-            /*var position = transform.position;
-            position = new Vector3(position.x, position.y, 10);
-            transform.position = position;*/
         }
 
         public void Unfocus()
@@ -61,11 +53,6 @@ namespace KeyboardDefense.UI
             // Clear highlight and hide wcursor
             highlight.SetActive(false);
             textCursor.SetActive(false);
-            
-            // Move back
-            /*var position = transform.position;
-            position = new Vector3(position.x, position.y, 0);
-            transform.position = position;*/
         }
         
         public void SetPrompt(string prompt)
@@ -76,7 +63,7 @@ namespace KeyboardDefense.UI
             promptText.text = prompt;
             
             UpdateText();
-            //StartCoroutine(TypeOutPromptRoutine());
+            StartCoroutine(TypeOutPromptRoutine());
         }
         
         public void SetPrompt(PromptData promptData)
@@ -104,6 +91,9 @@ namespace KeyboardDefense.UI
             
             // Update UI with new text
             UpdateText();
+            
+            // If we are paused from hovering, unpause
+            Time.timeScale = 1;
         }
 
         public void OnPromptSuccessfullyTyped()
@@ -120,7 +110,6 @@ namespace KeyboardDefense.UI
 
         private void Awake()
         {
-            
             _tooltip = GetComponent<Tooltip>();
             _mouseEventListener = GetComponent<MouseEventListener>();
         }
@@ -131,9 +120,9 @@ namespace KeyboardDefense.UI
             if (gameplayCanvas != null) transform.SetParent(gameplayCanvas.GameplayCanvas.transform);
             _originalStyle = promptText.fontStyle;
             _originalColor = promptText.color;
-            /*_mouseEventListenter.mouseEnter.AddListener(OnStartHover);
-            _mouseEventListenter.mouseExit.AddListener(OnStopHover);
-            _mouseEventListenter.mouseDown.AddListener(OnClick);*/
+            _mouseEventListener.mouseEnter.AddListener(OnStartHover);
+            _mouseEventListener.mouseExit.AddListener(OnStopHover);
+            _mouseEventListener.mouseDown.AddListener(OnClick);
         }
 
         private void OnDisable()
@@ -151,19 +140,17 @@ namespace KeyboardDefense.UI
         
         private void OnStartHover()
         {
-            SetColor(hoverTextColor);
-            SetStyle(FontStyles.Underline);
+            Time.timeScale = 0f;
         }
 
         private void OnStopHover()
         {
-            SetColor(_originalColor);
-            SetStyle(_originalStyle);
+            Time.timeScale = 1;
         }
 
         private void OnClick()
         {
-            //Focus();
+            //Time.timeScale = 1;
         }
         
         private IEnumerator TypeOutPromptRoutine()

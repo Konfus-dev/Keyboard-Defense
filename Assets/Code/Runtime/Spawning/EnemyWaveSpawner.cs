@@ -33,6 +33,7 @@ namespace KeyboardDefense.Spawning
         // TODO: increase wave difficulty based on current scene star difficulty!
         private ISceneManager _sceneManager;
 
+        private bool _isSpawning = false;
         private float _nextWaveTime; // Time for next wave
         private int _currentWave = 1; // Current wave number
 
@@ -49,10 +50,9 @@ namespace KeyboardDefense.Spawning
 
         private void Update()
         {
-            if (Time.time >= _nextWaveTime)
+            if (Time.time >= _nextWaveTime && !_isSpawning)
             {
                 StartWave();
-                _nextWaveTime = Time.time + startingTimeBetweenWaves;
                 DecreaseWaveInterval();
                 IncreaseEnemySpawnCount();
             }
@@ -71,11 +71,14 @@ namespace KeyboardDefense.Spawning
 
         private IEnumerator SpawnEnemies()
         {
+            _isSpawning = true;
             for (int i = 0; i < startingWaveEnemyCount; i++)
             {
                 spawner.RandomSpawn();
                 yield return new WaitForSeconds(enemySpawnInterval);
             }
+            _nextWaveTime = Time.time + startingTimeBetweenWaves;
+            _isSpawning = false;
         }
 
         private void IncreaseEnemySpawnCount()
@@ -97,6 +100,7 @@ namespace KeyboardDefense.Spawning
             if (currHealth <= 0)
             {
                 StopCoroutine(SpawnEnemies());
+                spawner.StopSpawning();
                 _nextWaveTime = Time.time + float.MaxValue;
             }
         }

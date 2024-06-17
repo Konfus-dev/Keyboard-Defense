@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e091a79745044fda8549528548cf265, type: 3}
-  m_Name: Required Services
+  m_Script: {fileID: 11500000, guid: 6260385fc3ea4e0199a2e783974ca9f1, type: 3}
+  m_Name: Easy Enemy Stats
   m_EditorClassIdentifier: 
-  sceneType: 2
-  sceneName: Required Services
-  sceneDescription: 
-  sceneStarDifficulty: 0
-  sceneMiniature: {fileID: 0}
-  sceneDependencies: []
+  difficulty: 0
+  health: 2
+  attackDamage: 1
+  attackCooldown: 1
+  moveSpeed: 10
