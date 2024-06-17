@@ -137,7 +137,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 366243369}
+      objectReference: {fileID: 373609099}
     - target: {fileID: 3279883317119184253, guid: 9795185c69d2c6c4fbe9a45df991adf2,
         type: 3}
       propertyPath: m_Name
@@ -713,7 +713,7 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!43 &366243369
+--- !u!43 &373609099
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1137,7 +1137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &936466316
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1145,16 +1145,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936466315}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.06810238, w: 0.99767834}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1066831566854393815}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 7.81}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 0, y: -378.4}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &936466317
@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Keyboard Defense
+  m_text: DEMO!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1493,8 +1493,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 936466316}
   - {fileID: 268659499}
+  - {fileID: 936466316}
   - {fileID: 327707188}
   - {fileID: 1012730951}
   - {fileID: 643994792}
@@ -1804,7 +1804,7 @@ PrefabInstance:
     - target: {fileID: 6666669191406551926, guid: e11f632163aa0e14cbc8b0b0a9c433b7,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 192
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 6666669191406551926, guid: e11f632163aa0e14cbc8b0b0a9c433b7,
         type: 3}
@@ -1884,7 +1884,7 @@ PrefabInstance:
     - target: {fileID: 7530456870303052858, guid: e11f632163aa0e14cbc8b0b0a9c433b7,
         type: 3}
       propertyPath: m_text
-      value: Start
+      value: SSttaarrtt
       objectReference: {fileID: 0}
     - target: {fileID: 7530456870303052858, guid: e11f632163aa0e14cbc8b0b0a9c433b7,
         type: 3}
@@ -2173,7 +2173,7 @@ PrefabInstance:
     - target: {fileID: 6666669191406551926, guid: e11f632163aa0e14cbc8b0b0a9c433b7,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 192
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6666669191406551926, guid: e11f632163aa0e14cbc8b0b0a9c433b7,
         type: 3}
@@ -2248,7 +2248,7 @@ PrefabInstance:
     - target: {fileID: 7530456870303052858, guid: e11f632163aa0e14cbc8b0b0a9c433b7,
         type: 3}
       propertyPath: m_text
-      value: <b><color=#0E0E0E><b></color><i>Quit</i>
+      value: QQuuiitt
       objectReference: {fileID: 0}
     - target: {fileID: 7530456870303052858, guid: e11f632163aa0e14cbc8b0b0a9c433b7,
         type: 3}

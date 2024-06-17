@@ -63,7 +63,7 @@ namespace KeyboardDefense.UI
             promptText.text = prompt;
             
             UpdateText();
-            StartCoroutine(TypeOutPromptRoutine());
+            //StartCoroutine(TypeOutPromptRoutine());
         }
         
         public void SetPrompt(PromptData promptData)
