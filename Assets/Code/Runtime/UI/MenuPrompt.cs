@@ -1,4 +1,5 @@
-﻿using KeyboardDefense.Prompts;
+﻿using System;
+using KeyboardDefense.Prompts;
 using KeyboardDefense.Scenes;
 using KeyboardDefense.Services;
 using UnityEngine;
@@ -46,20 +47,10 @@ namespace KeyboardDefense.UI
             {
                 _promptTail.SetObjectToFollow(objForTailToPointTo);
             }
-            if (Application.isPlaying)
-            {
-                _sceneManager = ServiceProvider.Get<ISceneManager>();
-                if (startFocused) _promptFocusHandler.FocusPrompt();
-                _prompt.promptCompleted.AddListener(TransitionToScene);
-            }
-        }
-
-        private void OnValidate()
-        {
-            if (Application.isPlaying) return;
             
-            Awake();
-            Start();
+            _sceneManager = ServiceProvider.Get<ISceneManager>();
+            if (startFocused) _promptFocusHandler.FocusPrompt();
+            _prompt.promptCompleted.AddListener(TransitionToScene);
         }
 
         private void TransitionToScene()

@@ -77,7 +77,18 @@ namespace KeyboardDefense.UI
 
         public void SetSize(float size)
         {
-            root.sizeDelta = new Vector2(size * 32, 60);
+            if (size <= 4)
+            {
+                root.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size * 32);
+            }
+            else if (size <= 6)
+            {
+                root.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size * 28);
+            }
+            else
+            {
+                root.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size * 24);
+            }
         }
 
         public void OnNextCharacterIncorrectlyTyped()
@@ -119,8 +130,11 @@ namespace KeyboardDefense.UI
 
         private void Start()
         {
-            var gameplayCanvas = ServiceProvider.Get<IGameplayCanvasProvider>();
-            if (gameplayCanvas != null) transform.SetParent(gameplayCanvas.GameplayCanvas.transform);
+            if (transform.parent == null)
+            {
+                var gameplayCanvas = ServiceProvider.Get<IGameplayCanvasProvider>();
+                if (gameplayCanvas != null) transform.SetParent(gameplayCanvas.GameplayCanvas.transform);
+            }
             _originalStyle = promptText.fontStyle;
             _originalColor = promptText.color;
             _mouseEventListener.mouseEnter.AddListener(OnStartHover);

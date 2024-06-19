@@ -60,7 +60,6 @@ namespace KeyboardDefense.Prompts
             _text = string.Empty;
             _remainingPromptText = string.Empty;
         }
-
         
         private void OnSuccessfullyTypedPrompt()
         {

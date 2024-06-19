@@ -29,6 +29,11 @@ namespace KeyboardDefense.Input
             HealthChanged.Invoke(GetCurrentHealth(), GetStats().Health);
         }
 
+        protected override void OnDie()
+        {
+            // Do nothing...
+        }
+
         private void Update()
         {
             ProcessInput();

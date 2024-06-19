@@ -27,6 +27,8 @@ namespace KeyboardDefense.UI
         
         public void Show(string contentTxt, string headerTxt = "")
         {
+            if (visuals == null) return;
+            
             header.text = headerTxt;
             content.text = contentTxt;
             
@@ -38,6 +40,7 @@ namespace KeyboardDefense.UI
         
         public void Hide()
         {
+            if (visuals == null) return;
             visuals.SetActive(false);
         }
 

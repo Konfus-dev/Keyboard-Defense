@@ -62,6 +62,11 @@ namespace KeyboardDefense.Characters
             StartCoroutine(SpawnInvulnerabilityTimerRoutine());
         }
 
+        protected virtual void OnDie()
+        {
+            Destroy(gameObject);
+        }
+
         private void OnEnable()
         {
             OnSpawn();
@@ -139,7 +144,7 @@ namespace KeyboardDefense.Characters
             _runningState = State.Dead;
             yield return new WaitForSeconds(0.5f);
             onDie.Invoke();
-            gameObject.SetActive(false);
+            OnDie();
         }
 
         private IEnumerator SpawnInvulnerabilityTimerRoutine()

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 2
   health: 2
-  attackDamage: 1
+  attackDamage: 2
   attackCooldown: 1
   stunDuration: 0.5
   moveSpeed: 6
