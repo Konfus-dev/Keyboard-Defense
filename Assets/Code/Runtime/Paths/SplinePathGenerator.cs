@@ -3,7 +3,6 @@ using UnityEngine.Splines;
 
 namespace KeyboardDefense.Paths
 {
-    [ExecuteInEditMode]
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]
     [RequireComponent(typeof(SplineContainer))]

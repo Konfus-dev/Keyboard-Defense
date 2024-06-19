@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Easy Enemy Spawn Data
   m_EditorClassIdentifier: 
   spawnChance: 1
-  prefab: {fileID: 2619139106308706806, guid: 901290c9a93514845abf9a0d3d45245f, type: 3}
+  prefab: {fileID: 5027226568428968859, guid: e303b31bd8feb424297a1b52d281d4b6, type: 3}

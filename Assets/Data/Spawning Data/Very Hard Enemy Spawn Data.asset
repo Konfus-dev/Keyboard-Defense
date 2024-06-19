@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Very Hard Enemy Spawn Data
   m_EditorClassIdentifier: 
   spawnChance: 0.106
-  prefab: {fileID: 2619139106308706806, guid: 79c546de3e276d0448ca133095784f3b, type: 3}
+  prefab: {fileID: 5027226568428968859, guid: d1832d8859ce44a4882a2edefb11dd20, type: 3}

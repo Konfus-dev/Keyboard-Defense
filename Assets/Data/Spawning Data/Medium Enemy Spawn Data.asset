@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Medium Enemy Spawn Data
   m_EditorClassIdentifier: 
   spawnChance: 0.5
-  prefab: {fileID: 2619139106308706806, guid: a9dfd1ff2e06e7f498f1024004fcc74f, type: 3}
+  prefab: {fileID: 5027226568428968859, guid: 06e6204ca598daf45b174a5adc1dc063, type: 3}

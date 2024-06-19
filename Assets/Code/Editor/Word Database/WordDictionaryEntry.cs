@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KeyboardDefense.Prompts;
 using Konfus.Utility.Extensions;
 using UnityEngine;
 
-namespace KeyboardDefense.Prompts
+namespace KeyboardDefense.Editor.Word_Database
 {
     [Serializable]
     public struct WordDictionaryEntry : IEquatable<WordDictionaryEntry>
@@ -14,6 +15,7 @@ namespace KeyboardDefense.Prompts
             word = definedWord;
             definitions = wordDefinitions?.ToArray();
             pronunciation = wordPronunciation;
+            _wordSynonyms = wordSynonyms;
             synonyms = wordSynonyms?.ToArray();
         }
         
@@ -27,6 +29,8 @@ namespace KeyboardDefense.Prompts
         
         [SerializeField]
         private AudioClip pronunciation;
+
+        private readonly IEnumerable<WordData> _wordSynonyms;
         public AudioClip Pronunciation => pronunciation;
         
         [SerializeField]

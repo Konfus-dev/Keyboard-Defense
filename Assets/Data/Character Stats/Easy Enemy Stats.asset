@@ -16,4 +16,5 @@ MonoBehaviour:
   health: 2
   attackDamage: 1
   attackCooldown: 1
-  moveSpeed: 10
+  stunDuration: 0.5
+  moveSpeed: 7.5

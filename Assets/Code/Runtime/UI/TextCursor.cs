@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +22,7 @@ namespace KeyboardDefense.UI
             _image = GetComponent<Image>();
         }
 
-        private void Start()
+        private void OnEnable()
         {
             UpdatePosition(_indexOfLastTypedCharacter);
         }

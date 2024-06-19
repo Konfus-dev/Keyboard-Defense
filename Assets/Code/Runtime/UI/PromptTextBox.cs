@@ -107,7 +107,8 @@ namespace KeyboardDefense.UI
         {
             // TODO: Show success effect
             yield return new WaitForSeconds(0.15f);
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
         private void Awake()
@@ -156,19 +157,6 @@ namespace KeyboardDefense.UI
             //Time.timeScale = 1;
         }
         
-        private IEnumerator TypeOutPromptRoutine()
-        {
-            // Type effect
-            promptText.text = string.Empty;
-            var charsToType = _prompt.ToArray();
-            for (var charIndex = 0; charIndex < charsToType.Length; charIndex++)
-            {
-                SetSize(charIndex + 1);
-                yield return new WaitForSeconds(typeEffectDelay);
-                promptText.text += charsToType[charIndex];
-            }
-        }
-
         private IEnumerator OnFailedToTypePromptRoutine()
         {
             // Reset remaining text
@@ -189,24 +177,6 @@ namespace KeyboardDefense.UI
         private void SetColor(Color color)
         {
             promptText.color = color;
-        }
-
-        private void SetStyle(FontStyles styles)
-        {
-            promptText.fontStyle = styles;
-        }
-
-        private void UpdateTMPColorViaRichFormatting(TMP_Text tmpText, string textToUpdate, Color color)
-        {
-        }
-        
-        private void RemoveTMPColorViaRichFormatting(TMP_Text tmpText, string textToUpdate, Color color)
-        {
-            var hexColor = ColorUtility.ToHtmlStringRGB(color);
-            var text = tmpText.text;
-            tmpText.text = text.Replace(
-                oldValue: $"<color=#{hexColor}>{textToUpdate}</color>", 
-                newValue: textToUpdate);
         }
     }
 }

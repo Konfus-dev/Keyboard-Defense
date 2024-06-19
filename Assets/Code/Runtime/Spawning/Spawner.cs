@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using KeyboardDefense.Services;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace KeyboardDefense.Spawning
@@ -7,10 +8,14 @@ namespace KeyboardDefense.Spawning
     {
         [SerializeField]
         private SpawnData[] spawnData;
-        [SerializeField]
-        private SpawnPoolManager spawnService;
-
+        
+        //private ISpawnService _spawnService;
         private bool _isSpawning = true;
+
+        private void Start()
+        {
+            //_spawnService = ServiceProvider.Get<ISpawnService>();
+        }
         
         public void StopSpawning()
         {
@@ -37,7 +42,9 @@ namespace KeyboardDefense.Spawning
                 if (randomValue <= cumulativeChance && _isSpawning)
                 {
                     // Spawn the selected prefab under map... the enemy will move itself to the path...
-                    spawnService.Spawn(spawnable.Prefab, new Vector3(0, 0, -100), Quaternion.identity);
+                    // TODO: Bug with spawn/object pool service.
+                    // The enemies don't seem to work right after re-use. For now just going to spawn them as I need them.
+                    Instantiate(spawnable.Prefab, new Vector3(0, 0, -100), Quaternion.identity);
                     break;
                 }
             }

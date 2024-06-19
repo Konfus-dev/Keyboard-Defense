@@ -43,7 +43,7 @@ namespace KeyboardDefense.Prompts
         private void GeneratePrompt()
         {
             // Spawn prompt prefab
-            GameObject promptGo = _spawnService.Spawn(promptPrefab, transform.position, quaternion.identity);
+            GameObject promptGo = Instantiate(promptPrefab, transform.position, quaternion.identity);
             
             // Generate prompt
             var character = GetComponent<Character>();
@@ -57,6 +57,9 @@ namespace KeyboardDefense.Prompts
             var uiFollowObjectInWorld = _generatedPrompt.GetComponent<ScreenSpaceObjFollowObjInWorld>();
             uiFollowObjectInWorld.SetObjectToFollow(objForGeneratedPromptToFollow);
             uiFollowObjectInWorld.SetFollowOffset(generatedPromptFollowOffset);
+            
+            // Show prompt
+            promptGo.transform.GetChild(0).gameObject.SetActive(true);
             var promptTail = _generatedPrompt.GetComponentInChildren<PromptTail>();
             promptTail.SetObjectToFollow(objForGeneratedPromptToFollow);
         }

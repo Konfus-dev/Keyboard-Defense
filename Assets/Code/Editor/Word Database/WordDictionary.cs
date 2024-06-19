@@ -7,7 +7,7 @@ using Unity.Plastic.Newtonsoft.Json;
 using Unity.Plastic.Newtonsoft.Json.Linq;
 using UnityEngine;
 
-namespace KeyboardDefense.Prompts
+namespace KeyboardDefense.Editor.Word_Database
 {
     public static class WordDictionary
     {

@@ -1,4 +1,5 @@
-﻿using KeyboardDefense.Input;
+﻿using System;
+using KeyboardDefense.Input;
 using KeyboardDefense.Services;
 using UnityEngine;
 
@@ -39,6 +40,11 @@ namespace KeyboardDefense.UI
         }
 
         private void OnStopHover()
+        {
+            _tooltipService.Hide();
+        }
+
+        private void OnDestroy()
         {
             _tooltipService.Hide();
         }

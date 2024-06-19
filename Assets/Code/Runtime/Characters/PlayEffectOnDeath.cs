@@ -15,7 +15,7 @@ namespace KeyboardDefense.Characters
         private GameObject particleEffect;
 
         private Character _character;
-        private ISpawnService _spawnService;
+        //private ISpawnService _spawnService;
         private ISoundService _soundService;
 
         private void Awake()
@@ -26,7 +26,7 @@ namespace KeyboardDefense.Characters
         private void Start()
         {
             _soundService = ServiceProvider.Get<ISoundService>();
-            _spawnService = ServiceProvider.Get<ISpawnService>();
+            //_spawnService = ServiceProvider.Get<ISpawnService>();
             _character.onDie.AddListener(PlayEffectOnCharacterDeath);
         }
         
@@ -34,7 +34,7 @@ namespace KeyboardDefense.Characters
         {
             var position = transform.position;
             _soundService.PlaySoundAtPoint(sound, position, volume);
-            var prefab =_spawnService.Spawn(particleEffect, position + Vector3.up, Quaternion.identity);
+            var prefab = Instantiate(particleEffect, position + Vector3.up, Quaternion.identity);
             prefab.GetComponent<ParticleSystem>().Play();
         }
     }

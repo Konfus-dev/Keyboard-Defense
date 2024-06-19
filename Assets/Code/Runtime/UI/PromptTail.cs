@@ -2,7 +2,6 @@
 
 namespace KeyboardDefense.UI
 {
-    [ExecuteInEditMode]
     public class PromptTail : MonoBehaviour
     {
         [SerializeField]

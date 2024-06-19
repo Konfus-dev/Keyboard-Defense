@@ -138,26 +138,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1906615804421622356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7575497197277578293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f363ba885ca5a41ad81af9c91a7424, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstWaveSpawnDelay: 3
-  startingTimeBetweenWaves: 5
-  timeBetweenWavesDecreaseRatePerWave: 0.1
-  waveIntervalMinimum: 2
-  enemySpawnInterval: 6.5
-  startingWaveEnemyCount: 1
-  increaseInEnemiesPerWave: 1
-  spawner: {fileID: 4301859911262071588}
 --- !u!4 &2736697767487812592
 Transform:
   m_ObjectHideFlags: 0
@@ -168,39 +148,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -28.650791, y: 5.546873, z: 12.861118}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4301859911262071588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7575497197277578293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec0c681f19994ee49b611832991d9413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnData:
-  - {fileID: 11400000, guid: 9c5fa2afe448f5649820a41a1693c86e, type: 2}
-  - {fileID: 11400000, guid: 5be84d157f2cc9a41a5084da1919c323, type: 2}
-  - {fileID: 11400000, guid: 2d77ba1d5ae602945b762dca6e205376, type: 2}
-  - {fileID: 11400000, guid: 93c23bc5de8c3f24a93fd3a166f1e7e2, type: 2}
-  spawnService: {fileID: 7834211339414964191}
---- !u!4 &4364769867382188926
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7575497197277578293}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.090792, y: 5.546873, z: 12.861118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -222,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6575334400537594081
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,24 +215,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   score: 0
---- !u!1 &7575497197277578293
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4364769867382188926}
-  - component: {fileID: 1906615804421622356}
-  - component: {fileID: 4301859911262071588}
-  m_Layer: 0
-  m_Name: Enemy Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &7779520349508276206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +238,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6007219126450314634}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdfd646f979042aa9446733a99a0a4bf, type: 3}
   m_Name: 
@@ -324,19 +253,19 @@ MonoBehaviour:
       type: 3}
     storage: {fileID: 0}
   - size: 20
-    prefab: {fileID: 2619139106308706806, guid: 901290c9a93514845abf9a0d3d45245f,
+    prefab: {fileID: 5027226568428968859, guid: e303b31bd8feb424297a1b52d281d4b6,
       type: 3}
     storage: {fileID: 0}
   - size: 15
-    prefab: {fileID: 2619139106308706806, guid: a9dfd1ff2e06e7f498f1024004fcc74f,
+    prefab: {fileID: 5027226568428968859, guid: 06e6204ca598daf45b174a5adc1dc063,
       type: 3}
     storage: {fileID: 0}
   - size: 10
-    prefab: {fileID: 2619139106308706806, guid: 9423c4cd6f3ccfe40a72e578290a8920,
+    prefab: {fileID: 5027226568428968859, guid: bdd360e49f9c91946b84d5b47d26d7e5,
       type: 3}
     storage: {fileID: 0}
   - size: 8
-    prefab: {fileID: 2619139106308706806, guid: 79c546de3e276d0448ca133095784f3b,
+    prefab: {fileID: 5027226568428968859, guid: d1832d8859ce44a4882a2edefb11dd20,
       type: 3}
     storage: {fileID: 0}
 --- !u!1 &8042889633497674949
@@ -378,4 +307,3 @@ SceneRoots:
   - {fileID: 2736697767487812592}
   - {fileID: 911854740404870640}
   - {fileID: 8527084402064284875}
-  - {fileID: 4364769867382188926}

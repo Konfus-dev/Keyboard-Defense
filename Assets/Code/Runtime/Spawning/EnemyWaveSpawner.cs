@@ -43,9 +43,6 @@ namespace KeyboardDefense.Spawning
             player.HealthChanged.AddListener(OnPlayerHealthChanged);
             _sceneManager = ServiceProvider.Get<ISceneManager>();
             _nextWaveTime = Time.time + firstWaveSpawnDelay;
-            var currentScene = _sceneManager.CurrentScene;
-            if (currentScene) gameObject.SetActive(currentScene.SceneType == SceneType.Level);
-            else gameObject.SetActive(false);
         }
 
         private void Update()

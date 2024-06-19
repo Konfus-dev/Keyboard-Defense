@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace KeyboardDefense.UI
 {
-    [ExecuteInEditMode, RequireComponent(typeof(RectTransform))]
+    [RequireComponent(typeof(RectTransform))]
     public class TooltipManager : GameService<ITooltipService>, ITooltipService
     {
         [Header("Settings")]

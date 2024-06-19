@@ -1,4 +1,5 @@
-﻿using KeyboardDefense.Services;
+﻿using System;
+using KeyboardDefense.Services;
 using KeyboardDefense.UI;
 using UnityEngine;
 
@@ -38,6 +39,11 @@ namespace KeyboardDefense.Input.Input
         }
 
         private void OnStopHover()
+        {
+            _cursorService.SetCursor(CursorState.Default);
+        }
+
+        private void OnDestroy()
         {
             _cursorService.SetCursor(CursorState.Default);
         }

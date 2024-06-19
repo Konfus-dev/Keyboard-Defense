@@ -171,6 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fce55e237f42efb2f40eee91ea56bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topOffset: {x: 0, y: 0, z: 0}
+  bottomOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &7933199056001496146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -257,7 +259,7 @@ PrefabInstance:
     - target: {fileID: 3646973196281509668, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 416
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 3646973196281509668, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
@@ -324,6 +326,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4417688976949612880, guid: d6408578e032bf446966c5f4ea0bb1f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4615093117386841996, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
       propertyPath: m_IsActive
@@ -338,6 +345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Menu Prompt Variant With Tail
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423728126687445284, guid: d6408578e032bf446966c5f4ea0bb1f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7725355178805977048, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}

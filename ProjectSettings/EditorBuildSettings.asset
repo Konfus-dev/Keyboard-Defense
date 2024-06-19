@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Level Select.unity
     guid: 5662baee47653164b9d59d9d59f13c7b
   - enabled: 1
+    path: Assets/Scenes/Demo/Demo Main Menu.unity
+    guid: 30809cfe66d460e4e8afb5628dabbcd5
+  - enabled: 1
+    path: Assets/Scenes/Demo/The Forest Endless Demo.unity
+    guid: cf1d668f5deaa88408523bed0da86ddc
+  - enabled: 1
     path: Assets/Scenes/Additive/Universal UI.unity
     guid: 795bd3e893334b84caca2b7f2547e6f7
   - enabled: 1
@@ -29,13 +35,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Additive/Player.unity
     guid: 06561afc2a3be8648a7c82de1f8a2db4
-  - enabled: 1
-    path: Assets/Scenes/Demo/Loading.unity
-    guid: 1367293c2c9e88d4b879354044aa454b
-  - enabled: 1
-    path: Assets/Scenes/Demo/Demo Main Menu.unity
-    guid: 30809cfe66d460e4e8afb5628dabbcd5
-  - enabled: 1
-    path: Assets/Scenes/Demo/The Forest Endless Demo.unity
-    guid: cf1d668f5deaa88408523bed0da86ddc
   m_configObjects: {}

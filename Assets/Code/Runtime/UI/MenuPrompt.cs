@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace KeyboardDefense.UI
 {
-    [ExecuteInEditMode]
     [RequireComponent(typeof(Prompt))]
     [RequireComponent(typeof(Tooltip))]
     [RequireComponent(typeof(PromptTextBox))]
