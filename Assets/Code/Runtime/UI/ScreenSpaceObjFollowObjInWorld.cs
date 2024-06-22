@@ -43,7 +43,7 @@ namespace KeyboardDefense.UI
         {
             if (!objToFollow) return;
             _pos = RectTransformUtility.WorldToScreenPoint(_camera, objToFollow.transform.position);
-            _rt.position = _pos + followOffset;
+            _rt.position = _pos + followOffset + new Vector2(0, Screen.height / 45f);
         }
     }
 }

@@ -33,14 +33,14 @@ namespace KeyboardDefense.UI
                 return;
             }
 
-            var posA = objToFollow.transform.position + Vector3.up + bottomOffset;
+            var posA = objToFollow.transform.position + Vector3.up;
             var posB = !_camera.orthographic
                 ? _camera.ScreenToWorldPoint(
-                    new Vector3(transform.position.x + topOffset.x, transform.position.y + topOffset.y, _camera.nearClipPlane))
+                    new Vector3(transform.position.x, transform.position.y, _camera.nearClipPlane))
                 : transform.position - Vector3.back;
             _lineRenderer.enabled = true;
-            _lineRenderer.SetPosition(0, posA);
-            _lineRenderer.SetPosition(1, posB);
+            _lineRenderer.SetPosition(0, posA + bottomOffset);
+            _lineRenderer.SetPosition(1, posB + topOffset);
         }
 
         private void OnDisable()
