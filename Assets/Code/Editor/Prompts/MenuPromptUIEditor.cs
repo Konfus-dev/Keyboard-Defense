@@ -4,7 +4,7 @@ using UnityEditor;
 
 namespace KeyboardDefense.Editor.Prompts
 {
-    [CustomEditor(typeof(MenuPrompt))]
+    [CustomEditor(typeof(MenuPromptTextBox))]
     public class MenuPromptUIEditor : UnityEditor.Editor
     {
         private string _lastTextValue;
@@ -28,7 +28,7 @@ namespace KeyboardDefense.Editor.Prompts
 
         private void OnEnable()
         {
-            var menuPromptUI = (MenuPrompt)target;
+            var menuPromptUI = (MenuPromptTextBox)target;
             _promptTextBox = menuPromptUI.GetComponent<PromptTextBox>();
             _promptUIText = menuPromptUI.GetComponentInChildren<TMP_Text>();
             _uiText = serializedObject.FindProperty("text");

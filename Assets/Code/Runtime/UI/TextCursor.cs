@@ -22,24 +22,23 @@ namespace KeyboardDefense.UI
             _image = GetComponent<Image>();
         }
 
-        private void OnEnable()
-        {
-            UpdatePosition(_indexOfLastTypedCharacter);
-        }
-
         public void OnPromptCharacterCorrectlyTyped()
         {
             _indexOfLastTypedCharacter++;
-            UpdatePosition(_indexOfLastTypedCharacter);
         }
 
         public void OnPromptCharacterIncorrectlyTyped()
         {
             _indexOfLastTypedCharacter = -1;
-            UpdatePosition(_indexOfLastTypedCharacter);
         }
 
         private void Update()
+        {
+            UpdateAlpha();
+            UpdatePosition(_indexOfLastTypedCharacter);
+        }
+
+        private void UpdateAlpha()
         {
             if (_currentAlpha == 0) _targetAlpha = 1;
             else if (_currentAlpha == 1) _targetAlpha = 0;
@@ -50,7 +49,7 @@ namespace KeyboardDefense.UI
             objectColor.a = _currentAlpha;
             _image.color = objectColor;
         }
-        
+
         private void UpdatePosition(int indexOfLastTypedCharacter) 
         {
             TMP_TextInfo textInfo = text.textInfo;

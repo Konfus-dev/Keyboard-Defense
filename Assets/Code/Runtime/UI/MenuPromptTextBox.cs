@@ -9,7 +9,7 @@ namespace KeyboardDefense.UI
     [RequireComponent(typeof(Prompt))]
     [RequireComponent(typeof(Tooltip))]
     [RequireComponent(typeof(PromptTextBox))]
-    public class MenuPrompt : MonoBehaviour
+    public class MenuPromptTextBox : MonoBehaviour
     {
         [SerializeField]
         private string text;
