@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8701722629749863461, guid: d6408578e032bf446966c5f4ea0bb1f6,
+        type: 3}
+      propertyPath: destroyOnCompletePrompt
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -2213534435213476123, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
       propertyPath: text
@@ -46,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 475670868312113256, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
       propertyPath: m_text
-      value: <b><color=#0E0E0E><b></color><i>Menu Prompt!</i>
+      value: Menu Prompt!
       objectReference: {fileID: 0}
     - target: {fileID: 644721788442883616, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}

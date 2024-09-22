@@ -16,6 +16,8 @@ namespace KeyboardDefense.UI
         [Header("Settings")]
         [SerializeField]
         private bool autoUpdateSize = true;
+        [SerializeField]
+        private bool destroyOnCompletePrompt = true;
         [SerializeField] 
         private Color failedTextColor = Color.red;
         [SerializeField] 
@@ -116,6 +118,7 @@ namespace KeyboardDefense.UI
 
         private IEnumerator OnPromptSuccessfullyTypedRoutine()
         {
+            if (!destroyOnCompletePrompt) yield break;
             // TODO: Show success effect
             yield return new WaitForSeconds(0.15f);
             //gameObject.SetActive(false);
