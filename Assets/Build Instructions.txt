@@ -1,0 +1,6 @@
+Windows:
+- Nothing special, just select windows platform and build!
+MacOS:
+- Pain! So... much... pain...
+- You need to unzip with non default unzip app
+- You need to run this command for the app from the terminal: xattr -rc *.app
