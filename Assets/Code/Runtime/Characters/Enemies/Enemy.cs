@@ -63,7 +63,8 @@ namespace KeyboardDefense.Characters.Enemies
         {
             if (currHealth <= 0)
             {
-                Destroy(gameObject);
+                _promptGenerator.GeneratedPrompt.gameObject.SetActive(false);
+                SetState(State.Idle);
             }
         }
     }

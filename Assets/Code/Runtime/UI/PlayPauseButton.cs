@@ -49,6 +49,10 @@ namespace KeyboardDefense.UI
 
         private void OnGameStateChanged(IGameStateService.State state)
         {
+            if (state == IGameStateService.State.GameOver)
+            {
+                _toggle.gameObject.SetActive(false);
+            }
             if (state == IGameStateService.State.Paused && !_isPaused ||
                 state == IGameStateService.State.Playing && _isPaused)
             {
