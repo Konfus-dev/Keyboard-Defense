@@ -41,6 +41,7 @@ namespace KeyboardDefense.UI
         private void Start()
         {
             _prompt.Set(text);
+            _prompt.SetDisableOnPause(_promptTextBox.DisableOnPause);
             _tooltip.Set(tooltip);
             _promptTextBox.SetPrompt(text);
             if (_promptTail)
@@ -51,6 +52,14 @@ namespace KeyboardDefense.UI
             _sceneManager = ServiceProvider.Get<ISceneManager>();
             if (startFocused) _promptFocusHandler.FocusPrompt();
             _prompt.promptCompleted.AddListener(TransitionToScene);
+        }
+
+        private void OnEnable()
+        {
+            _prompt.Set(text);
+            _prompt.SetDisableOnPause(_promptTextBox.DisableOnPause);
+            _tooltip.Set(tooltip);
+            _promptTextBox.SetPrompt(text);
         }
 
         private void TransitionToScene()

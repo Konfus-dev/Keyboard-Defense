@@ -49,8 +49,9 @@ namespace KeyboardDefense.Prompts
             var character = GetComponent<Character>();
             PromptData promptData = _wordDatabase.GetRandomWordOfGivenDifficulty(character.GetStats().Difficulty);
             _generatedPrompt = promptGo.GetComponent<Prompt>();
-            _generatedPrompt.Set(promptData);
             _generatedPromptTextBox = _generatedPrompt.GetComponent<PromptTextBox>();
+            _generatedPrompt.Set(promptData);
+            _generatedPrompt.SetDisableOnPause(_generatedPromptTextBox.DisableOnPause);
             _generatedPromptTextBox.SetPrompt(promptData);
             
             // Tell prompt to follow the object we are configured to follow

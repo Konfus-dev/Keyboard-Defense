@@ -8,6 +8,7 @@ namespace KeyboardDefense.Characters
     [RequireComponent(typeof(Character))]
     public class SplineMovement : MonoBehaviour
     {
+        private IGameStateService _gameStateService;
         private Character _character;
         private SplineContainer _splineContainer;
         private float _elapsedTime;
@@ -39,6 +40,7 @@ namespace KeyboardDefense.Characters
 
         private void Start()
         {
+            _gameStateService = ServiceProvider.Get<IGameStateService>(); 
             _splineContainer = ServiceProvider.Get<IPathProvider>().Spline;
             SetSpeed(_character.GetStats().MoveSpeed);
             GenerateRandomOffset();
@@ -56,6 +58,7 @@ namespace KeyboardDefense.Characters
 
         private void UpdateTransform()
         {
+            if (_gameStateService.GameState == IGameStateService.State.Paused) return;
             if (_splineContainer == null || _speed == 0 || !_isMoving) return;
             
             // Calculate pos along curve

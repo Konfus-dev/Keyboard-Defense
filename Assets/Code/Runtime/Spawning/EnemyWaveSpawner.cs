@@ -1,5 +1,4 @@
 using System.Collections;
-using KeyboardDefense.Scenes;
 using KeyboardDefense.Services;
 using UnityEngine;
 
@@ -32,6 +31,7 @@ namespace KeyboardDefense.Spawning
         
         // TODO: increase wave difficulty based on current scene star difficulty!
         private ISceneManager _sceneManager;
+        private IGameStateService _gameStateService;
 
         private bool _isSpawning = false;
         private float _nextWaveTime; // Time for next wave
@@ -42,11 +42,14 @@ namespace KeyboardDefense.Spawning
             var player = ServiceProvider.Get<IPlayer>();
             player.HealthChanged.AddListener(OnPlayerHealthChanged);
             _sceneManager = ServiceProvider.Get<ISceneManager>();
+            _gameStateService = ServiceProvider.Get<IGameStateService>();
             _nextWaveTime = Time.time + firstWaveSpawnDelay;
         }
 
         private void Update()
         {
+            if (_gameStateService.GameState == IGameStateService.State.Paused) return;
+            
             if (Time.time >= _nextWaveTime && !_isSpawning)
             {
                 StartWave();
@@ -71,6 +74,7 @@ namespace KeyboardDefense.Spawning
             _isSpawning = true;
             for (int i = 0; i < startingWaveEnemyCount; i++)
             {
+                if (_gameStateService.GameState == IGameStateService.State.Paused) yield return null;
                 spawner.RandomSpawn();
                 yield return new WaitForSeconds(enemySpawnInterval);
             }

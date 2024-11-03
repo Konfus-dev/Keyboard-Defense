@@ -6,8 +6,10 @@ namespace KeyboardDefense.Characters.Enemies
 {
     public class Enemy : Character
     {
+        private IGameStateService _gameStateService;
         private LineScanSensor _castleSensor;
         private PromptGenerator _promptGenerator;
+        private State _stateBeforePause;
         
         protected override void OnSpawn()
         {
@@ -24,9 +26,25 @@ namespace KeyboardDefense.Characters.Enemies
         // TODO: maybe follow pattern of other things such as AddToScoreOnDeath and PlayEffectOnDeath and create a KillOnPromptCompleted script
         private void Start()
         {
+            _gameStateService = ServiceProvider.Get<IGameStateService>();
+            _gameStateService.GameStateChanged.AddListener(OnGameStateChanged);
             var player = ServiceProvider.Get<IPlayer>();
             player.HealthChanged.AddListener(OnPlayerHealthChanged);
             _promptGenerator.GeneratedPrompt.promptCompleted.AddListener(OnPromptCompleted);
+        }
+
+        private void OnGameStateChanged(IGameStateService.State arg0)
+        {
+            if (_gameStateService.GameState == IGameStateService.State.Paused)
+            {
+                _stateBeforePause = GetState(); 
+                SetState(State.Idle);
+            }
+
+            if (_gameStateService.GameState == IGameStateService.State.Playing)
+            {
+                SetState(_stateBeforePause);
+            }
         }
 
         private void Update()
@@ -44,7 +62,10 @@ namespace KeyboardDefense.Characters.Enemies
 
         private void OnHitCastle()
         {
-            SetState(State.Attacking);
+            if (GetState() != State.Attacking)
+            {
+                SetState(State.Attacking);
+            }
         }
         
         private void OnPlayerHealthChanged(int currHealth, int _)

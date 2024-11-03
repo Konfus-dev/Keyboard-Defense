@@ -15,6 +15,10 @@ namespace KeyboardDefense.UI
     {
         [Header("Settings")]
         [SerializeField]
+        private bool disableOnPause = true;
+        [SerializeField]
+        private bool pauseGameOnHover = true;
+        [SerializeField]
         private bool autoUpdateSize = true;
         [SerializeField]
         private bool destroyOnCompletePrompt = true;
@@ -44,6 +48,9 @@ namespace KeyboardDefense.UI
         
         private Tooltip _tooltip;
         private MouseEventListener _mouseEventListener;
+        private IGameStateService _gameStateService;
+        
+        public bool DisableOnPause => disableOnPause;
 
         public void Focus()
         {
@@ -95,11 +102,13 @@ namespace KeyboardDefense.UI
 
         public void OnNextCharacterIncorrectlyTyped()
         {
+            if (_gameStateService.GameState == IGameStateService.State.Paused && disableOnPause) return;
             StartCoroutine(OnFailedToTypePromptRoutine());
         }
         
         public void OnNextCharInPromptCorrectlyTyped()
         {
+            if (_gameStateService.GameState == IGameStateService.State.Paused && disableOnPause) return;
             // Keep track of what has been typed
             _typedText += _currentText.FirstOrDefault();
             _currentText = _currentText.Remove(startIndex: 0, count: 1);
@@ -133,6 +142,7 @@ namespace KeyboardDefense.UI
 
         private void Start()
         {
+            _gameStateService = ServiceProvider.Get<IGameStateService>();
             if (transform.parent == null)
             {
                 var gameplayCanvas = ServiceProvider.Get<IGameplayCanvasProvider>();
@@ -161,12 +171,14 @@ namespace KeyboardDefense.UI
         
         private void OnStartHover()
         {
-            Time.timeScale = 0f;
+            if (_gameStateService.GameState == IGameStateService.State.Paused) return;
+            if (pauseGameOnHover) Time.timeScale = 0;
         }
 
         private void OnStopHover()
         {
-            Time.timeScale = 1;
+            if (_gameStateService.GameState == IGameStateService.State.Paused) return;
+            if (pauseGameOnHover) Time.timeScale = 1;
         }
 
         private void OnClick()

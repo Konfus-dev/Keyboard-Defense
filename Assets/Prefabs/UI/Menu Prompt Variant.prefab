@@ -10,6 +10,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8701722629749863461, guid: d6408578e032bf446966c5f4ea0bb1f6,
         type: 3}
+      propertyPath: disableOnPause
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8701722629749863461, guid: d6408578e032bf446966c5f4ea0bb1f6,
+        type: 3}
+      propertyPath: pauseGameOnHover
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8701722629749863461, guid: d6408578e032bf446966c5f4ea0bb1f6,
+        type: 3}
       propertyPath: destroyOnCompletePrompt
       value: 0
       objectReference: {fileID: 0}

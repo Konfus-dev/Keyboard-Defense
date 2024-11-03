@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using KeyboardDefense.Input;
+using KeyboardDefense.Services;
 using Konfus.Utility.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,6 +18,14 @@ namespace KeyboardDefense.Prompts
         
         private string _text;
         private string _remainingPromptText;
+        private bool _disableOnPause;
+        private IGameStateService _gameStateService;
+
+        private new void Start()
+        {
+            _gameStateService = ServiceProvider.Get<IGameStateService>();
+            base.Start();
+        }
         
         public string GetPrompt() => _text;
         public int GetNumberOfRemainingCharacters() => _remainingPromptText.Length;
@@ -33,8 +42,14 @@ namespace KeyboardDefense.Prompts
             _remainingPromptText = _text;
         }
 
+        public void SetDisableOnPause(bool disableOnPause)
+        {
+            _disableOnPause = disableOnPause;
+        }
+
         protected override void OnKeyPressed(string key)
         {
+            if (_gameStateService.GameState == IGameStateService.State.Paused && _disableOnPause) return;
             if (_remainingPromptText.IsNullOrEmpty()) return;
             
             // Process input...

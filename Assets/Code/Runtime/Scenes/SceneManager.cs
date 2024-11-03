@@ -89,39 +89,7 @@ namespace KeyboardDefense.Scenes
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(CurrentScene.SceneName, LoadSceneMode.Single);
             }
-            //LoadSceneDependencies(CurrentScene, openScenes);
         }
-
-        /*
-        private void LoadSceneDependencies(SceneInfo sceneInfo, Scene[] openScenes)
-        {
-            // No dependencies, return!
-            if (sceneInfo.SceneDependencies.IsNullOrEmpty()) return;
-            
-            // We do have dependencies! Load them recursively...
-            foreach (var additionalScene in sceneInfo.SceneDependencies)
-            {
-                var canOpenScene = additionalScene.SceneType != SceneType.DependencyContainer &&
-                                   openScenes.All(s => s.name != additionalScene.SceneName);
-                if (canOpenScene)
-                {
-                    // Validate to see if we can load the scene...
-                    if (additionalScene.SceneName.IsNullOrEmpty())
-                    {
-                        Debug.LogWarning($"Scene name is null or empty for {additionalScene.name} " +
-                                         "and this is not marked as a dependency container, skipping loading this scene and its dependencies...");
-                        break;
-                    }
-                    
-                    // If we aren't just a container for additional dependencies, load the scene...
-                    UnityEngine.SceneManagement.SceneManager.LoadScene(additionalScene.SceneName, LoadSceneMode.Additive);
-                }
-                
-                // Load dependencies of this dependency...
-                LoadSceneDependencies(additionalScene, openScenes);
-            }
-        }
-        */
 
         public Scene[] GetOpenScenes()
         {
