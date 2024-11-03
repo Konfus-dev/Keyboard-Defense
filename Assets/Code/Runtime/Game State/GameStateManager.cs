@@ -34,11 +34,13 @@ namespace KeyboardDefense.Game_State
 
         public void PauseGame()
         {
+            if (GameState == IGameStateService.State.GameOver) return;
             GameState = IGameStateService.State.Paused;
         }
 
         public void ResumeGame()
         {
+            if (GameState == IGameStateService.State.GameOver) return;
             GameState = IGameStateService.State.Playing;
         }
 
