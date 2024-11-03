@@ -11,6 +11,7 @@ namespace KeyboardDefense.Scenes
         public UnityEvent ChangedScene { get; } = new UnityEvent();
         public SceneInfo CurrentScene { get; private set; }
         
+        private IGameStateService _gameStateService;
         private ISceneTransitioner _sceneTransitioner;
         private bool _quitting;
 
@@ -22,6 +23,7 @@ namespace KeyboardDefense.Scenes
         private void Start()
         {
             // Set current scene
+            _gameStateService = ServiceProvider.Get<IGameStateService>();
             var currentSceneProvider = ServiceProvider.Get<ICurrentSceneProvider>();
             CurrentScene = currentSceneProvider.CurrentScene;
             ChangedScene.Invoke();
@@ -34,16 +36,14 @@ namespace KeyboardDefense.Scenes
 
         public void LoadScene(SceneInfo scene)
         {
-            if (scene.SceneType == SceneType.QuitGame)
-            {
-                Quit();
-            }
+            if (scene == null) return;
+            if (scene.SceneType == SceneType.QuitGame) Quit();
             else
             {
                 _sceneTransitioner.PlayTransitionOutOfScene(1.5f);
                 if (CurrentScene == scene) // Reloading current scene
                 {
-                    UnityEngine.SceneManagement.SceneManager.UnloadScene(CurrentScene.SceneName);
+                    UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(CurrentScene.SceneName);
                 }
                 else // Setting new scene
                 {
@@ -60,6 +60,7 @@ namespace KeyboardDefense.Scenes
 
         public void Quit()
         {
+            _gameStateService.GameState = IGameStateService.State.Exiting;
             _quitting = true;
             QuitGame.Invoke();
             _sceneTransitioner.PlayTransitionOutOfScene(0.5f);

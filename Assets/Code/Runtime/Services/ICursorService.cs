@@ -1,5 +1,4 @@
-﻿using KeyboardDefense.Input.Input;
-using KeyboardDefense.UI;
+﻿using KeyboardDefense.UI;
 
 namespace KeyboardDefense.Services
 {

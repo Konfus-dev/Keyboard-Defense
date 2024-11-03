@@ -1,9 +1,8 @@
-﻿using System;
-using KeyboardDefense.Services;
+﻿using KeyboardDefense.Services;
 using KeyboardDefense.UI;
 using UnityEngine;
 
-namespace KeyboardDefense.Input.Input
+namespace KeyboardDefense.Input
 {
     [RequireComponent(typeof(MouseEventListener))]
     public class Clickable : MonoBehaviour

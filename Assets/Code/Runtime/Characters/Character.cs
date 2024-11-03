@@ -98,32 +98,36 @@ namespace KeyboardDefense.Characters
         
         private void Move()
         {
+            _runningState = State.Moving;
             onMove.Invoke();
         }
         
         private void Idle()
         {
+            _runningState = State.Idle;
             onIdle.Invoke();
         }
 
         private void Attack()
         {
+            _runningState = State.Attacking;
             StartCoroutine(AttackRoutine());
         }
 
         private void Hurt()
         {
+            _runningState = State.Hurt;
             StartCoroutine(HurtRoutine());
         }
 
         private void Die()
         {
+            _runningState = State.Dead;
             StartCoroutine(DieRoutine());
         }
         
         private IEnumerator AttackRoutine()
         {
-            _runningState = State.Attacking;
             while (_runningState == State.Attacking)
             {
                 onAttack.Invoke();
@@ -133,7 +137,6 @@ namespace KeyboardDefense.Characters
         
         private IEnumerator HurtRoutine()
         {
-            _runningState = State.Hurt;
             onHurt.Invoke();
             yield return new WaitForSeconds(stats.StunDuration);
             SetState(_previousState);
@@ -141,7 +144,6 @@ namespace KeyboardDefense.Characters
         
         private IEnumerator DieRoutine()
         {
-            _runningState = State.Dead;
             yield return new WaitForSeconds(0.5f);
             onDie.Invoke();
             OnDie();

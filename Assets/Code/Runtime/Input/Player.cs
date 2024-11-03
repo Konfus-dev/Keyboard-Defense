@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using KeyboardDefense.Characters;
 using KeyboardDefense.Services;
 using Konfus.Utility.Extensions;
@@ -12,6 +13,8 @@ namespace KeyboardDefense.Input
     {
         public KeyPressedEvent KeyPressed { get; } = new();
         public HealthChangedEvent HealthChanged { get; } = new();
+        
+        private IGameStateService _gameStateService;
         
         public void Register()
         {
@@ -31,7 +34,12 @@ namespace KeyboardDefense.Input
 
         protected override void OnDie()
         {
-            // Do nothing...
+            _gameStateService.GameState = IGameStateService.State.GameOver;
+        }
+
+        private void Start()
+        {
+            _gameStateService = ServiceProvider.Get<IGameStateService>();
         }
 
         private void Update()
@@ -98,6 +106,11 @@ namespace KeyboardDefense.Input
         private void OnKeyPressed()
         {
             var typedCharacters = GetTypedCharacters();
+            if (typedCharacters.Contains("Escape"))
+            {
+                if (_gameStateService.GameState == IGameStateService.State.Playing) _gameStateService.PauseGame();
+                else _gameStateService.ResumeGame();
+            }
             foreach (var typedCharacter in typedCharacters) KeyPressed.Invoke(typedCharacter);
         }
     }

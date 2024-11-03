@@ -9,7 +9,6 @@ namespace KeyboardDefense.Characters.Enemies
         private IGameStateService _gameStateService;
         private LineScanSensor _castleSensor;
         private PromptGenerator _promptGenerator;
-        private State _stateBeforePause;
         
         protected override void OnSpawn()
         {
@@ -33,23 +32,15 @@ namespace KeyboardDefense.Characters.Enemies
             _promptGenerator.GeneratedPrompt.promptCompleted.AddListener(OnPromptCompleted);
         }
 
-        private void OnGameStateChanged(IGameStateService.State arg0)
+        private void OnGameStateChanged(IGameStateService.State state)
         {
-            if (_gameStateService.GameState == IGameStateService.State.Paused)
-            {
-                _stateBeforePause = GetState(); 
-                SetState(State.Idle);
-            }
-
-            if (_gameStateService.GameState == IGameStateService.State.Playing)
-            {
-                SetState(_stateBeforePause);
-            }
+            if (state == IGameStateService.State.Paused) SetState(State.Idle);
+            if (state == IGameStateService.State.Playing) SetState(State.Moving);
         }
 
         private void Update()
         {
-            if (_castleSensor.Scan())
+            if (_gameStateService.GameState == IGameStateService.State.Playing && _castleSensor.Scan())
             {
                 OnHitCastle();
             }

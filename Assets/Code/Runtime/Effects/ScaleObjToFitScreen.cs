@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace KeyboardDefense.UI
+namespace KeyboardDefense.Effects
 {
     public class ScaleObjectToFitScreen : MonoBehaviour
     {
