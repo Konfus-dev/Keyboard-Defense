@@ -38,18 +38,18 @@ namespace KeyboardDefense.Scenes
         {
             if (scene == null) return;
             if (scene.SceneType == SceneType.QuitGame) Quit();
+            if (scene.SceneName == "Current" || CurrentScene == scene)
+            {
+                // Reloading current scene
+                _sceneTransitioner.PlayTransitionOutOfScene(1.5f);
+                UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(CurrentScene.SceneName);
+            }
             else
             {
+                // Setting new scene
                 _sceneTransitioner.PlayTransitionOutOfScene(1.5f);
-                if (CurrentScene == scene) // Reloading current scene
-                {
-                    UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(CurrentScene.SceneName);
-                }
-                else // Setting new scene
-                {
-                    CurrentScene = scene;
-                    ChangedScene.Invoke();
-                }
+                CurrentScene = scene;
+                ChangedScene.Invoke();
             }
         }
 

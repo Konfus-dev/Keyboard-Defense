@@ -47,7 +47,7 @@ namespace KeyboardDefense.UI
         private void Awake()
         {
             _layout = visuals.GetComponent<LayoutElement>();
-            _rectTransform = GetComponent<RectTransform>();
+            _rectTransform = visuals.GetComponent<RectTransform>();
         }
 
         private void Start()
@@ -80,9 +80,11 @@ namespace KeyboardDefense.UI
 
         private void MoveToMousePosition()
         {
-            Vector2 position = ((Vector2)UnityEngine.Input.mousePosition) + 
-                               new Vector2(-_rectTransform.rect.width, -_rectTransform.rect.height) + 
-                               offset;
+            var rect = new Vector2(-_rectTransform.rect.width, -_rectTransform.rect.height);
+            Vector2 position = ((Vector2)UnityEngine.Input.mousePosition) + rect + offset;
+
+            position.x = Mathf.Clamp(position.x, 0, Screen.width - rect.x);
+            position.y = Mathf.Clamp(position.y, 0, Screen.height - rect.y);
 
             float pivotX = position.x / Screen.width;
             float pivotY = position.y / Screen.height;

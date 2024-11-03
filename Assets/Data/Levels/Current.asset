@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e091a79745044fda8549528548cf265, type: 3}
-  m_Name: Level Select
+  m_Name: Current
   m_EditorClassIdentifier: 
-  sceneType: 0
-  sceneName: Level Select
-  sceneDescription: For selecting levels....
+  sceneType: 1
+  sceneName: Current
+  sceneDescription: 
   sceneStarDifficulty: 0
   sceneMiniature: {fileID: 0}
-  sceneDependencies:
-  - {fileID: 11400000, guid: 7b8e27dfff571c44684136558b50d3d1, type: 2}

@@ -5,18 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Main Menu.unity
-    guid: d816d3f93cf144f40ade432408e12fb0
-  - enabled: 0
-    path: Assets/Scenes/The Forest.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/Demo/Demo Level Select.unity
-    guid: 5662baee47653164b9d59d9d59f13c7b
   - enabled: 1
     path: Assets/Scenes/Demo/Demo Main Menu.unity
     guid: 30809cfe66d460e4e8afb5628dabbcd5
+  - enabled: 1
+    path: Assets/Scenes/Demo/Demo Level Select.unity
+    guid: 5662baee47653164b9d59d9d59f13c7b
   - enabled: 1
     path: Assets/Scenes/Demo/The Forest Endless Demo.unity
     guid: cf1d668f5deaa88408523bed0da86ddc

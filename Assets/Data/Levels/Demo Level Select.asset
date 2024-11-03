@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e091a79745044fda8549528548cf265, type: 3}
-  m_Name: The Forest
+  m_Name: Demo Level Select
   m_EditorClassIdentifier: 
-  sceneType: 1
-  sceneName: The Forest
-  sceneDescription: An eternal battle wages between racoons of the forest and snakes
-    of the desert....
-  sceneStarDifficulty: 3
-  sceneMiniature: {fileID: 5627078170542690237, guid: 6a130612057cc6245a4e552eb805bedb,
-    type: 3}
+  sceneType: 0
+  sceneName: Demo Level Select
+  sceneDescription: For selecting levels....
+  sceneStarDifficulty: 0
+  sceneMiniature: {fileID: 0}
